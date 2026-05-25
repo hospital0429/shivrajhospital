@@ -1,4 +1,19 @@
 export default function ShivrajHospitalHomepage() {
+  const adminStats = {
+    maleOPD: 128,
+    femaleOPD: 142,
+    erPatients: 58,
+    indoorPatients: 34,
+    xrayReports: 46,
+    labReports: 132,
+    usgReports: 29,
+  };
+
+  const notices = [
+    "Emergency service available 24/7",
+    "Free maternal health camp this Friday",
+    "New orthopedic consultant OPD started",
+  ];
   const departments = [
     "OPD",
     "Emergency",
@@ -25,6 +40,13 @@ export default function ShivrajHospitalHomepage() {
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800">
+      {/* Admin Dashboard Floating Button */}
+      <a
+        href="#admin-dashboard"
+        className="fixed bottom-6 right-6 bg-blue-900 text-white px-6 py-4 rounded-full shadow-2xl z-50 hover:scale-105 transition font-semibold"
+      >
+        Admin Dashboard
+      </a>
       {/* Top Header */}
       <div className="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center">
         <div>
@@ -658,6 +680,179 @@ export default function ShivrajHospitalHomepage() {
                     Login Dashboard
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full Admin Dashboard */}
+      <section id="admin-dashboard" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-blue-900 mb-4">
+              Hospital Admin Dashboard
+            </h2>
+            <p className="text-lg text-gray-600">
+              Complete website management system for Shivraj Hospital.
+            </p>
+          </div>
+
+          {/* Dashboard Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-3xl p-8 shadow-2xl">
+              <div className="text-5xl mb-4">🩺</div>
+              <h3 className="text-2xl font-bold mb-2">Today's OPD</h3>
+              <p className="text-lg">Male: {adminStats.maleOPD}</p>
+              <p className="text-lg">Female: {adminStats.femaleOPD}</p>
+            </div>
+
+            <div className="bg-gradient-to-r from-red-600 to-red-800 text-white rounded-3xl p-8 shadow-2xl">
+              <div className="text-5xl mb-4">🚑</div>
+              <h3 className="text-2xl font-bold mb-2">Emergency</h3>
+              <div className="text-5xl font-bold">{adminStats.erPatients}</div>
+            </div>
+
+            <div className="bg-gradient-to-r from-green-600 to-green-800 text-white rounded-3xl p-8 shadow-2xl">
+              <div className="text-5xl mb-4">🧪</div>
+              <h3 className="text-2xl font-bold mb-2">Lab Reports</h3>
+              <div className="text-5xl font-bold">{adminStats.labReports}</div>
+            </div>
+
+            <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-3xl p-8 shadow-2xl">
+              <div className="text-5xl mb-4">📡</div>
+              <h3 className="text-2xl font-bold mb-2">USG Reports</h3>
+              <div className="text-5xl font-bold">{adminStats.usgReports}</div>
+            </div>
+          </div>
+
+          {/* Report Update Forms */}
+          <div className="grid lg:grid-cols-2 gap-10 mb-16">
+            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
+              <h3 className="text-3xl font-bold text-blue-900 mb-8">
+                Update Daily Hospital Report
+              </h3>
+
+              <div className="space-y-5">
+                <input type="number" placeholder="Male OPD" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="Female OPD" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="ER Patients" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="Indoor Patients" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="X-Ray Reports" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="Lab Reports" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="USG Reports" className="w-full p-4 rounded-xl border" />
+
+                <button className="w-full bg-blue-900 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
+                  Save Report
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
+              <h3 className="text-3xl font-bold text-blue-900 mb-8">
+                Publish Hospital Notice
+              </h3>
+
+              <div className="space-y-5">
+                <input type="text" placeholder="Notice Title" className="w-full p-4 rounded-xl border" />
+
+                <textarea
+                  rows="6"
+                  placeholder="Write hospital notice here..."
+                  className="w-full p-4 rounded-xl border"
+                ></textarea>
+
+                <input type="file" className="w-full p-4 rounded-xl border bg-white" />
+
+                <button className="w-full bg-green-700 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
+                  Publish Notice
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Staff Management */}
+          <div className="bg-gray-100 rounded-3xl p-10 shadow-xl mb-16">
+            <h3 className="text-4xl font-bold text-blue-900 mb-10 text-center">
+              Staff & Department Management
+            </h3>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <input type="text" placeholder="Staff Name" className="p-4 rounded-xl border" />
+              <input type="text" placeholder="Department" className="p-4 rounded-xl border" />
+              <input type="text" placeholder="Position" className="p-4 rounded-xl border" />
+              <input type="file" className="p-4 rounded-xl border bg-white" />
+            </div>
+
+            <button className="mt-8 bg-blue-900 text-white px-8 py-4 rounded-2xl font-bold hover:opacity-90 transition">
+              Add Staff Member
+            </button>
+          </div>
+
+          {/* Duty Roster */}
+          <div className="bg-gradient-to-r from-blue-900 to-blue-700 rounded-3xl p-10 shadow-2xl text-white mb-16">
+            <h3 className="text-4xl font-bold mb-10 text-center">
+              Emergency Duty Roster Management
+            </h3>
+
+            <div className="grid lg:grid-cols-3 gap-8">
+              <div className="bg-white/10 rounded-3xl p-8 backdrop-blur-lg">
+                <h4 className="text-3xl font-bold mb-4">Morning Shift</h4>
+                <input type="text" placeholder="Assign Doctor" className="w-full p-4 rounded-xl text-black mb-4" />
+                <input type="text" placeholder="Assign Nurse" className="w-full p-4 rounded-xl text-black mb-4" />
+                <button className="w-full bg-white text-blue-900 py-3 rounded-xl font-bold">
+                  Save Shift
+                </button>
+              </div>
+
+              <div className="bg-white/10 rounded-3xl p-8 backdrop-blur-lg">
+                <h4 className="text-3xl font-bold mb-4">Evening Shift</h4>
+                <input type="text" placeholder="Assign Doctor" className="w-full p-4 rounded-xl text-black mb-4" />
+                <input type="text" placeholder="Assign Nurse" className="w-full p-4 rounded-xl text-black mb-4" />
+                <button className="w-full bg-white text-blue-900 py-3 rounded-xl font-bold">
+                  Save Shift
+                </button>
+              </div>
+
+              <div className="bg-white/10 rounded-3xl p-8 backdrop-blur-lg">
+                <h4 className="text-3xl font-bold mb-4">Night Shift</h4>
+                <input type="text" placeholder="Assign Doctor" className="w-full p-4 rounded-xl text-black mb-4" />
+                <input type="text" placeholder="Assign Nurse" className="w-full p-4 rounded-xl text-black mb-4" />
+                <button className="w-full bg-white text-blue-900 py-3 rounded-xl font-bold">
+                  Save Shift
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Gallery Upload */}
+          <div className="grid lg:grid-cols-2 gap-10">
+            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
+              <h3 className="text-3xl font-bold text-blue-900 mb-8">
+                Gallery Upload
+              </h3>
+
+              <input type="file" className="w-full p-4 rounded-xl border bg-white mb-6" />
+
+              <button className="w-full bg-purple-700 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
+                Upload Photo
+              </button>
+            </div>
+
+            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
+              <h3 className="text-3xl font-bold text-blue-900 mb-8">
+                Website Settings
+              </h3>
+
+              <div className="space-y-5">
+                <input type="text" placeholder="Hospital Name" className="w-full p-4 rounded-xl border" />
+                <input type="text" placeholder="Phone Number" className="w-full p-4 rounded-xl border" />
+                <input type="email" placeholder="Email Address" className="w-full p-4 rounded-xl border" />
+                <input type="text" placeholder="Facebook Link" className="w-full p-4 rounded-xl border" />
+
+                <button className="w-full bg-orange-600 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
+                  Save Website Settings
+                </button>
               </div>
             </div>
           </div>
