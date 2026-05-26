@@ -1,68 +1,4 @@
-import { useEffect, useState } from "react";
-
-// Firebase Ready Hospital Website System
-// Features Included:
-// - Firebase Authentication
-// - Cloud Firestore Database
-// - Real-time Data Sync
-// - Multiple Admin Users
-// - Image Upload System
-// - Permanent Online Storage
-// - Mobile Friendly Admin Dashboard
-
 export default function ShivrajHospitalHomepage() {
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [reportData, setReportData] = useState({
-    maleOPD: 128,
-    femaleOPD: 142,
-    erPatients: 58,
-    indoorPatients: 34,
-    xrayReports: 46,
-    labReports: 132,
-    usgReports: 29,
-  });
-
-  useEffect(() => {
-    const saved = localStorage.getItem("shivrajHospitalReports");
-    if (saved) {
-      setReportData(JSON.parse(saved));
-    }
-  }, []);
-
-  const handleLogin = () => {
-    if (username === "admin" && password === "shivraj123") {
-      setIsAdminLoggedIn(true);
-      alert("Admin Login Successful");
-    } else {
-      alert("Invalid Username or Password");
-    }
-  };
-
-  const saveReports = () => {
-    localStorage.setItem(
-      "shivrajHospitalReports",
-      JSON.stringify(reportData)
-    );
-    alert("Daily Hospital Report Updated Successfully");
-  };
-  const adminStats = {
-    maleOPD: 128,
-    femaleOPD: 142,
-    erPatients: 58,
-    indoorPatients: 34,
-    xrayReports: 46,
-    labReports: 132,
-    usgReports: 29,
-  };
-
-  const notices = [
-    "Emergency service available 24/7",
-    "Free maternal health camp this Friday",
-    "New orthopedic consultant OPD started",
-  ];
   const departments = [
     "OPD",
     "Emergency",
@@ -89,13 +25,6 @@ export default function ShivrajHospitalHomepage() {
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800">
-      {/* Admin Dashboard Floating Button */}
-      <a
-        href="#admin-dashboard"
-        className="fixed bottom-6 right-6 bg-blue-900 text-white px-6 py-4 rounded-full shadow-2xl z-50 hover:scale-105 transition font-semibold"
-      >
-        Admin Dashboard
-      </a>
       {/* Top Header */}
       <div className="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center">
         <div>
@@ -311,7 +240,7 @@ export default function ShivrajHospitalHomepage() {
               <div className="text-5xl mb-4">🩺</div>
               <h3 className="text-2xl font-bold mb-2">Total OPD Patients</h3>
               <p className="text-gray-200 mb-4">
-                Male: {reportData.maleOPD} | Female: {reportData.femaleOPD}
+                Male: 128 | Female: 142
               </p>
               <div className="text-4xl font-extrabold">270</div>
             </div>
@@ -322,7 +251,7 @@ export default function ShivrajHospitalHomepage() {
               <p className="text-gray-200 mb-4">
                 Total ER Service Today
               </p>
-              <div className="text-4xl font-extrabold">{reportData.erPatients}</div>
+              <div className="text-4xl font-extrabold">58</div>
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl hover:scale-105 transition">
@@ -331,7 +260,7 @@ export default function ShivrajHospitalHomepage() {
               <p className="text-gray-200 mb-4">
                 Current Indoor Patients
               </p>
-              <div className="text-4xl font-extrabold">{reportData.indoorPatients}</div>
+              <div className="text-4xl font-extrabold">34</div>
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl hover:scale-105 transition">
@@ -340,7 +269,7 @@ export default function ShivrajHospitalHomepage() {
               <p className="text-gray-200 mb-4">
                 Total X-Ray Services Today
               </p>
-              <div className="text-4xl font-extrabold">{reportData.xrayReports}</div>
+              <div className="text-4xl font-extrabold">46</div>
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl hover:scale-105 transition">
@@ -349,7 +278,7 @@ export default function ShivrajHospitalHomepage() {
               <p className="text-gray-200 mb-4">
                 Total Lab Tests Performed
               </p>
-              <div className="text-4xl font-extrabold">{reportData.labReports}</div>
+              <div className="text-4xl font-extrabold">132</div>
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl hover:scale-105 transition">
@@ -358,7 +287,7 @@ export default function ShivrajHospitalHomepage() {
               <p className="text-gray-200 mb-4">
                 Ultrasound Services Today
               </p>
-              <div className="text-4xl font-extrabold">{reportData.usgReports}</div>
+              <div className="text-4xl font-extrabold">29</div>
             </div>
           </div>
         </div>
@@ -616,405 +545,11 @@ export default function ShivrajHospitalHomepage() {
       </section>
 
       {/* Footer */}
-      {/* Admin Panel Preview */}
-      <section className="py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold text-blue-900 mb-4">
-              Advanced Admin Panel
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Manage hospital website data, reports, notices, staff, and duty roster from one dashboard.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Daily Reports",
-                desc: "Update OPD, ER, Indoor, Lab, USG, and X-Ray reports.",
-                icon: "📊",
-              },
-              {
-                title: "Notice Management",
-                desc: "Publish and edit hospital notices instantly.",
-                icon: "📢",
-              },
-              {
-                title: "Staff Details",
-                desc: "Add or update staff photos and department heads.",
-                icon: "👨‍⚕️",
-              },
-              {
-                title: "Duty Roster",
-                desc: "Assign morning, evening, and night shift duties.",
-                icon: "🕒",
-              },
-              {
-                title: "Doctor Schedule",
-                desc: "Manage doctor OPD and emergency duty schedule.",
-                icon: "🩺",
-              },
-              {
-                title: "Gallery Upload",
-                desc: "Upload hospital event and activity photos.",
-                icon: "🖼️",
-              },
-              {
-                title: "Downloads Section",
-                desc: "Upload PDF reports, notices, and publications.",
-                icon: "📄",
-              },
-              {
-                title: "Website Settings",
-                desc: "Update logo, contacts, and homepage content.",
-                icon: "⚙️",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-3xl p-8 shadow-xl hover:-translate-y-2 transition"
-              >
-                <div className="text-5xl mb-5">{item.icon}</div>
-
-                <h3 className="text-2xl font-bold text-blue-900 mb-3">
-                  {item.title}
-                </h3>
-
-                <p className="text-gray-600 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 bg-gradient-to-r from-blue-900 to-blue-700 rounded-3xl p-10 text-white shadow-2xl">
-            <div className="grid lg:grid-cols-2 gap-10 items-center">
-              <div>
-                <h3 className="text-4xl font-bold mb-6">
-                  Secure Hospital Dashboard Login
-                </h3>
-
-                <p className="text-lg text-gray-200 leading-relaxed mb-6">
-                  Authorized hospital administration can securely manage all hospital website data using a centralized dashboard system.
-                </p>
-
-                <ul className="space-y-3 text-lg">
-                  <li>✅ Admin Login System</li>
-                  <li>✅ Real-time Data Update</li>
-                  <li>✅ Mobile Friendly Dashboard</li>
-                  <li>✅ Secure Management Access</li>
-                </ul>
-              </div>
-
-              <div className="bg-white text-gray-800 rounded-3xl p-8 shadow-2xl">
-                <h4 className="text-3xl font-bold text-blue-900 mb-6 text-center">
-                  Secure Admin Login
-                </h4>
-
-                <div className="bg-green-100 text-green-700 px-4 py-3 rounded-2xl mb-6 text-sm font-medium">
-                  Firebase Authentication Protected Dashboard Access
-                </div>
-
-                <div className="space-y-5">
-                  <input
-                    type="text"
-                    placeholder="Admin Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    className="w-full border rounded-xl p-4"
-                  />
-
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="w-full border rounded-xl p-4"
-                  />
-
-                  <button
-                    onClick={handleLogin}
-                    className="w-full bg-blue-900 text-white py-4 rounded-xl font-semibold hover:opacity-90 transition"
-                  >
-                    Secure Login Dashboard
-                  </button>
-
-                  <div className="grid grid-cols-2 gap-4 mt-4">
-                    <button className="bg-gray-100 py-3 rounded-xl font-medium hover:bg-gray-200 transition">
-                      Reset Password
-                    </button>
-
-                    <button className="bg-green-600 text-white py-3 rounded-xl font-medium hover:opacity-90 transition">
-                      Add New Admin
-                    </button>
-                  </div>
-
-                  <div className="mt-6 bg-blue-50 rounded-2xl p-4 text-sm text-gray-700 leading-relaxed">
-                    <p className="mb-2">✅ Encrypted Authentication</p>
-                    <p className="mb-2">✅ Secure Admin Session</p>
-                    <p className="mb-2">✅ Mobile Login Support</p>
-                    <p>✅ Real-time Database Protection</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full Admin Dashboard */}
-      <section id="admin-dashboard" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-blue-900 mb-4">
-              Hospital Admin Dashboard
-            </h2>
-            <p className="text-lg text-gray-600">
-              Complete website management system for Shivraj Hospital.
-            </p>
-          </div>
-
-          {/* Dashboard Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-3xl p-8 shadow-2xl">
-              <div className="text-5xl mb-4">🩺</div>
-              <h3 className="text-2xl font-bold mb-2">Today's OPD</h3>
-              <p className="text-lg">Male: {adminStats.maleOPD}</p>
-              <p className="text-lg">Female: {adminStats.femaleOPD}</p>
-            </div>
-
-            <div className="bg-gradient-to-r from-red-600 to-red-800 text-white rounded-3xl p-8 shadow-2xl">
-              <div className="text-5xl mb-4">🚑</div>
-              <h3 className="text-2xl font-bold mb-2">Emergency</h3>
-              <div className="text-5xl font-bold">{adminStats.erPatients}</div>
-            </div>
-
-            <div className="bg-gradient-to-r from-green-600 to-green-800 text-white rounded-3xl p-8 shadow-2xl">
-              <div className="text-5xl mb-4">🧪</div>
-              <h3 className="text-2xl font-bold mb-2">Lab Reports</h3>
-              <div className="text-5xl font-bold">{adminStats.labReports}</div>
-            </div>
-
-            <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-3xl p-8 shadow-2xl">
-              <div className="text-5xl mb-4">📡</div>
-              <h3 className="text-2xl font-bold mb-2">USG Reports</h3>
-              <div className="text-5xl font-bold">{adminStats.usgReports}</div>
-            </div>
-          </div>
-
-          {/* Report Update Forms */}
-          <div className="grid lg:grid-cols-2 gap-10 mb-16">
-            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
-              <h3 className="text-3xl font-bold text-blue-900 mb-8">
-                Update Daily Hospital Report
-              </h3>
-
-              <div className="space-y-5">
-                <input type="number" value={reportData.maleOPD} onChange={(e) => setReportData({...reportData, maleOPD: e.target.value})} placeholder="Male OPD" className="w-full p-4 rounded-xl border" />
-                <input type="number" value={reportData.femaleOPD} onChange={(e) => setReportData({...reportData, femaleOPD: e.target.value})} placeholder="Female OPD" className="w-full p-4 rounded-xl border" />
-                <input type="number" value={reportData.erPatients} onChange={(e) => setReportData({...reportData, erPatients: e.target.value})} placeholder="ER Patients" className="w-full p-4 rounded-xl border" />
-                <input type="number" value={reportData.indoorPatients} onChange={(e) => setReportData({...reportData, indoorPatients: e.target.value})} placeholder="Indoor Patients" className="w-full p-4 rounded-xl border" />
-                <input type="number" value={reportData.xrayReports} onChange={(e) => setReportData({...reportData, xrayReports: e.target.value})} placeholder="X-Ray Reports" className="w-full p-4 rounded-xl border" />
-                <input type="number" value={reportData.labReports} onChange={(e) => setReportData({...reportData, labReports: e.target.value})} placeholder="Lab Reports" className="w-full p-4 rounded-xl border" />
-                <input type="number" value={reportData.usgReports} onChange={(e) => setReportData({...reportData, usgReports: e.target.value})} placeholder="USG Reports" className="w-full p-4 rounded-xl border" />
-
-                <button onClick={saveReports} className="w-full bg-blue-900 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
-                  Save Report
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
-              <h3 className="text-3xl font-bold text-blue-900 mb-8">
-                Publish Hospital Notice
-              </h3>
-
-              <div className="space-y-5">
-                <input type="text" placeholder="Notice Title" className="w-full p-4 rounded-xl border" />
-
-                <textarea
-                  rows="6"
-                  placeholder="Write hospital notice here..."
-                  className="w-full p-4 rounded-xl border"
-                ></textarea>
-
-                <input type="file" className="w-full p-4 rounded-xl border bg-white" />
-
-                <button className="w-full bg-green-700 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
-                  Publish Notice
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Staff Management */}
-          <div className="bg-gray-100 rounded-3xl p-10 shadow-xl mb-16">
-            <h3 className="text-4xl font-bold text-blue-900 mb-10 text-center">
-              Staff & Department Management
-            </h3>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <input type="text" placeholder="Staff Name" className="p-4 rounded-xl border" />
-              <input type="text" placeholder="Department" className="p-4 rounded-xl border" />
-              <input type="text" placeholder="Position" className="p-4 rounded-xl border" />
-              <input type="file" className="p-4 rounded-xl border bg-white" />
-            </div>
-
-            <button className="mt-8 bg-blue-900 text-white px-8 py-4 rounded-2xl font-bold hover:opacity-90 transition">
-              Add Staff Member
-            </button>
-          </div>
-
-          {/* Duty Roster */}
-          <div className="bg-gradient-to-r from-blue-900 to-blue-700 rounded-3xl p-10 shadow-2xl text-white mb-16">
-            <h3 className="text-4xl font-bold mb-10 text-center">
-              Emergency Duty Roster Management
-            </h3>
-
-            <div className="grid lg:grid-cols-3 gap-8">
-              <div className="bg-white/10 rounded-3xl p-8 backdrop-blur-lg">
-                <h4 className="text-3xl font-bold mb-4">Morning Shift</h4>
-                <input type="text" placeholder="Assign Doctor" className="w-full p-4 rounded-xl text-black mb-4" />
-                <input type="text" placeholder="Assign Nurse" className="w-full p-4 rounded-xl text-black mb-4" />
-                <button className="w-full bg-white text-blue-900 py-3 rounded-xl font-bold">
-                  Save Shift
-                </button>
-              </div>
-
-              <div className="bg-white/10 rounded-3xl p-8 backdrop-blur-lg">
-                <h4 className="text-3xl font-bold mb-4">Evening Shift</h4>
-                <input type="text" placeholder="Assign Doctor" className="w-full p-4 rounded-xl text-black mb-4" />
-                <input type="text" placeholder="Assign Nurse" className="w-full p-4 rounded-xl text-black mb-4" />
-                <button className="w-full bg-white text-blue-900 py-3 rounded-xl font-bold">
-                  Save Shift
-                </button>
-              </div>
-
-              <div className="bg-white/10 rounded-3xl p-8 backdrop-blur-lg">
-                <h4 className="text-3xl font-bold mb-4">Night Shift</h4>
-                <input type="text" placeholder="Assign Doctor" className="w-full p-4 rounded-xl text-black mb-4" />
-                <input type="text" placeholder="Assign Nurse" className="w-full p-4 rounded-xl text-black mb-4" />
-                <button className="w-full bg-white text-blue-900 py-3 rounded-xl font-bold">
-                  Save Shift
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Gallery Upload */}
-          <div className="grid lg:grid-cols-2 gap-10">
-            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
-              <h3 className="text-3xl font-bold text-blue-900 mb-8">
-                Gallery Upload
-              </h3>
-
-              <input type="file" className="w-full p-4 rounded-xl border bg-white mb-6" />
-
-              <button className="w-full bg-purple-700 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
-                Upload Photo
-              </button>
-            </div>
-
-            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
-              <h3 className="text-3xl font-bold text-blue-900 mb-8">
-                Website Settings
-              </h3>
-
-              <div className="space-y-5">
-                <input type="text" placeholder="Hospital Name" className="w-full p-4 rounded-xl border" />
-                <input type="text" placeholder="Phone Number" className="w-full p-4 rounded-xl border" />
-                <input type="email" placeholder="Email Address" className="w-full p-4 rounded-xl border" />
-                <input type="text" placeholder="Facebook Link" className="w-full p-4 rounded-xl border" />
-
-                <button className="w-full bg-orange-600 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
-                  Save Website Settings
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <footer className="bg-black text-gray-400 py-8 text-center">
         <p>
           © 2026 Shivraj Hospital, Bahadurgunj Kapilvastu. All Rights Reserved.
-        </p>
-
-        <p className="mt-3 text-sm text-gray-500">
-          Official Government Hospital Website Portal
-        </p>
         </p>
       </footer>
     </div>
   );
 }
-
-/* =========================
-DEPLOYMENT SETUP FILES
-========================= */
-
-// package.json
-/*
-{
-  "name": "shivrajhospital",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "homepage": "https://hospital0429.github.io/shivrajhospital/",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.19",
-    "gh-pages": "^6.1.1",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
-    "vite": "^5.2.0"
-  }
-}
-*/
-
-// vite.config.js
-/*
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-export default defineConfig({
-  plugins: [react()],
-  base: '/shivrajhospital/',
-})
-*/
-
-// main.jsx
-/*
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { HashRouter } from 'react-router-dom'
-import App from './App'
-import './index.css'
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </React.StrictMode>,
-)
-*/
-
-// DEPLOY COMMANDS
-/*
-npm install
-npm run build
-npm run deploy
-*/
