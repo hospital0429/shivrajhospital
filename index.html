@@ -1,4 +1,834 @@
 export default function ShivrajHospitalHomepage() {
+  const adminStats = {
+    maleOPD: 128,
+    femaleOPD: 142,
+    erPatients: 58,
+    indoorPatients: 34,
+    xrayReports: 46,
+    labReports: 132,
+    usgReports: 29,
+  };
+
+  const notices = [
+    "Emergency service available 24/7",
+    "Free maternal health camp this Friday",
+    "New orthopedic consultant OPD started",
+  ];
+  const departments = [
+    "OPD",
+    "Emergency",
+    "Indoor",
+    "Minor OT",
+    "USG",
+    "ECG",
+    "X-Ray",
+    "Laboratory",
+    "Pharmacy",
+    "Maternity",
+    "ANC",
+    "DOTs",
+  ];
+
+  const consultantOPD = [
+    "Ortho OPD",
+    "Gyne & Obs OPD",
+    "Psychiatric OPD",
+    "ENT OPD",
+    "Derma OPD",
+    "Pedia OPD",
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-100 text-gray-800">
+      {/* Admin Dashboard Floating Button */}
+      <a
+        href="#admin-dashboard"
+        className="fixed bottom-6 right-6 bg-blue-900 text-white px-6 py-4 rounded-full shadow-2xl z-50 hover:scale-105 transition font-semibold"
+      >
+        Admin Dashboard
+      </a>
+      {/* Top Header */}
+      <div className="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center">
+        <div>
+          📍 Krishnanagar Municipality - 9, Bahadurgunj, Kapilvastu
+        </div>
+        <div className="flex gap-4 mt-2 md:mt-0">
+          <span>📞 +977 9876543210</span>
+          <span>✉️ shivrajhospital43@gmail.com</span>
+        </div>
+      </div>
+
+      {/* Navbar */}
+      <nav className="bg-white shadow-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-4">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/0/00/Emblem_of_Nepal.svg"
+              alt="Nepal Emblem"
+              className="w-14 h-14"
+            />
+            <div>
+              <h1 className="text-2xl font-bold text-blue-900">
+                शिवराज अस्पताल
+              </h1>
+              <p className="text-sm text-gray-600">
+                Shivraj Hospital, Bahadurgunj Kapilvastu
+              </p>
+            </div>
+          </div>
+
+          <div className="hidden md:flex gap-6 font-medium">
+            <a href="#" className="hover:text-blue-700">Home</a>
+            <a href="#about" className="hover:text-blue-700">About</a>
+            <a href="#services" className="hover:text-blue-700">Services</a>
+            <a href="#departments" className="hover:text-blue-700">Departments</a>
+            <a href="#gallery" className="hover:text-blue-700">Gallery</a>
+            <a href="#staff" className="hover:text-blue-700">Staff Details</a>
+            <a href="#roster" className="hover:text-blue-700">Duty Roster</a>
+            <a href="#contact" className="hover:text-blue-700">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative bg-blue-900 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center"></div>
+
+        <div className="relative max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <div className="inline-block bg-red-600 px-4 py-1 rounded-full text-sm mb-4 animate-pulse">
+              24/7 Emergency Health Service
+            </div>
+
+            <h2 className="text-5xl font-extrabold leading-tight mb-6">
+              Welcome to <br /> Shivraj Hospital
+            </h2>
+
+            <p className="text-lg text-gray-200 mb-8 leading-relaxed">
+              Government healthcare service center providing quality medical
+              services for the people of Kapilvastu and surrounding regions.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <button className="bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
+                View Services
+              </button>
+
+              <button className="border border-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition">
+                Emergency Contact
+              </button>
+            </div>
+          </div>
+
+          <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl">
+            <h3 className="text-2xl font-bold mb-6">Quick Information</h3>
+
+            <div className="space-y-4 text-lg">
+              <div className="flex justify-between border-b border-white/20 pb-2">
+                <span>Emergency</span>
+                <span>24 Hours</span>
+              </div>
+
+              <div className="flex justify-between border-b border-white/20 pb-2">
+                <span>OPD Service</span>
+                <span>Daily Available</span>
+              </div>
+
+              <div className="flex justify-between border-b border-white/20 pb-2">
+                <span>Laboratory</span>
+                <span>Available</span>
+              </div>
+
+              <div className="flex justify-between border-b border-white/20 pb-2">
+                <span>Pharmacy</span>
+                <span>Open</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop"
+              alt="Hospital"
+              className="rounded-3xl shadow-2xl"
+            />
+          </div>
+
+          <div>
+            <h2 className="text-4xl font-bold text-blue-900 mb-6">
+              About Shivraj Hospital
+            </h2>
+
+            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              Shivraj Hospital is committed to delivering quality healthcare
+              services with modern medical facilities and compassionate care.
+              The hospital provides emergency, outpatient, maternal, laboratory,
+              and consultant specialist services for the local community.
+            </p>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-blue-50 p-5 rounded-2xl shadow-sm">
+                <h4 className="text-3xl font-bold text-blue-900">24/7</h4>
+                <p>Emergency Service</p>
+              </div>
+
+              <div className="bg-blue-50 p-5 rounded-2xl shadow-sm">
+                <h4 className="text-3xl font-bold text-blue-900">20+</h4>
+                <p>Health Services</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="py-20 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold text-blue-900 mb-4">
+              Hospital Services
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Comprehensive healthcare facilities available at Shivraj Hospital.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {departments.map((dept, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl hover:-translate-y-1 transition"
+              >
+                <div className="text-4xl mb-4">🏥</div>
+                <h3 className="text-xl font-semibold text-blue-900 mb-2">
+                  {dept}
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Quality healthcare service available.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Consultant OPD */}
+      <section id="departments" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold text-blue-900 mb-4">
+              Consultant OPD Departments
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Specialist consultation services for patients.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {consultantOPD.map((dept, index) => (
+              <div
+                key={index}
+                className="bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-3xl p-8 shadow-xl hover:scale-105 transition"
+              >
+                <h3 className="text-2xl font-bold mb-3">{dept}</h3>
+                <p className="text-gray-200">
+                  Specialized OPD consultation available.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Daily Hospital Reports */}
+      <section className="py-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold mb-4">
+              Daily Hospital Reports
+            </h2>
+            <p className="text-lg text-gray-200">
+              Real-time daily service statistics of Shivraj Hospital.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl hover:scale-105 transition">
+              <div className="text-5xl mb-4">🩺</div>
+              <h3 className="text-2xl font-bold mb-2">Total OPD Patients</h3>
+              <p className="text-gray-200 mb-4">
+                Male: 128 | Female: 142
+              </p>
+              <div className="text-4xl font-extrabold">270</div>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl hover:scale-105 transition">
+              <div className="text-5xl mb-4">🚑</div>
+              <h3 className="text-2xl font-bold mb-2">Emergency Patients</h3>
+              <p className="text-gray-200 mb-4">
+                Total ER Service Today
+              </p>
+              <div className="text-4xl font-extrabold">58</div>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl hover:scale-105 transition">
+              <div className="text-5xl mb-4">🛏️</div>
+              <h3 className="text-2xl font-bold mb-2">Indoor Admitted</h3>
+              <p className="text-gray-200 mb-4">
+                Current Indoor Patients
+              </p>
+              <div className="text-4xl font-extrabold">34</div>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl hover:scale-105 transition">
+              <div className="text-5xl mb-4">🩻</div>
+              <h3 className="text-2xl font-bold mb-2">X-Ray Reports</h3>
+              <p className="text-gray-200 mb-4">
+                Total X-Ray Services Today
+              </p>
+              <div className="text-4xl font-extrabold">46</div>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl hover:scale-105 transition">
+              <div className="text-5xl mb-4">🧪</div>
+              <h3 className="text-2xl font-bold mb-2">Laboratory Reports</h3>
+              <p className="text-gray-200 mb-4">
+                Total Lab Tests Performed
+              </p>
+              <div className="text-4xl font-extrabold">132</div>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl hover:scale-105 transition">
+              <div className="text-5xl mb-4">📡</div>
+              <h3 className="text-2xl font-bold mb-2">USG Reports</h3>
+              <p className="text-gray-200 mb-4">
+                Ultrasound Services Today
+              </p>
+              <div className="text-4xl font-extrabold">29</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Notice Section */}
+      <section className="py-20 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-blue-900">
+              Latest Notices
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[1, 2, 3].map((item) => (
+              <div
+                key={item}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              >
+                <div className="bg-blue-900 text-white p-4 font-semibold">
+                  Hospital Notice {item}
+                </div>
+
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">
+                    Official hospital notice and public information section.
+                  </p>
+
+                  <button className="text-blue-900 font-semibold hover:underline">
+                    Read More →
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Staff Details Section */}
+      <section id="staff" className="py-20 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold text-blue-900 mb-4">
+              Staff Details & Head of Departments
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Hospital administration and departmental leadership information.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Medical Superintendent",
+                dept: "Hospital Administration",
+              },
+              {
+                name: "Orthopedic Department Head",
+                dept: "Ortho OPD",
+              },
+              {
+                name: "Gyne & Obs Department Head",
+                dept: "Gyne & Obs OPD",
+              },
+              {
+                name: "ENT Department Head",
+                dept: "ENT OPD",
+              },
+              {
+                name: "Pediatric Department Head",
+                dept: "Pedia OPD",
+              },
+              {
+                name: "Emergency Incharge",
+                dept: "Emergency Department",
+              },
+            ].map((staff, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-3xl shadow-xl overflow-hidden hover:-translate-y-2 transition"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1200&auto=format&fit=crop"
+                  alt="Staff"
+                  className="h-72 w-full object-cover"
+                />
+
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-blue-900 mb-2">
+                    {staff.name}
+                  </h3>
+
+                  <p className="text-gray-600 text-lg">{staff.dept}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Duty Roster Section */}
+      <section id="roster" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold text-blue-900 mb-4">
+              Emergency Duty Roster
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Daily emergency shift and doctor duty management system.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-14">
+            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-3xl p-8 shadow-2xl">
+              <h3 className="text-3xl font-bold mb-4">Morning Shift</h3>
+              <p className="text-lg mb-2">06:00 AM - 02:00 PM</p>
+              <ul className="space-y-2 text-lg">
+                <li>• Emergency Medical Officer</li>
+                <li>• Staff Nurse</li>
+                <li>• Lab Technician</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-3xl p-8 shadow-2xl">
+              <h3 className="text-3xl font-bold mb-4">Evening Shift</h3>
+              <p className="text-lg mb-2">02:00 PM - 10:00 PM</p>
+              <ul className="space-y-2 text-lg">
+                <li>• Emergency Medical Officer</li>
+                <li>• Staff Nurse</li>
+                <li>• X-Ray Technician</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-r from-gray-800 to-black text-white rounded-3xl p-8 shadow-2xl">
+              <h3 className="text-3xl font-bold mb-4">Night Shift</h3>
+              <p className="text-lg mb-2">10:00 PM - 06:00 AM</p>
+              <ul className="space-y-2 text-lg">
+                <li>• Duty Doctor</li>
+                <li>• Emergency Nurse</li>
+                <li>• Pharmacy Staff</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-gray-100 rounded-3xl shadow-xl overflow-hidden">
+            <div className="bg-blue-900 text-white p-6">
+              <h3 className="text-3xl font-bold">Doctor Duty List</h3>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead className="bg-blue-50">
+                  <tr>
+                    <th className="p-4 text-blue-900">Doctor Name</th>
+                    <th className="p-4 text-blue-900">Department</th>
+                    <th className="p-4 text-blue-900">Duty Time</th>
+                    <th className="p-4 text-blue-900">Status</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {[
+                    ["Dr. Example", "Emergency", "Morning Shift", "On Duty"],
+                    ["Dr. Sharma", "Gyne & Obs", "Evening Shift", "Available"],
+                    ["Dr. Khan", "Orthopedic", "Night Shift", "On Duty"],
+                    ["Dr. Chaudhary", "ENT", "Morning Shift", "Available"],
+                  ].map((doctor, index) => (
+                    <tr
+                      key={index}
+                      className="border-b hover:bg-gray-50"
+                    >
+                      <td className="p-4 font-medium">{doctor[0]}</td>
+                      <td className="p-4">{doctor[1]}</td>
+                      <td className="p-4">{doctor[2]}</td>
+                      <td className="p-4">
+                        <span className="bg-green-100 text-green-700 px-4 py-1 rounded-full text-sm font-semibold">
+                          {doctor[3]}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section id="gallery" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold text-blue-900 mb-4">
+              Hospital Gallery
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[1, 2, 3].map((img) => (
+              <img
+                key={img}
+                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop"
+                alt="Gallery"
+                className="rounded-3xl shadow-lg h-72 w-full object-cover hover:scale-105 transition"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-20 bg-blue-900 text-white">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+          <div>
+            <h2 className="text-4xl font-bold mb-6">Contact Information</h2>
+
+            <div className="space-y-4 text-lg">
+              <p>📍 Krishnanagar Municipality - 9, Bahadurgunj</p>
+              <p>📞 +977 9876543210</p>
+              <p>✉️ shivrajhospital43@gmail.com</p>
+            </div>
+          </div>
+
+          <div className="bg-white text-gray-800 rounded-3xl p-8 shadow-2xl">
+            <h3 className="text-2xl font-bold text-blue-900 mb-6">
+              Send Message
+            </h3>
+
+            <div className="space-y-4">
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="w-full border rounded-xl p-4"
+              />
+
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="w-full border rounded-xl p-4"
+              />
+
+              <textarea
+                rows="4"
+                placeholder="Message"
+                className="w-full border rounded-xl p-4"
+              ></textarea>
+
+              <button className="bg-blue-900 text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition w-full">
+                Send Message
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      {/* Admin Panel Preview */}
+      <section className="py-20 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold text-blue-900 mb-4">
+              Advanced Admin Panel
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Manage hospital website data, reports, notices, staff, and duty roster from one dashboard.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Daily Reports",
+                desc: "Update OPD, ER, Indoor, Lab, USG, and X-Ray reports.",
+                icon: "📊",
+              },
+              {
+                title: "Notice Management",
+                desc: "Publish and edit hospital notices instantly.",
+                icon: "📢",
+              },
+              {
+                title: "Staff Details",
+                desc: "Add or update staff photos and department heads.",
+                icon: "👨‍⚕️",
+              },
+              {
+                title: "Duty Roster",
+                desc: "Assign morning, evening, and night shift duties.",
+                icon: "🕒",
+              },
+              {
+                title: "Doctor Schedule",
+                desc: "Manage doctor OPD and emergency duty schedule.",
+                icon: "🩺",
+              },
+              {
+                title: "Gallery Upload",
+                desc: "Upload hospital event and activity photos.",
+                icon: "🖼️",
+              },
+              {
+                title: "Downloads Section",
+                desc: "Upload PDF reports, notices, and publications.",
+                icon: "📄",
+              },
+              {
+                title: "Website Settings",
+                desc: "Update logo, contacts, and homepage content.",
+                icon: "⚙️",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-3xl p-8 shadow-xl hover:-translate-y-2 transition"
+              >
+                <div className="text-5xl mb-5">{item.icon}</div>
+
+                <h3 className="text-2xl font-bold text-blue-900 mb-3">
+                  {item.title}
+                </h3>
+
+                <p className="text-gray-600 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 bg-gradient-to-r from-blue-900 to-blue-700 rounded-3xl p-10 text-white shadow-2xl">
+            <div className="grid lg:grid-cols-2 gap-10 items-center">
+              <div>
+                <h3 className="text-4xl font-bold mb-6">
+                  Secure Hospital Dashboard Login
+                </h3>
+
+                <p className="text-lg text-gray-200 leading-relaxed mb-6">
+                  Authorized hospital administration can securely manage all hospital website data using a centralized dashboard system.
+                </p>
+
+                <ul className="space-y-3 text-lg">
+                  <li>✅ Admin Login System</li>
+                  <li>✅ Real-time Data Update</li>
+                  <li>✅ Mobile Friendly Dashboard</li>
+                  <li>✅ Secure Management Access</li>
+                </ul>
+              </div>
+
+              <div className="bg-white text-gray-800 rounded-3xl p-8 shadow-2xl">
+                <h4 className="text-3xl font-bold text-blue-900 mb-6 text-center">
+                  Admin Login
+                </h4>
+
+                <div className="space-y-5">
+                  <input
+                    type="text"
+                    placeholder="Admin Username"
+                    className="w-full border rounded-xl p-4"
+                  />
+
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    className="w-full border rounded-xl p-4"
+                  />
+
+                  <button className="w-full bg-blue-900 text-white py-4 rounded-xl font-semibold hover:opacity-90 transition">
+                    Login Dashboard
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full Admin Dashboard */}
+      <section id="admin-dashboard" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-blue-900 mb-4">
+              Hospital Admin Dashboard
+            </h2>
+            <p className="text-lg text-gray-600">
+              Complete website management system for Shivraj Hospital.
+            </p>
+          </div>
+
+          {/* Dashboard Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-3xl p-8 shadow-2xl">
+              <div className="text-5xl mb-4">🩺</div>
+              <h3 className="text-2xl font-bold mb-2">Today's OPD</h3>
+              <p className="text-lg">Male: {adminStats.maleOPD}</p>
+              <p className="text-lg">Female: {adminStats.femaleOPD}</p>
+            </div>
+
+            <div className="bg-gradient-to-r from-red-600 to-red-800 text-white rounded-3xl p-8 shadow-2xl">
+              <div className="text-5xl mb-4">🚑</div>
+              <h3 className="text-2xl font-bold mb-2">Emergency</h3>
+              <div className="text-5xl font-bold">{adminStats.erPatients}</div>
+            </div>
+
+            <div className="bg-gradient-to-r from-green-600 to-green-800 text-white rounded-3xl p-8 shadow-2xl">
+              <div className="text-5xl mb-4">🧪</div>
+              <h3 className="text-2xl font-bold mb-2">Lab Reports</h3>
+              <div className="text-5xl font-bold">{adminStats.labReports}</div>
+            </div>
+
+            <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-3xl p-8 shadow-2xl">
+              <div className="text-5xl mb-4">📡</div>
+              <h3 className="text-2xl font-bold mb-2">USG Reports</h3>
+              <div className="text-5xl font-bold">{adminStats.usgReports}</div>
+            </div>
+          </div>
+
+          {/* Report Update Forms */}
+          <div className="grid lg:grid-cols-2 gap-10 mb-16">
+            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
+              <h3 className="text-3xl font-bold text-blue-900 mb-8">
+                Update Daily Hospital Report
+              </h3>
+
+              <div className="space-y-5">
+                <input type="number" placeholder="Male OPD" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="Female OPD" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="ER Patients" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="Indoor Patients" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="X-Ray Reports" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="Lab Reports" className="w-full p-4 rounded-xl border" />
+                <input type="number" placeholder="USG Reports" className="w-full p-4 rounded-xl border" />
+
+                <button className="w-full bg-blue-900 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
+                  Save Report
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
+              <h3 className="text-3xl font-bold text-blue-900 mb-8">
+                Publish Hospital Notice
+              </h3>
+
+              <div className="space-y-5">
+                <input type="text" placeholder="Notice Title" className="w-full p-4 rounded-xl border" />
+
+                <textarea
+                  rows="6"
+                  placeholder="Write hospital notice here..."
+                  className="w-full p-4 rounded-xl border"
+                ></textarea>
+
+                <input type="file" className="w-full p-4 rounded-xl border bg-white" />
+
+                <button className="w-full bg-green-700 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
+                  Publish Notice
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Staff Management */}
+          <div className="bg-gray-100 rounded-3xl p-10 shadow-xl mb-16">
+            <h3 className="text-4xl font-bold text-blue-900 mb-10 text-center">
+              Staff & Department Management
+            </h3>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <input type="text" placeholder="Staff Name" className="p-4 rounded-xl border" />
+              <input type="text" placeholder="Department" className="p-4 rounded-xl border" />
+              <input type="text" placeholder="Position" className="p-4 rounded-xl border" />
+              <input type="file" className="p-4 rounded-xl border bg-white" />
+            </div>
+
+            <button className="mt-8 bg-blue-900 text-white px-8 py-4 rounded-2xl font-bold hover:opacity-90 transition">
+              Add Staff Member
+            </button>
+          </div>
+
+          {/* Duty Roster */}
+          <div className="bg-gradient-to-r from-blue-900 to-blue-700 rounded-3xl p-10 shadow-2xl text-white mb-16">
+            <h3 className="text-4xl font-bold mb-10 text-center">
+              Emergency Duty Roster Management
+            </h3>
+
+            <div className="grid lg:grid-cols-3 gap-8">
+              <div className="bg-white/10 rounded-3xl p-8 backdrop-blur-lg">
+                <h4 className="text-3xl font-bold mb-4">Morning Shift</h4>
+                <input type="text" placeholder="Assign Doctor" className="w-full p-4 rounded-xl text-black mb-4" />
+                <input type="text" placeholder="Assign Nurse" className="w-full p-4 rounded-xl text-black mb-4" />
+                <button className="w-full bg-white text-blue-900 py-3 rounded-xl font-bold">
+                  Save Shift
+                </button>
+              </div>
+
+              <div className="bg-white/10 rounded-3xl p-8 backdrop-blur-lg">
+                <h4 className="text-3xl font-bold mb-4">Evening Shift</h4>
+                <input type="text" placeholder="Assign Doctor" className="w-full p-4 rounded-xl text-black mb-4" />
+                <input type="text" placeholder="Assign Nurse" className="w-full p-4 rounded-xl text-black mb-4" />
+                <button className="w-full bg-white text-blue-900 py-3 rounded-xl font-bold">
+                  Save Shift
+                </button>
+              </div>
+
+              <div className="bg-white/10 rounded-3xl p-8 backdrop-blur-lg">
+                <h4 className="text-3xl font-bold mb-4">Night Shift</h4>
+                <input type="text" placeholder="Assign Doctor" className="w-full p-4 rounded-xl text-black mb-4" />
+                <input type="text" placeholder="Assign Nurse" className="w-full p-4 rounded-xl text-black mb-4" />
+                <button className="w-full bg-white text-blue-900 py-3 rounded-xl font-bold">
+                  Save Shift
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Gallery Upload */}
+          <div className="grid lg:grid-cols-2 gap-10">
+            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
+              <h3 className="text-3xl font-bold text-blue-900 mb-8">
                 Gallery Upload
               </h3>
 
@@ -32,11 +862,6 @@ export default function ShivrajHospitalHomepage() {
       <footer className="bg-black text-gray-400 py-8 text-center">
         <p>
           © 2026 Shivraj Hospital, Bahadurgunj Kapilvastu. All Rights Reserved.
-        </p>
-
-        <p className="mt-3 text-sm text-gray-500">
-          Official Government Hospital Website Portal
-        </p>
         </p>
       </footer>
     </div>
