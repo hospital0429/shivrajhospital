@@ -1,376 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Shivraj Hospital MIS v33</title>
+export default function ShivrajHospitalHomepage() {
+                Gallery Upload
+              </h3>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              <input type="file" className="w-full p-4 rounded-xl border bg-white mb-6" />
 
-<style>
-body{margin:0;font-family:Arial;background:#eef5ff;}
+              <button className="w-full bg-purple-700 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
+                Upload Photo
+              </button>
+            </div>
 
-.header{
-background:#0d6efd;color:white;text-align:center;
-padding:15px;font-size:20px;
+            <div className="bg-gray-100 rounded-3xl p-10 shadow-xl">
+              <h3 className="text-3xl font-bold text-blue-900 mb-8">
+                Website Settings
+              </h3>
+
+              <div className="space-y-5">
+                <input type="text" placeholder="Hospital Name" className="w-full p-4 rounded-xl border" />
+                <input type="text" placeholder="Phone Number" className="w-full p-4 rounded-xl border" />
+                <input type="email" placeholder="Email Address" className="w-full p-4 rounded-xl border" />
+                <input type="text" placeholder="Facebook Link" className="w-full p-4 rounded-xl border" />
+
+                <button className="w-full bg-orange-600 text-white py-4 rounded-2xl font-bold hover:opacity-90 transition">
+                  Save Website Settings
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-black text-gray-400 py-8 text-center">
+        <p>
+          © 2026 Shivraj Hospital, Bahadurgunj Kapilvastu. All Rights Reserved.
+        </p>
+
+        <p className="mt-3 text-sm text-gray-500">
+          Official Government Hospital Website Portal
+        </p>
+        </p>
+      </footer>
+    </div>
+  );
 }
-
-.container{padding:20px;}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:12px;
-}
-
-.card{
-background:white;padding:12px;border-radius:10px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
-text-align:center;
-}
-
-.section{margin-top:20px;}
-
-input,button{
-padding:8px;border-radius:6px;border:1px solid #ccc;
-}
-
-button{background:#0d6efd;color:white;border:none;cursor:pointer;}
-
-.notice-card{
-background:white;padding:12px;border-radius:10px;margin-bottom:10px;
-}
-
-img{width:100%;border-radius:8px;}
-
-.doctor-name{color:red;font-weight:bold;}
-.staff-name{color:blue;font-weight:bold;}
-.staff-post{color:black;font-size:13px;}
-
-@media print{
-body *{visibility:hidden;}
-#printArea,#printArea *{visibility:visible;}
-#printArea{position:absolute;top:0;left:0;width:100%;}
-.no-print{display:none;}
-}
-</style>
-</head>
-
-<body>
-
-<div class="header no-print">🏥 Shivraj Hospital MIS SYSTEM v33</div>
-
-<div class="container">
-
-<!-- FILTER -->
-<div class="no-print" style="text-align:center;">
-<input type="date" id="date">
-<button onclick="loadDaily()">Daily Load</button>
-<button onclick="printDaily()">Print Daily</button>
-
-<br><br>
-
-<input type="date" id="from">
-<input type="date" id="to">
-<button onclick="loadRange()">Range Report</button>
-<button onclick="printRange()">Print Range</button>
-</div>
-
-<!-- PRINT AREA -->
-<div id="printArea">
-
-<h2 style="text-align:center;">SHIVRAJ HOSPITAL</h2>
-<h3 id="title"></h3>
-
-<hr>
-
-<div class="grid">
-
-<div class="card">OPD<br><b id="opd">0</b></div>
-<div class="card">ER<br><b id="er">0</b></div>
-<div class="card">Lab<br><b id="lab">0</b></div>
-<div class="card">Pharmacy<br><b id="pharmacy">0</b></div>
-<div class="card">ECG<br><b id="ecg">0</b></div>
-<div class="card">USG<br><b id="usg">0</b></div>
-<div class="card">X-Ray<br><b id="xray">0</b></div>
-
-<div class="card">Admitted<br><b id="admitted">0</b></div>
-<div class="card">Discharged<br><b id="discharged">0</b></div>
-<div class="card">Occupancy<br><b id="occupancy">0%</b></div>
-
-</div>
-
-<br>
-
-<div style="text-align:right;">
-MEDICAL RECORDER (RUPESH JHA)
-</div>
-
-</div>
-
-<!-- PIE -->
-<div class="section no-print">
-<h3>👨‍⚕️ OPD Gender Distribution</h3>
-<canvas id="opdPie"></canvas>
-</div>
-
-<!-- CONSULTANT -->
-<div class="section no-print">
-<h3>🩺 Consultant Services</h3>
-<div class="grid" id="consult"></div>
-</div>
-
-<!-- EMERGENCY ROSTER (NEW) -->
-<div class="section no-print">
-<h3>🚨 Emergency Duty Roster</h3>
-
-<input type="date" id="emergencyDate">
-<button onclick="loadEmergencyRoster()">Load Roster</button>
-
-<div class="grid" id="emergencyRoster"></div>
-</div>
-
-<!-- DUTY ROSTER -->
-<div class="section no-print">
-<h3>📅 Duty Roster</h3>
-
-<input type="date" id="rosterDate">
-<button onclick="loadRoster()">Load</button>
-
-<div class="grid" id="roster"></div>
-</div>
-
-<!-- DOCTORS -->
-<div class="section no-print">
-<h3>👨‍⚕️ Doctors</h3>
-<div class="grid" id="doctors"></div>
-</div>
-
-<!-- STAFF -->
-<div class="section no-print">
-<h3>👩‍⚕️ Staff</h3>
-<div class="grid" id="staff"></div>
-</div>
-
-<!-- HEADS -->
-<div class="section no-print">
-<h3>🏢 Heads</h3>
-<div class="grid" id="heads"></div>
-</div>
-
-<!-- NOTICE -->
-<div class="section no-print">
-<h3>📢 Notices</h3>
-<div id="notice"></div>
-</div>
-
-</div>
-
-<script>
-
-const sheetID="1ssepRWNPq9Jy7vnTGXNT0e6Msnn0CFWW2PACQaq3ojw";
-
-async function get(s){
-try{
-let r=await fetch(`https://opensheet.elk.sh/${sheetID}/${s}`);
-return await r.json();
-}catch{return [];}
-}
-
-let daily=[];
-let pieChart=null;
-
-/* INIT */
-async function init(){
-daily=await get("DAILY DATA");
-
-let today = new Date().toLocaleDateString('en-CA', {
-  timeZone: 'Asia/Kathmandu'
-});
-
-date.value=today;
-rosterDate.value=today;
-emergencyDate.value=today;
-
-loadDaily();
-loadConsult();
-loadRoster();
-loadPeople();
-loadNotice();
-loadEmergencyRoster();
-}
-init();
-
-/* DAILY */
-function loadDaily(){
-
-let d=daily.find(x=>x.Date && x.Date.includes(date.value));
-if(!d) return;
-
-setReport(d,"Daily Report - "+date.value);
-renderPie(d);
-}
-
-/* REPORT */
-function setReport(d,titleText){
-
-opd.innerText=(+d["OPD Male"]||0)+(+d["OPD Female"]||0);
-
-er.innerText=
-(+d["ER Red"]||0)+(+d["ER Yellow"]||0)+(+d["ER Green"]||0);
-
-lab.innerText=d.Lab||0;
-pharmacy.innerText=d.Pharmacy||0;
-ecg.innerText=d.ECG||0;
-usg.innerText=d.USG||0;
-xray.innerText=d["X-Ray"]||0;
-
-let adm=(+d["Admitted Male"]||0)+(+d["Admitted Female"]||0);
-let dis=(+d["Discharged Male"]||0)+(+d["Discharged Female"]||0);
-let beds=+d["Total Beds"]||1;
-
-admitted.innerText=adm;
-discharged.innerText=dis;
-
-let occ=(adm/beds)*100;
-occupancy.innerText=occ.toFixed(1)+"%";
-
-if(occ<60) occupancy.style.color="green";
-else if(occ<85) occupancy.style.color="orange";
-else occupancy.style.color="red";
-
-title.innerText=titleText;
-}
-
-/* PIE */
-function renderPie(d){
-
-let male=+d["OPD Male"]||0;
-let female=+d["OPD Female"]||0;
-
-if(pieChart) pieChart.destroy();
-
-pieChart=new Chart(opdPie,{
-type:'pie',
-data:{
-labels:[`Male (${male})`,`Female (${female})`],
-datasets:[{data:[male,female],backgroundColor:['red','blue']}]
-},
-options:{animation:{animateScale:true}}
-});
-}
-
-/* CONSULTANT */
-async function loadConsult(){
-
-let c=await get("CONSULTANT");
-
-consult.innerHTML=(c||[]).map(x=>`
-<div class="card">
-<h3>${x.Department||''}</h3>
-<p>Ortho: ${x.Ortho||'-'}</p>
-<p>Gyne: ${x.Gyne||'-'}</p>
-<p>Psych: ${x.Psychiatric||'-'}</p>
-<p>ENT: ${x.ENT||'-'}</p>
-<p>Derma: ${x.Derma||'-'}</p>
-<p>Pedia: ${x.Pedia||'-'}</p>
-</div>
-`).join('');
-}
-
-/* EMERGENCY ROSTER */
-async function loadEmergencyRoster(){
-
-let data=await get("EMERGENCY_ROSTER");
-
-let d=emergencyDate.value;
-
-let f=(data||[]).filter(x=>x.Date===d);
-
-emergencyRoster.innerHTML=f.length ? f.map(x=>`
-<div class="card">
-
-<h3>
-${x.Shift==="Morning"?"🌅 Morning":
- x.Shift==="Evening"?"🌇 Evening":"🌙 Night"}
-</h3>
-
-<p><b>Paramedics:</b> ${x.Paramedics||'-'}</p>
-<p><b>Dept:</b> ${x.Department||'-'}</p>
-
-</div>
-`).join('')
-:
-`<div class="card">No emergency duty assigned</div>`;
-}
-
-/* ROSTER */
-async function loadRoster(){
-
-let r=await get("ROSTER");
-
-let d=rosterDate.value;
-
-let f=(r||[]).filter(x=>x.Date && x.Date.includes(d));
-
-roster.innerHTML=f.map(x=>`
-<div class="card">
-<h3>${x.Doctor||''}</h3>
-<p>${x.Department||''}</p>
-<p>${x.Shift||''}</p>
-</div>
-`).join('');
-}
-
-/* PEOPLE */
-async function loadPeople(){
-
-let doc=await get("DOCTORS");
-let stf=await get("STAFF");
-let hd=await get("HEADS");
-
-doctors.innerHTML=(doc||[]).map(d=>`
-<div class="card">
-<img src="${d.Photo||''}">
-<h3 class="doctor-name">${d.Name||''}</h3>
-</div>
-`).join('');
-
-staff.innerHTML=(stf||[]).map(s=>`
-<div class="card">
-<img src="${s.Photo||''}">
-<h3 class="staff-name">${s.Name||''}</h3>
-<p class="staff-post">${s.Position||''}</p>
-</div>
-`).join('');
-
-heads.innerHTML=(hd||[]).map(h=>`
-<div class="card">
-<img src="${h.Photo||''}">
-<h3>${h.Name||''}</h3>
-</div>
-`).join('');
-}
-
-/* NOTICE */
-async function loadNotice(){
-
-let n=await get("NOTICES");
-
-notice.innerHTML=(n||[]).map(x=>`
-<div class="notice-card">
-<h3>${x.Title||''}</h3>
-<p>${x.Description||''}</p>
-<a href="${x.PDF}" target="_blank">Open</a> |
-<a href="${x.PDF}" download>Download</a>
-</div>
-`).join('');
-}
-
-/* PRINT */
-function printDaily(){window.print();}
-function printRange(){window.print();}
-
-</script>
-
-</body>
-</html>
