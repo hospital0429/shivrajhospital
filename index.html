@@ -1,543 +1,375 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shivraj Hospital</title>
+<meta charset="UTF-8">
+<title>Shivraj Hospital MIS v33</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <style>
-    html{
-      scroll-behavior:smooth;
-    }
+<style>
+body{margin:0;font-family:Arial;background:#eef5ff;}
 
-    body{
-      font-family: Arial, sans-serif;
-      background:#f3f4f6;
-    }
+.header{
+background:#0d6efd;color:white;text-align:center;
+padding:15px;font-size:20px;
+}
 
-    .glass{
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-    }
+.container{padding:20px;}
 
-    .hero{
-      background:
-      linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-      url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=1400&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:12px;
+}
 
-    .card-hover:hover{
-      transform:translateY(-5px);
-      transition:0.3s;
-    }
-  </style>
+.card{
+background:white;padding:12px;border-radius:10px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.section{margin-top:20px;}
+
+input,button{
+padding:8px;border-radius:6px;border:1px solid #ccc;
+}
+
+button{background:#0d6efd;color:white;border:none;cursor:pointer;}
+
+.notice-card{
+background:white;padding:12px;border-radius:10px;margin-bottom:10px;
+}
+
+img{width:100%;border-radius:8px;}
+
+.doctor-name{color:red;font-weight:bold;}
+.staff-name{color:blue;font-weight:bold;}
+.staff-post{color:black;font-size:13px;}
+
+@media print{
+body *{visibility:hidden;}
+#printArea,#printArea *{visibility:visible;}
+#printArea{position:absolute;top:0;left:0;width:100%;}
+.no-print{display:none;}
+}
+</style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<div class="bg-blue-900 text-white py-2 px-4 flex flex-col md:flex-row justify-between items-center text-sm">
-  <div>
-    📍 Krishnanagar Municipality - 9, Bahadurgunj Kapilvastu
-  </div>
+<div class="header no-print">🏥 Shivraj Hospital MIS SYSTEM v33</div>
 
-  <div class="flex gap-4 mt-2 md:mt-0">
-    <span>📞 +977 9876543210</span>
-    <span>✉️ shivrajhospital43@gmail.com</span>
-  </div>
+<div class="container">
+
+<!-- FILTER -->
+<div class="no-print" style="text-align:center;">
+<input type="date" id="date">
+<button onclick="loadDaily()">Daily Load</button>
+<button onclick="printDaily()">Print Daily</button>
+
+<br><br>
+
+<input type="date" id="from">
+<input type="date" id="to">
+<button onclick="loadRange()">Range Report</button>
+<button onclick="printRange()">Print Range</button>
 </div>
 
-<!-- NAVBAR -->
-<nav class="bg-white shadow sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+<!-- PRINT AREA -->
+<div id="printArea">
 
-    <div class="flex items-center gap-4">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/0/00/Emblem_of_Nepal.svg"
-        class="w-14 h-14"
-      />
+<h2 style="text-align:center;">SHIVRAJ HOSPITAL</h2>
+<h3 id="title"></h3>
 
-      <div>
-        <h1 class="text-2xl font-bold text-blue-900">
-          शिवराज अस्पताल
-        </h1>
+<hr>
 
-        <p class="text-sm text-gray-600">
-          Shivraj Hospital, Bahadurgunj Kapilvastu
-        </p>
-      </div>
-    </div>
+<div class="grid">
 
-    <div class="hidden md:flex gap-6 font-semibold">
-      <a href="#home" class="hover:text-blue-700">Home</a>
-      <a href="#about" class="hover:text-blue-700">About</a>
-      <a href="#services" class="hover:text-blue-700">Services</a>
-      <a href="#reports" class="hover:text-blue-700">Reports</a>
-      <a href="#staff" class="hover:text-blue-700">Staff</a>
-      <a href="#roster" class="hover:text-blue-700">Roster</a>
-      <a href="#admin" class="hover:text-blue-700">Admin</a>
-      <a href="#contact" class="hover:text-blue-700">Contact</a>
-    </div>
+<div class="card">OPD<br><b id="opd">0</b></div>
+<div class="card">ER<br><b id="er">0</b></div>
+<div class="card">Lab<br><b id="lab">0</b></div>
+<div class="card">Pharmacy<br><b id="pharmacy">0</b></div>
+<div class="card">ECG<br><b id="ecg">0</b></div>
+<div class="card">USG<br><b id="usg">0</b></div>
+<div class="card">X-Ray<br><b id="xray">0</b></div>
 
-  </div>
-</nav>
+<div class="card">Admitted<br><b id="admitted">0</b></div>
+<div class="card">Discharged<br><b id="discharged">0</b></div>
+<div class="card">Occupancy<br><b id="occupancy">0%</b></div>
 
-<!-- HERO -->
-<section id="home" class="hero text-white py-28">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+</div>
 
-    <div>
-      <div class="bg-red-600 inline-block px-4 py-1 rounded-full mb-5 animate-pulse">
-        24/7 Emergency Service
-      </div>
+<br>
 
-      <h2 class="text-5xl font-bold leading-tight mb-6">
-        Welcome to <br/>
-        Shivraj Hospital
-      </h2>
+<div style="text-align:right;">
+MEDICAL RECORDER (RUPESH JHA)
+</div>
 
-      <p class="text-lg text-gray-200 mb-8">
-        Government healthcare center providing quality medical services
-        for Kapilvastu and surrounding regions.
-      </p>
+</div>
 
-      <div class="flex gap-4 flex-wrap">
-        <button class="bg-white text-blue-900 px-6 py-3 rounded-xl font-bold">
-          Hospital Services
-        </button>
+<!-- PIE -->
+<div class="section no-print">
+<h3>👨‍⚕️ OPD Gender Distribution</h3>
+<canvas id="opdPie"></canvas>
+</div>
 
-        <button class="border border-white px-6 py-3 rounded-xl font-bold">
-          Emergency Contact
-        </button>
-      </div>
-    </div>
+<!-- CONSULTANT -->
+<div class="section no-print">
+<h3>🩺 Consultant Services</h3>
+<div class="grid" id="consult"></div>
+</div>
 
-    <div class="glass rounded-3xl p-8 shadow-2xl">
-      <h3 class="text-3xl font-bold mb-8">
-        Quick Information
-      </h3>
+<!-- EMERGENCY ROSTER (NEW) -->
+<div class="section no-print">
+<h3>🚨 Emergency Duty Roster</h3>
 
-      <div class="space-y-5 text-lg">
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>Emergency</span>
-          <span>24 Hours</span>
-        </div>
+<input type="date" id="emergencyDate">
+<button onclick="loadEmergencyRoster()">Load Roster</button>
 
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>OPD Service</span>
-          <span>Available</span>
-        </div>
-
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>Laboratory</span>
-          <span>Open</span>
-        </div>
-
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>Pharmacy</span>
-          <span>Available</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-
-    <img
-      src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop"
-      class="rounded-3xl shadow-2xl"
-    />
-
-    <div>
-      <h2 class="text-4xl font-bold text-blue-900 mb-6">
-        About Shivraj Hospital
-      </h2>
-
-      <p class="text-lg text-gray-600 leading-relaxed mb-6">
-        Shivraj Hospital is committed to delivering quality healthcare services
-        with modern medical facilities and compassionate care.
-      </p>
-
-      <div class="grid grid-cols-2 gap-4">
-        <div class="bg-blue-50 p-6 rounded-2xl">
-          <h3 class="text-4xl font-bold text-blue-900">24/7</h3>
-          <p>Emergency Service</p>
-        </div>
-
-        <div class="bg-blue-50 p-6 rounded-2xl">
-          <h3 class="text-4xl font-bold text-blue-900">20+</h3>
-          <p>Medical Services</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="py-20 bg-gray-100">
-
-  <div class="max-w-7xl mx-auto px-6">
-
-    <div class="text-center mb-14">
-      <h2 class="text-4xl font-bold text-blue-900 mb-4">
-        Hospital Services
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-      <div class="bg-white rounded-3xl p-6 shadow card-hover">
-        <div class="text-5xl mb-4">🏥</div>
-        <h3 class="text-2xl font-bold text-blue-900 mb-2">OPD</h3>
-      </div>
-
-      <div class="bg-white rounded-3xl p-6 shadow card-hover">
-        <div class="text-5xl mb-4">🚑</div>
-        <h3 class="text-2xl font-bold text-blue-900 mb-2">Emergency</h3>
-      </div>
-
-      <div class="bg-white rounded-3xl p-6 shadow card-hover">
-        <div class="text-5xl mb-4">🧪</div>
-        <h3 class="text-2xl font-bold text-blue-900 mb-2">Laboratory</h3>
-      </div>
-
-      <div class="bg-white rounded-3xl p-6 shadow card-hover">
-        <div class="text-5xl mb-4">🩻</div>
-        <h3 class="text-2xl font-bold text-blue-900 mb-2">X-Ray</h3>
-      </div>
-
-      <div class="bg-white rounded-3xl p-6 shadow card-hover">
-        <div class="text-5xl mb-4">📡</div>
-        <h3 class="text-2xl font-bold text-blue-900 mb-2">USG</h3>
-      </div>
-
-      <div class="bg-white rounded-3xl p-6 shadow card-hover">
-        <div class="text-5xl mb-4">💊</div>
-        <h3 class="text-2xl font-bold text-blue-900 mb-2">Pharmacy</h3>
-      </div>
-
-      <div class="bg-white rounded-3xl p-6 shadow card-hover">
-        <div class="text-5xl mb-4">🤱</div>
-        <h3 class="text-2xl font-bold text-blue-900 mb-2">Maternity</h3>
-      </div>
-
-      <div class="bg-white rounded-3xl p-6 shadow card-hover">
-        <div class="text-5xl mb-4">🛏️</div>
-        <h3 class="text-2xl font-bold text-blue-900 mb-2">Indoor</h3>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- DAILY REPORT -->
-<section id="reports" class="py-20 bg-blue-900 text-white">
-
-  <div class="max-w-7xl mx-auto px-6">
-
-    <div class="text-center mb-14">
-      <h2 class="text-4xl font-bold mb-4">
-        Daily Hospital Reports
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <div class="glass rounded-3xl p-8 shadow-2xl">
-        <div class="text-5xl mb-4">🩺</div>
-        <h3 class="text-2xl font-bold mb-2">Total OPD</h3>
-        <p class="mb-4">Male: 128 | Female: 142</p>
-        <div class="text-5xl font-bold">270</div>
-      </div>
-
-      <div class="glass rounded-3xl p-8 shadow-2xl">
-        <div class="text-5xl mb-4">🚑</div>
-        <h3 class="text-2xl font-bold mb-2">ER Patients</h3>
-        <div class="text-5xl font-bold">58</div>
-      </div>
-
-      <div class="glass rounded-3xl p-8 shadow-2xl">
-        <div class="text-5xl mb-4">🧪</div>
-        <h3 class="text-2xl font-bold mb-2">Lab Reports</h3>
-        <div class="text-5xl font-bold">132</div>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- STAFF -->
-<section id="staff" class="py-20 bg-white">
-
-  <div class="max-w-7xl mx-auto px-6">
-
-    <div class="text-center mb-14">
-      <h2 class="text-4xl font-bold text-blue-900 mb-4">
-        Staff Details
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <div class="bg-gray-100 rounded-3xl overflow-hidden shadow-xl">
-        <img
-          src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1200&auto=format&fit=crop"
-          class="h-72 w-full object-cover"
-        />
-
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-blue-900">
-            Medical Superintendent
-          </h3>
-
-          <p class="text-gray-600">
-            Hospital Administration
-          </p>
-        </div>
-      </div>
-
-      <div class="bg-gray-100 rounded-3xl overflow-hidden shadow-xl">
-        <img
-          src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1200&auto=format&fit=crop"
-          class="h-72 w-full object-cover"
-        />
-
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-blue-900">
-            Emergency Incharge
-          </h3>
-
-          <p class="text-gray-600">
-            Emergency Department
-          </p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
+<div class="grid" id="emergencyRoster"></div>
+</div>
 
 <!-- DUTY ROSTER -->
-<section id="roster" class="py-20 bg-gray-100">
+<div class="section no-print">
+<h3>📅 Duty Roster</h3>
 
-  <div class="max-w-7xl mx-auto px-6">
+<input type="date" id="rosterDate">
+<button onclick="loadRoster()">Load</button>
 
-    <div class="text-center mb-14">
-      <h2 class="text-4xl font-bold text-blue-900">
-        Emergency Duty Roster
-      </h2>
-    </div>
+<div class="grid" id="roster"></div>
+</div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+<!-- DOCTORS -->
+<div class="section no-print">
+<h3>👨‍⚕️ Doctors</h3>
+<div class="grid" id="doctors"></div>
+</div>
 
-      <div class="bg-yellow-500 text-white rounded-3xl p-8 shadow-xl">
-        <h3 class="text-3xl font-bold mb-4">
-          Morning Shift
-        </h3>
+<!-- STAFF -->
+<div class="section no-print">
+<h3>👩‍⚕️ Staff</h3>
+<div class="grid" id="staff"></div>
+</div>
 
-        <p>06:00 AM - 02:00 PM</p>
-      </div>
+<!-- HEADS -->
+<div class="section no-print">
+<h3>🏢 Heads</h3>
+<div class="grid" id="heads"></div>
+</div>
 
-      <div class="bg-blue-900 text-white rounded-3xl p-8 shadow-xl">
-        <h3 class="text-3xl font-bold mb-4">
-          Evening Shift
-        </h3>
+<!-- NOTICE -->
+<div class="section no-print">
+<h3>📢 Notices</h3>
+<div id="notice"></div>
+</div>
 
-        <p>02:00 PM - 10:00 PM</p>
-      </div>
-
-      <div class="bg-black text-white rounded-3xl p-8 shadow-xl">
-        <h3 class="text-3xl font-bold mb-4">
-          Night Shift
-        </h3>
-
-        <p>10:00 PM - 06:00 AM</p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ADMIN DASHBOARD -->
-<section id="admin" class="py-20 bg-white">
-
-  <div class="max-w-7xl mx-auto px-6">
-
-    <div class="text-center mb-14">
-      <h2 class="text-5xl font-bold text-blue-900 mb-4">
-        Admin Dashboard
-      </h2>
-    </div>
-
-    <div class="grid lg:grid-cols-2 gap-10">
-
-      <div class="bg-gray-100 rounded-3xl p-10 shadow-xl">
-
-        <h3 class="text-3xl font-bold text-blue-900 mb-8">
-          Secure Admin Login
-        </h3>
-
-        <div class="space-y-5">
-
-          <input
-            type="text"
-            placeholder="Username"
-            class="w-full p-4 rounded-xl border"
-          />
-
-          <input
-            type="password"
-            placeholder="Password"
-            class="w-full p-4 rounded-xl border"
-          />
-
-          <button
-            onclick="loginAdmin()"
-            class="w-full bg-blue-900 text-white py-4 rounded-2xl font-bold"
-          >
-            Login Dashboard
-          </button>
-
-        </div>
-
-      </div>
-
-      <div id="dashboardPanel" class="bg-gray-100 rounded-3xl p-10 shadow-xl hidden">
-
-        <h3 class="text-3xl font-bold text-blue-900 mb-8">
-          Dashboard Controls
-        </h3>
-
-        <div class="space-y-5">
-
-          <input
-            id="maleOpd"
-            type="number"
-            placeholder="Male OPD"
-            class="w-full p-4 rounded-xl border"
-          />
-
-          <input
-            id="femaleOpd"
-            type="number"
-            placeholder="Female OPD"
-            class="w-full p-4 rounded-xl border"
-          />
-
-          <button
-            onclick="saveReports()"
-            class="w-full bg-green-700 text-white py-4 rounded-2xl font-bold"
-          >
-            Save Reports
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="py-20 bg-blue-900 text-white">
-
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-
-    <div>
-      <h2 class="text-4xl font-bold mb-6">
-        Contact Information
-      </h2>
-
-      <div class="space-y-4 text-lg">
-        <p>📍 Bahadurgunj Kapilvastu</p>
-        <p>📞 +977 9876543210</p>
-        <p>✉️ shivrajhospital43@gmail.com</p>
-      </div>
-    </div>
-
-    <div class="bg-white text-black rounded-3xl p-8 shadow-2xl">
-
-      <h3 class="text-3xl font-bold text-blue-900 mb-6">
-        Send Message
-      </h3>
-
-      <div class="space-y-5">
-
-        <input
-          type="text"
-          placeholder="Your Name"
-          class="w-full border p-4 rounded-xl"
-        />
-
-        <input
-          type="email"
-          placeholder="Your Email"
-          class="w-full border p-4 rounded-xl"
-        />
-
-        <textarea
-          rows="5"
-          placeholder="Message"
-          class="w-full border p-4 rounded-xl"
-        ></textarea>
-
-        <button class="w-full bg-blue-900 text-white py-4 rounded-2xl font-bold">
-          Send Message
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-black text-gray-400 py-8 text-center">
-  © 2026 Shivraj Hospital, Bahadurgunj Kapilvastu
-</footer>
+</div>
 
 <script>
-function loginAdmin(){
 
-  const panel = document.getElementById('dashboardPanel');
+const sheetID="1ssepRWNPq9Jy7vnTGXNT0e6Msnn0CFWW2PACQaq3ojw";
 
-  panel.classList.remove('hidden');
-
-  alert('Admin Login Successful');
+async function get(s){
+try{
+let r=await fetch(`https://opensheet.elk.sh/${sheetID}/${s}`);
+return await r.json();
+}catch{return [];}
 }
 
-function saveReports(){
+let daily=[];
+let pieChart=null;
 
-  const male = document.getElementById('maleOpd').value;
-  const female = document.getElementById('femaleOpd').value;
+/* INIT */
+async function init(){
+daily=await get("DAILY DATA");
 
-  localStorage.setItem('maleOPD', male);
-  localStorage.setItem('femaleOPD', female);
+let today = new Date().toLocaleDateString('en-CA', {
+  timeZone: 'Asia/Kathmandu'
+});
 
-  alert('Daily Reports Saved Successfully');
+date.value=today;
+rosterDate.value=today;
+emergencyDate.value=today;
+
+loadDaily();
+loadConsult();
+loadRoster();
+loadPeople();
+loadNotice();
+loadEmergencyRoster();
 }
+init();
+
+/* DAILY */
+function loadDaily(){
+
+let d=daily.find(x=>x.Date && x.Date.includes(date.value));
+if(!d) return;
+
+setReport(d,"Daily Report - "+date.value);
+renderPie(d);
+}
+
+/* REPORT */
+function setReport(d,titleText){
+
+opd.innerText=(+d["OPD Male"]||0)+(+d["OPD Female"]||0);
+
+er.innerText=
+(+d["ER Red"]||0)+(+d["ER Yellow"]||0)+(+d["ER Green"]||0);
+
+lab.innerText=d.Lab||0;
+pharmacy.innerText=d.Pharmacy||0;
+ecg.innerText=d.ECG||0;
+usg.innerText=d.USG||0;
+xray.innerText=d["X-Ray"]||0;
+
+let adm=(+d["Admitted Male"]||0)+(+d["Admitted Female"]||0);
+let dis=(+d["Discharged Male"]||0)+(+d["Discharged Female"]||0);
+let beds=+d["Total Beds"]||1;
+
+admitted.innerText=adm;
+discharged.innerText=dis;
+
+let occ=(adm/beds)*100;
+occupancy.innerText=occ.toFixed(1)+"%";
+
+if(occ<60) occupancy.style.color="green";
+else if(occ<85) occupancy.style.color="orange";
+else occupancy.style.color="red";
+
+title.innerText=titleText;
+}
+
+/* PIE */
+function renderPie(d){
+
+let male=+d["OPD Male"]||0;
+let female=+d["OPD Female"]||0;
+
+if(pieChart) pieChart.destroy();
+
+pieChart=new Chart(opdPie,{
+type:'pie',
+data:{
+labels:[`Male (${male})`,`Female (${female})`],
+datasets:[{data:[male,female],backgroundColor:['red','blue']}]
+},
+options:{animation:{animateScale:true}}
+});
+}
+
+/* CONSULTANT */
+async function loadConsult(){
+
+let c=await get("CONSULTANT");
+
+consult.innerHTML=(c||[]).map(x=>`
+<div class="card">
+<h3>${x.Department||''}</h3>
+<p>Ortho: ${x.Ortho||'-'}</p>
+<p>Gyne: ${x.Gyne||'-'}</p>
+<p>Psych: ${x.Psychiatric||'-'}</p>
+<p>ENT: ${x.ENT||'-'}</p>
+<p>Derma: ${x.Derma||'-'}</p>
+<p>Pedia: ${x.Pedia||'-'}</p>
+</div>
+`).join('');
+}
+
+/* EMERGENCY ROSTER */
+async function loadEmergencyRoster(){
+
+let data=await get("EMERGENCY_ROSTER");
+
+let d=emergencyDate.value;
+
+let f=(data||[]).filter(x=>x.Date===d);
+
+emergencyRoster.innerHTML=f.length ? f.map(x=>`
+<div class="card">
+
+<h3>
+${x.Shift==="Morning"?"🌅 Morning":
+ x.Shift==="Evening"?"🌇 Evening":"🌙 Night"}
+</h3>
+
+<p><b>Paramedics:</b> ${x.Paramedics||'-'}</p>
+<p><b>Dept:</b> ${x.Department||'-'}</p>
+
+</div>
+`).join('')
+:
+`<div class="card">No emergency duty assigned</div>`;
+}
+
+/* ROSTER */
+async function loadRoster(){
+
+let r=await get("ROSTER");
+
+let d=rosterDate.value;
+
+let f=(r||[]).filter(x=>x.Date && x.Date.includes(d));
+
+roster.innerHTML=f.map(x=>`
+<div class="card">
+<h3>${x.Doctor||''}</h3>
+<p>${x.Department||''}</p>
+<p>${x.Shift||''}</p>
+</div>
+`).join('');
+}
+
+/* PEOPLE */
+async function loadPeople(){
+
+let doc=await get("DOCTORS");
+let stf=await get("STAFF");
+let hd=await get("HEADS");
+
+doctors.innerHTML=(doc||[]).map(d=>`
+<div class="card">
+<img src="${d.Photo||''}">
+<h3 class="doctor-name">${d.Name||''}</h3>
+</div>
+`).join('');
+
+staff.innerHTML=(stf||[]).map(s=>`
+<div class="card">
+<img src="${s.Photo||''}">
+<h3 class="staff-name">${s.Name||''}</h3>
+<p class="staff-post">${s.Position||''}</p>
+</div>
+`).join('');
+
+heads.innerHTML=(hd||[]).map(h=>`
+<div class="card">
+<img src="${h.Photo||''}">
+<h3>${h.Name||''}</h3>
+</div>
+`).join('');
+}
+
+/* NOTICE */
+async function loadNotice(){
+
+let n=await get("NOTICES");
+
+notice.innerHTML=(n||[]).map(x=>`
+<div class="notice-card">
+<h3>${x.Title||''}</h3>
+<p>${x.Description||''}</p>
+<a href="${x.PDF}" target="_blank">Open</a> |
+<a href="${x.PDF}" download>Download</a>
+</div>
+`).join('');
+}
+
+/* PRINT */
+function printDaily(){window.print();}
+function printRange(){window.print();}
+
 </script>
 
 </body>
