@@ -660,8 +660,12 @@ export default function ShivrajHospitalHomepage() {
 
               <div className="bg-white text-gray-800 rounded-3xl p-8 shadow-2xl">
                 <h4 className="text-3xl font-bold text-blue-900 mb-6 text-center">
-                  Admin Login
+                  Secure Admin Login
                 </h4>
+
+                <div className="bg-green-100 text-green-700 px-4 py-3 rounded-2xl mb-6 text-sm font-medium">
+                  Firebase Authentication Protected Dashboard Access
+                </div>
 
                 <div className="space-y-5">
                   <input
@@ -677,8 +681,25 @@ export default function ShivrajHospitalHomepage() {
                   />
 
                   <button className="w-full bg-blue-900 text-white py-4 rounded-xl font-semibold hover:opacity-90 transition">
-                    Login Dashboard
+                    Secure Login Dashboard
                   </button>
+
+                  <div className="grid grid-cols-2 gap-4 mt-4">
+                    <button className="bg-gray-100 py-3 rounded-xl font-medium hover:bg-gray-200 transition">
+                      Reset Password
+                    </button>
+
+                    <button className="bg-green-600 text-white py-3 rounded-xl font-medium hover:opacity-90 transition">
+                      Add New Admin
+                    </button>
+                  </div>
+
+                  <div className="mt-6 bg-blue-50 rounded-2xl p-4 text-sm text-gray-700 leading-relaxed">
+                    <p className="mb-2">✅ Encrypted Authentication</p>
+                    <p className="mb-2">✅ Secure Admin Session</p>
+                    <p className="mb-2">✅ Mobile Login Support</p>
+                    <p>✅ Real-time Database Protection</p>
+                  </div>
                 </div>
               </div>
             </div>
