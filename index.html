@@ -1,4 +1,4 @@
-# GitHub-Ready Shivraj Hospital Website (Pure HTML)
+# Shivraj Hospital Full Firebase Live Admin System
 
 Save this file as `index.html`
 
@@ -6,394 +6,222 @@ Save this file as `index.html`
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shivraj Hospital</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivraj Hospital</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-<!-- Floating Button -->
-<a href="#admin-dashboard"
-   class="fixed bottom-6 right-6 bg-blue-900 text-white px-6 py-4 rounded-full shadow-2xl z-50 font-semibold hover:scale-105 transition">
-  Admin Dashboard
-</a>
-
-<!-- Header -->
-<div class="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center">
-  <div>📍 Krishnanagar Municipality - 9, Bahadurgunj, Kapilvastu</div>
-  <div class="flex gap-4 mt-2 md:mt-0">
-    <span>📞 +977 9876543210</span>
-    <span>✉️ shivrajhospital43@gmail.com</span>
+<div class="bg-blue-900 text-white py-3 px-6 flex justify-between items-center">
+  <div>
+    <h1 class="text-3xl font-bold">Shivraj Hospital</h1>
+    <p>Bahadurgunj, Kapilvastu</p>
   </div>
+
+  <button onclick="showAdmin()" class="bg-white text-blue-900 px-5 py-2 rounded-xl font-bold">
+    Admin Login
+  </button>
 </div>
 
-<!-- Navbar -->
-<nav class="bg-white shadow-md sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-
-    <div class="flex items-center gap-4">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/0/00/Emblem_of_Nepal.svg"
-        class="w-14 h-14"
-        alt="Nepal"
-      />
-
-      <div>
-        <h1 class="text-2xl font-bold text-blue-900">शिवराज अस्पताल</h1>
-        <p class="text-sm text-gray-600">Shivraj Hospital, Bahadurgunj Kapilvastu</p>
-      </div>
-    </div>
-
-    <div class="hidden md:flex gap-6 font-medium">
-      <a href="#">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#departments">Departments</a>
-      <a href="#staff">Staff</a>
-      <a href="#roster">Roster</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-  </div>
-</nav>
-
-<!-- Hero -->
-<section class="bg-blue-900 text-white py-24">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-
-    <div>
-      <div class="inline-block bg-red-600 px-4 py-1 rounded-full text-sm mb-4 animate-pulse">
-        24/7 Emergency Health Service
-      </div>
-
-      <h2 class="text-5xl font-extrabold leading-tight mb-6">
-        Welcome to <br> Shivraj Hospital
-      </h2>
-
-      <p class="text-lg text-gray-200 mb-8 leading-relaxed">
-        Government healthcare service center providing quality medical services.
-      </p>
-
-      <div class="flex flex-wrap gap-4">
-        <button class="bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold shadow-lg">
-          View Services
-        </button>
-
-        <button class="border border-white px-6 py-3 rounded-xl font-semibold">
-          Emergency Contact
-        </button>
-      </div>
-    </div>
-
-    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl">
-      <h3 class="text-2xl font-bold mb-6">Quick Information</h3>
-
-      <div class="space-y-4 text-lg">
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>Emergency</span>
-          <span>24 Hours</span>
-        </div>
-
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>OPD Service</span>
-          <span>Daily Available</span>
-        </div>
-
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>Laboratory</span>
-          <span>Available</span>
-        </div>
-
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>Pharmacy</span>
-          <span>Open</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
+<section class="bg-blue-900 text-white py-20 text-center">
+  <h2 class="text-5xl font-extrabold mb-4">Hospital Daily Live Report</h2>
+  <p class="text-xl text-gray-200">Realtime Firebase Connected Dashboard</p>
 </section>
 
-<!-- About -->
-<section id="about" class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+<section class="max-w-7xl mx-auto px-6 py-16">
 
-    <div>
-      <img
-        src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop"
-        class="rounded-3xl shadow-2xl"
-      />
-    </div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <div>
-      <h2 class="text-4xl font-bold text-blue-900 mb-6">
-        About Shivraj Hospital
-      </h2>
+<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
+  <div class="text-5xl mb-4">🩺</div>
+  <h3 class="text-2xl font-bold text-blue-900 mb-4">Total OPD</h3>
+  <div id="opdData" class="text-5xl font-extrabold text-blue-900">0 / 0</div>
+</div>
 
-      <p class="text-lg text-gray-600 leading-relaxed mb-6">
-        Shivraj Hospital is committed to delivering quality healthcare services with modern medical facilities and compassionate care.
-      </p>
+<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
+  <div class="text-5xl mb-4">🚑</div>
+  <h3 class="text-2xl font-bold text-red-700 mb-4">Emergency Patients</h3>
+  <div id="erData" class="text-5xl font-extrabold text-red-700">0</div>
+</div>
 
-      <div class="grid grid-cols-2 gap-4">
+<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
+  <div class="text-5xl mb-4">🛏️</div>
+  <h3 class="text-2xl font-bold text-green-700 mb-4">Indoor Patients</h3>
+  <div id="indoorData" class="text-5xl font-extrabold text-green-700">0</div>
+</div>
 
-        <div class="bg-blue-50 p-5 rounded-2xl shadow-sm">
-          <h4 class="text-3xl font-bold text-blue-900">24/7</h4>
-          <p>Emergency Service</p>
-        </div>
+<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
+  <div class="text-5xl mb-4">🩻</div>
+  <h3 class="text-2xl font-bold text-purple-700 mb-4">X-Ray Reports</h3>
+  <div id="xrayData" class="text-5xl font-extrabold text-purple-700">0</div>
+</div>
 
-        <div class="bg-blue-50 p-5 rounded-2xl shadow-sm">
-          <h4 class="text-3xl font-bold text-blue-900">20+</h4>
-          <p>Health Services</p>
-        </div>
+<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
+  <div class="text-5xl mb-4">🧪</div>
+  <h3 class="text-2xl font-bold text-orange-700 mb-4">Lab Reports</h3>
+  <div id="labData" class="text-5xl font-extrabold text-orange-700">0</div>
+</div>
 
-      </div>
-    </div>
+<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
+  <div class="text-5xl mb-4">📡</div>
+  <h3 class="text-2xl font-bold text-pink-700 mb-4">USG Reports</h3>
+  <div id="usgData" class="text-5xl font-extrabold text-pink-700">0</div>
+</div>
 
-  </div>
+</div>
 </section>
 
-<!-- Services -->
-<section id="services" class="py-20 bg-gray-100">
-  <div class="max-w-7xl mx-auto px-6">
+<div id="adminPanel" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
 
-    <div class="text-center mb-14">
-      <h2 class="text-4xl font-bold text-blue-900 mb-4">Hospital Services</h2>
-    </div>
+<div class="bg-white rounded-3xl shadow-2xl p-10 w-full max-w-2xl">
 
-    <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+<h2 class="text-4xl font-bold text-blue-900 mb-8 text-center">
+Admin Dashboard
+</h2>
 
-      <div class="bg-white rounded-2xl p-6 shadow-md">
-        <div class="text-4xl mb-4">🏥</div>
-        <h3 class="text-xl font-semibold text-blue-900 mb-2">Emergency</h3>
-        <p class="text-gray-600 text-sm">24/7 Emergency Care Service</p>
-      </div>
+<div class="grid md:grid-cols-2 gap-5">
 
-      <div class="bg-white rounded-2xl p-6 shadow-md">
-        <div class="text-4xl mb-4">🧪</div>
-        <h3 class="text-xl font-semibold text-blue-900 mb-2">Laboratory</h3>
-        <p class="text-gray-600 text-sm">Modern Lab Testing Facility</p>
-      </div>
+<input type="number" id="maleOPD" placeholder="Male OPD" class="border p-4 rounded-xl">
 
-      <div class="bg-white rounded-2xl p-6 shadow-md">
-        <div class="text-4xl mb-4">🩻</div>
-        <h3 class="text-xl font-semibold text-blue-900 mb-2">X-Ray</h3>
-        <p class="text-gray-600 text-sm">Radiology and Imaging Services</p>
-      </div>
+<input type="number" id="femaleOPD" placeholder="Female OPD" class="border p-4 rounded-xl">
 
-      <div class="bg-white rounded-2xl p-6 shadow-md">
-        <div class="text-4xl mb-4">💊</div>
-        <h3 class="text-xl font-semibold text-blue-900 mb-2">Pharmacy</h3>
-        <p class="text-gray-600 text-sm">Hospital Pharmacy Available</p>
-      </div>
+<input type="number" id="erPatients" placeholder="Emergency Patients" class="border p-4 rounded-xl">
 
-    </div>
-  </div>
-</section>
+<input type="number" id="indoorPatients" placeholder="Indoor Patients" class="border p-4 rounded-xl">
 
-<!-- Staff -->
-<section id="staff" class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
+<input type="number" id="xrayReports" placeholder="X-Ray Reports" class="border p-4 rounded-xl">
 
-    <div class="text-center mb-14">
-      <h2 class="text-4xl font-bold text-blue-900 mb-4">
-        Staff Details
-      </h2>
-    </div>
+<input type="number" id="labReports" placeholder="Lab Reports" class="border p-4 rounded-xl">
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<input type="number" id="usgReports" placeholder="USG Reports" class="border p-4 rounded-xl">
 
-      <div class="bg-gray-100 rounded-3xl overflow-hidden shadow-xl">
-        <img
-          src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1200&auto=format&fit=crop"
-          class="h-72 w-full object-cover"
-        />
+</div>
 
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-blue-900 mb-2">
-            Medical Superintendent
-          </h3>
+<div class="flex gap-4 mt-8">
 
-          <p class="text-gray-600 text-lg">Hospital Administration</p>
-        </div>
-      </div>
+<button onclick="saveReport()" class="bg-blue-900 text-white px-8 py-4 rounded-2xl font-bold w-full">
+Save Report
+</button>
 
-      <div class="bg-gray-100 rounded-3xl overflow-hidden shadow-xl">
-        <img
-          src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1200&auto=format&fit=crop"
-          class="h-72 w-full object-cover"
-        />
+<button onclick="closeAdmin()" class="bg-gray-400 text-white px-8 py-4 rounded-2xl font-bold w-full">
+Close
+</button>
 
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-blue-900 mb-2">
-            Orthopedic Department Head
-          </h3>
+</div>
 
-          <p class="text-gray-600 text-lg">Orthopedic OPD</p>
-        </div>
-      </div>
+</div>
 
-    </div>
-  </div>
-</section>
+</div>
 
-<!-- Duty Roster -->
-<section id="roster" class="py-20 bg-gray-100">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <div class="text-center mb-14">
-      <h2 class="text-4xl font-bold text-blue-900 mb-4">
-        Emergency Duty Roster
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8">
-
-      <div class="bg-yellow-500 text-white rounded-3xl p-8 shadow-2xl">
-        <h3 class="text-3xl font-bold mb-4">Morning Shift</h3>
-        <p>06:00 AM - 02:00 PM</p>
-      </div>
-
-      <div class="bg-blue-700 text-white rounded-3xl p-8 shadow-2xl">
-        <h3 class="text-3xl font-bold mb-4">Evening Shift</h3>
-        <p>02:00 PM - 10:00 PM</p>
-      </div>
-
-      <div class="bg-black text-white rounded-3xl p-8 shadow-2xl">
-        <h3 class="text-3xl font-bold mb-4">Night Shift</h3>
-        <p>10:00 PM - 06:00 AM</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Gallery -->
-<section id="gallery" class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <div class="text-center mb-14">
-      <h2 class="text-4xl font-bold text-blue-900 mb-4">Hospital Gallery</h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-
-      <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop"
-           class="rounded-3xl shadow-lg h-72 w-full object-cover" />
-
-      <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop"
-           class="rounded-3xl shadow-lg h-72 w-full object-cover" />
-
-      <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop"
-           class="rounded-3xl shadow-lg h-72 w-full object-cover" />
-
-    </div>
-  </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="py-20 bg-blue-900 text-white">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-
-    <div>
-      <h2 class="text-4xl font-bold mb-6">Contact Information</h2>
-
-      <div class="space-y-4 text-lg">
-        <p>📍 Krishnanagar Municipality - 9, Bahadurgunj</p>
-        <p>📞 +977 9876543210</p>
-        <p>✉️ shivrajhospital43@gmail.com</p>
-      </div>
-    </div>
-
-    <div class="bg-white text-gray-800 rounded-3xl p-8 shadow-2xl">
-      <h3 class="text-2xl font-bold text-blue-900 mb-6">Send Message</h3>
-
-      <div class="space-y-4">
-        <input type="text" placeholder="Your Name" class="w-full border rounded-xl p-4">
-        <input type="email" placeholder="Your Email" class="w-full border rounded-xl p-4">
-        <textarea rows="4" placeholder="Message" class="w-full border rounded-xl p-4"></textarea>
-
-        <button class="bg-blue-900 text-white px-6 py-3 rounded-xl font-semibold w-full">
-          Send Message
-        </button>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Admin Dashboard -->
-<section id="admin-dashboard" class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <div class="text-center mb-16">
-      <h2 class="text-5xl font-bold text-blue-900 mb-4">
-        Hospital Admin Dashboard
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-      <div class="bg-blue-900 text-white rounded-3xl p-8 shadow-2xl">
-        <div class="text-5xl mb-4">🩺</div>
-        <h3 class="text-2xl font-bold mb-2">Today's OPD</h3>
-        <p>Male: 128</p>
-        <p>Female: 142</p>
-      </div>
-
-      <div class="bg-red-600 text-white rounded-3xl p-8 shadow-2xl">
-        <div class="text-5xl mb-4">🚑</div>
-        <h3 class="text-2xl font-bold mb-2">Emergency</h3>
-        <div class="text-5xl font-bold">58</div>
-      </div>
-
-      <div class="bg-green-600 text-white rounded-3xl p-8 shadow-2xl">
-        <div class="text-5xl mb-4">🧪</div>
-        <h3 class="text-2xl font-bold mb-2">Lab Reports</h3>
-        <div class="text-5xl font-bold">132</div>
-      </div>
-
-      <div class="bg-purple-600 text-white rounded-3xl p-8 shadow-2xl">
-        <div class="text-5xl mb-4">📡</div>
-        <h3 class="text-2xl font-bold mb-2">USG Reports</h3>
-        <div class="text-5xl font-bold">29</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-black text-gray-400 py-8 text-center">
-  <p>© 2026 Shivraj Hospital, Bahadurgunj Kapilvastu. All Rights Reserved.</p>
+<footer class="bg-black text-white text-center py-8 mt-20">
+© 2026 Shivraj Hospital
 </footer>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+doc,
+setDoc,
+getDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyCONBp03NAT4TMY2Esz3q8a_SlvZAhEgOs",
+authDomain: "shivraj-hospital.firebaseapp.com",
+projectId: "shivraj-hospital",
+storageBucket: "shivraj-hospital.firebasestorage.app",
+messagingSenderId: "332925913593",
+appId: "1:332925913593:web:f3788859ba745fef029528",
+measurementId: "G-9X9T0DPRRS"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.showAdmin = function () {
+document.getElementById("adminPanel").classList.remove("hidden");
+}
+
+window.closeAdmin = function () {
+document.getElementById("adminPanel").classList.add("hidden");
+}
+
+window.saveReport = async function () {
+
+const male = document.getElementById("maleOPD").value;
+const female = document.getElementById("femaleOPD").value;
+const er = document.getElementById("erPatients").value;
+const indoor = document.getElementById("indoorPatients").value;
+const xray = document.getElementById("xrayReports").value;
+const lab = document.getElementById("labReports").value;
+const usg = document.getElementById("usgReports").value;
+
+await setDoc(doc(db, "hospitalReports", "daily"), {
+male,
+female,
+er,
+indoor,
+xray,
+lab,
+usg
+});
+
+alert("Report Saved Successfully");
+
+loadReport();
+closeAdmin();
+}
+
+window.loadReport = async function () {
+
+const docRef = doc(db, "hospitalReports", "daily");
+const docSnap = await getDoc(docRef);
+
+if (docSnap.exists()) {
+
+const data = docSnap.data();
+
+document.getElementById("opdData").innerText =
+data.male + " / " + data.female;
+
+document.getElementById("erData").innerText = data.er;
+
+document.getElementById("indoorData").innerText = data.indoor;
+
+document.getElementById("xrayData").innerText = data.xray;
+
+document.getElementById("labData").innerText = data.lab;
+
+document.getElementById("usgData").innerText = data.usg;
+}
+}
+
+loadReport();
+
+</script>
 
 </body>
 </html>
 ```
 
-# How To Upload
+# GitHub Upload Steps
 
-1. Save as `index.html`
-2. Upload to your GitHub repository
-3. Open:
+1. Open your repository.
+2. Delete old `index.html`
+3. Upload this new `index.html`
+4. Commit changes
+5. Wait 1-2 minutes
+6. Open your website
 
-`Settings → Pages`
+Now your website has:
 
-4. Select:
-
-* Deploy from branch
-* main branch
-* /root
-
-5. Save
-
-Your website will work correctly on GitHub Pages.
+* Live Firebase Database
+* Admin Dashboard
+* Save Report System
+* Auto Update Dashboard
+* Mobile Friendly Design
+* Realtime Data Update
