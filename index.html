@@ -1,121 +1,238 @@
-# Shivraj Hospital Full Firebase Live Admin System
+# Shivraj Hospital Final Firebase Live Index File
 
-Save this file as `index.html`
+Replace your old `index.html` with the complete code below.
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shivraj Hospital</title>
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivraj Hospital</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-<div class="bg-blue-900 text-white py-3 px-6 flex justify-between items-center">
-  <div>
-    <h1 class="text-3xl font-bold">Shivraj Hospital</h1>
-    <p>Bahadurgunj, Kapilvastu</p>
+<!-- Floating Button -->
+<a href="#admin-dashboard"
+   class="fixed bottom-6 right-6 bg-blue-900 text-white px-6 py-4 rounded-full shadow-2xl z-50 font-semibold hover:scale-105 transition">
+  Admin Dashboard
+</a>
+
+<!-- Header -->
+<div class="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center">
+  <div>📍 Krishnanagar Municipality - 9, Bahadurgunj, Kapilvastu</div>
+  <div class="flex gap-4 mt-2 md:mt-0">
+    <span>📞 +977 9876543210</span>
+    <span>✉️ shivrajhospital43@gmail.com</span>
   </div>
-
-  <button onclick="showAdmin()" class="bg-white text-blue-900 px-5 py-2 rounded-xl font-bold">
-    Admin Login
-  </button>
 </div>
 
-<section class="bg-blue-900 text-white py-20 text-center">
-  <h2 class="text-5xl font-extrabold mb-4">Hospital Daily Live Report</h2>
-  <p class="text-xl text-gray-200">Realtime Firebase Connected Dashboard</p>
+<!-- Navbar -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+
+    <div class="flex items-center gap-4">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/0/00/Emblem_of_Nepal.svg"
+        class="w-14 h-14"
+        alt="Nepal"
+      />
+
+      <div>
+        <h1 class="text-2xl font-bold text-blue-900">शिवराज अस्पताल</h1>
+        <p class="text-sm text-gray-600">Shivraj Hospital, Bahadurgunj Kapilvastu</p>
+      </div>
+    </div>
+
+    <div class="hidden md:flex gap-6 font-medium">
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#staff">Staff</a>
+      <a href="#roster">Roster</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="bg-blue-900 text-white py-24">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+
+    <div>
+      <div class="inline-block bg-red-600 px-4 py-1 rounded-full text-sm mb-4 animate-pulse">
+        24/7 Emergency Health Service
+      </div>
+
+      <h2 class="text-5xl font-extrabold leading-tight mb-6">
+        Welcome to <br> Shivraj Hospital
+      </h2>
+
+      <p class="text-lg text-gray-200 mb-8 leading-relaxed">
+        Government healthcare service center providing quality medical services.
+      </p>
+    </div>
+
+    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl">
+      <h3 class="text-2xl font-bold mb-6">Quick Information</h3>
+
+      <div class="space-y-4 text-lg">
+        <div class="flex justify-between border-b border-white/20 pb-2">
+          <span>Emergency</span>
+          <span>24 Hours</span>
+        </div>
+
+        <div class="flex justify-between border-b border-white/20 pb-2">
+          <span>OPD Service</span>
+          <span>Daily Available</span>
+        </div>
+
+        <div class="flex justify-between border-b border-white/20 pb-2">
+          <span>Laboratory</span>
+          <span>Available</span>
+        </div>
+
+        <div class="flex justify-between border-b border-white/20 pb-2">
+          <span>Pharmacy</span>
+          <span>Open</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<section class="max-w-7xl mx-auto px-6 py-16">
+<!-- Services -->
+<section id="services" class="py-20 bg-gray-100">
+  <div class="max-w-7xl mx-auto px-6">
 
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl font-bold text-blue-900 mb-4">Hospital Services</h2>
+    </div>
 
-<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
-  <div class="text-5xl mb-4">🩺</div>
-  <h3 class="text-2xl font-bold text-blue-900 mb-4">Total OPD</h3>
-  <div id="opdData" class="text-5xl font-extrabold text-blue-900">0 / 0</div>
-</div>
+    <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
-  <div class="text-5xl mb-4">🚑</div>
-  <h3 class="text-2xl font-bold text-red-700 mb-4">Emergency Patients</h3>
-  <div id="erData" class="text-5xl font-extrabold text-red-700">0</div>
-</div>
+      <div class="bg-white rounded-2xl p-6 shadow-md">
+        <div class="text-4xl mb-4">🏥</div>
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Emergency</h3>
+        <p class="text-gray-600 text-sm">24/7 Emergency Care Service</p>
+      </div>
 
-<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
-  <div class="text-5xl mb-4">🛏️</div>
-  <h3 class="text-2xl font-bold text-green-700 mb-4">Indoor Patients</h3>
-  <div id="indoorData" class="text-5xl font-extrabold text-green-700">0</div>
-</div>
+      <div class="bg-white rounded-2xl p-6 shadow-md">
+        <div class="text-4xl mb-4">🧪</div>
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Laboratory</h3>
+        <p class="text-gray-600 text-sm">Modern Lab Testing Facility</p>
+      </div>
 
-<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
-  <div class="text-5xl mb-4">🩻</div>
-  <h3 class="text-2xl font-bold text-purple-700 mb-4">X-Ray Reports</h3>
-  <div id="xrayData" class="text-5xl font-extrabold text-purple-700">0</div>
-</div>
+      <div class="bg-white rounded-2xl p-6 shadow-md">
+        <div class="text-4xl mb-4">🩻</div>
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">X-Ray</h3>
+        <p class="text-gray-600 text-sm">Radiology and Imaging Services</p>
+      </div>
 
-<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
-  <div class="text-5xl mb-4">🧪</div>
-  <h3 class="text-2xl font-bold text-orange-700 mb-4">Lab Reports</h3>
-  <div id="labData" class="text-5xl font-extrabold text-orange-700">0</div>
-</div>
+      <div class="bg-white rounded-2xl p-6 shadow-md">
+        <div class="text-4xl mb-4">💊</div>
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Pharmacy</h3>
+        <p class="text-gray-600 text-sm">Hospital Pharmacy Available</p>
+      </div>
 
-<div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
-  <div class="text-5xl mb-4">📡</div>
-  <h3 class="text-2xl font-bold text-pink-700 mb-4">USG Reports</h3>
-  <div id="usgData" class="text-5xl font-extrabold text-pink-700">0</div>
-</div>
-
-</div>
+    </div>
+  </div>
 </section>
 
-<div id="adminPanel" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+<!-- Live Dashboard -->
+<section id="admin-dashboard" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
 
-<div class="bg-white rounded-3xl shadow-2xl p-10 w-full max-w-2xl">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-bold text-blue-900 mb-4">
+        Hospital Live Dashboard
+      </h2>
+    </div>
 
-<h2 class="text-4xl font-bold text-blue-900 mb-8 text-center">
-Admin Dashboard
-</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-<div class="grid md:grid-cols-2 gap-5">
+      <div class="bg-blue-900 text-white rounded-3xl p-8 shadow-2xl">
+        <div class="text-5xl mb-4">🩺</div>
+        <h3 class="text-2xl font-bold mb-2">Today's OPD</h3>
+        <p>Male: <span id="maleData">0</span></p>
+        <p>Female: <span id="femaleData">0</span></p>
+      </div>
 
-<input type="number" id="maleOPD" placeholder="Male OPD" class="border p-4 rounded-xl">
+      <div class="bg-red-600 text-white rounded-3xl p-8 shadow-2xl">
+        <div class="text-5xl mb-4">🚑</div>
+        <h3 class="text-2xl font-bold mb-2">Emergency</h3>
+        <div id="emergencyData" class="text-5xl font-bold">0</div>
+      </div>
 
-<input type="number" id="femaleOPD" placeholder="Female OPD" class="border p-4 rounded-xl">
+      <div class="bg-green-600 text-white rounded-3xl p-8 shadow-2xl">
+        <div class="text-5xl mb-4">🧪</div>
+        <h3 class="text-2xl font-bold mb-2">Lab Reports</h3>
+        <div id="labData" class="text-5xl font-bold">0</div>
+      </div>
 
-<input type="number" id="erPatients" placeholder="Emergency Patients" class="border p-4 rounded-xl">
+      <div class="bg-purple-600 text-white rounded-3xl p-8 shadow-2xl">
+        <div class="text-5xl mb-4">📡</div>
+        <h3 class="text-2xl font-bold mb-2">USG Reports</h3>
+        <div id="usgData" class="text-5xl font-bold">0</div>
+      </div>
 
-<input type="number" id="indoorPatients" placeholder="Indoor Patients" class="border p-4 rounded-xl">
+    </div>
 
-<input type="number" id="xrayReports" placeholder="X-Ray Reports" class="border p-4 rounded-xl">
+    <!-- Update Panel -->
+    <div class="bg-gray-100 rounded-3xl p-8 mt-12 shadow-2xl">
 
-<input type="number" id="labReports" placeholder="Lab Reports" class="border p-4 rounded-xl">
+      <h3 class="text-3xl font-bold text-blue-900 mb-6">
+        Update Daily Report
+      </h3>
 
-<input type="number" id="usgReports" placeholder="USG Reports" class="border p-4 rounded-xl">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-</div>
+        <input type="number" id="maleOPD"
+        placeholder="Male OPD"
+        class="border rounded-xl p-4">
 
-<div class="flex gap-4 mt-8">
+        <input type="number" id="femaleOPD"
+        placeholder="Female OPD"
+        class="border rounded-xl p-4">
 
-<button onclick="saveReport()" class="bg-blue-900 text-white px-8 py-4 rounded-2xl font-bold w-full">
-Save Report
-</button>
+        <input type="number" id="emergencyPatients"
+        placeholder="Emergency Patients"
+        class="border rounded-xl p-4">
 
-<button onclick="closeAdmin()" class="bg-gray-400 text-white px-8 py-4 rounded-2xl font-bold w-full">
-Close
-</button>
+        <input type="number" id="labReports"
+        placeholder="Lab Reports"
+        class="border rounded-xl p-4">
 
-</div>
+        <input type="number" id="usgReports"
+        placeholder="USG Reports"
+        class="border rounded-xl p-4">
 
-</div>
+      </div>
 
-</div>
+      <button onclick="saveReport()"
+      class="bg-blue-900 text-white px-8 py-4 rounded-2xl mt-6 w-full font-bold">
+        Save Daily Report
+      </button>
 
-<footer class="bg-black text-white text-center py-8 mt-20">
-© 2026 Shivraj Hospital
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black text-gray-400 py-8 text-center">
+  <p>© 2026 Shivraj Hospital, Bahadurgunj Kapilvastu. All Rights Reserved.</p>
 </footer>
 
 <script type="module">
@@ -123,81 +240,61 @@ Close
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-getFirestore,
-doc,
-setDoc,
-getDoc
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-apiKey: "AIzaSyCONBp03NAT4TMY2Esz3q8a_SlvZAhEgOs",
-authDomain: "shivraj-hospital.firebaseapp.com",
-projectId: "shivraj-hospital",
-storageBucket: "shivraj-hospital.firebasestorage.app",
-messagingSenderId: "332925913593",
-appId: "1:332925913593:web:f3788859ba745fef029528",
-measurementId: "G-9X9T0DPRRS"
+  apiKey: "AIzaSyCONBp03NAT4TMY2Esz3q8a_SlvZAhEgOs",
+  authDomain: "shivraj-hospital.firebaseapp.com",
+  projectId: "shivraj-hospital",
+  storageBucket: "shivraj-hospital.firebasestorage.app",
+  messagingSenderId: "332925913593",
+  appId: "1:332925913593:web:f3788859ba745fef029528",
+  measurementId: "G-9X9T0DPRRS"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-window.showAdmin = function () {
-document.getElementById("adminPanel").classList.remove("hidden");
-}
-
-window.closeAdmin = function () {
-document.getElementById("adminPanel").classList.add("hidden");
-}
-
 window.saveReport = async function () {
 
-const male = document.getElementById("maleOPD").value;
-const female = document.getElementById("femaleOPD").value;
-const er = document.getElementById("erPatients").value;
-const indoor = document.getElementById("indoorPatients").value;
-const xray = document.getElementById("xrayReports").value;
-const lab = document.getElementById("labReports").value;
-const usg = document.getElementById("usgReports").value;
+  const male = document.getElementById("maleOPD").value;
+  const female = document.getElementById("femaleOPD").value;
+  const emergency = document.getElementById("emergencyPatients").value;
+  const lab = document.getElementById("labReports").value;
+  const usg = document.getElementById("usgReports").value;
 
-await setDoc(doc(db, "hospitalReports", "daily"), {
-male,
-female,
-er,
-indoor,
-xray,
-lab,
-usg
-});
+  await setDoc(doc(db, "dailyReports", "today"), {
+    male,
+    female,
+    emergency,
+    lab,
+    usg
+  });
 
-alert("Report Saved Successfully");
+  alert("Daily Report Saved Successfully");
 
-loadReport();
-closeAdmin();
-}
+  loadReport();
+};
 
-window.loadReport = async function () {
+async function loadReport() {
 
-const docRef = doc(db, "hospitalReports", "daily");
-const docSnap = await getDoc(docRef);
+  const docRef = doc(db, "dailyReports", "today");
+  const docSnap = await getDoc(docRef);
 
-if (docSnap.exists()) {
+  if (docSnap.exists()) {
 
-const data = docSnap.data();
+    const data = docSnap.data();
 
-document.getElementById("opdData").innerText =
-data.male + " / " + data.female;
-
-document.getElementById("erData").innerText = data.er;
-
-document.getElementById("indoorData").innerText = data.indoor;
-
-document.getElementById("xrayData").innerText = data.xray;
-
-document.getElementById("labData").innerText = data.lab;
-
-document.getElementById("usgData").innerText = data.usg;
-}
+    document.getElementById("maleData").innerText = data.male || 0;
+    document.getElementById("femaleData").innerText = data.female || 0;
+    document.getElementById("emergencyData").innerText = data.emergency || 0;
+    document.getElementById("labData").innerText = data.lab || 0;
+    document.getElementById("usgData").innerText = data.usg || 0;
+  }
 }
 
 loadReport();
@@ -208,20 +305,20 @@ loadReport();
 </html>
 ```
 
-# GitHub Upload Steps
+# Upload Steps
 
-1. Open your repository.
-2. Delete old `index.html`
-3. Upload this new `index.html`
-4. Commit changes
-5. Wait 1-2 minutes
-6. Open your website
+1. Save as `index.html`
+2. Upload to your GitHub repository
+3. Commit changes
+4. Wait 1-2 minutes
+5. Open your GitHub Pages website
 
-Now your website has:
+Now your website supports:
 
-* Live Firebase Database
-* Admin Dashboard
-* Save Report System
-* Auto Update Dashboard
-* Mobile Friendly Design
-* Realtime Data Update
+* Firebase Live Database
+* Live OPD Update
+* Emergency Update
+* Lab Report Update
+* USG Report Update
+* Mobile Friendly Admin Panel
+* Realtime Dashboard
