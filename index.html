@@ -1,6 +1,10 @@
-# GitHub-Ready Shivraj Hospital Website (Pure HTML)
+# FINAL SHIVRAJ HOSPITAL INDEX2.HTML (GOOGLE SHEET LIVE VERSION)
 
-Save this file as `index.html`
+Save this file as:
+
+```text
+index.html
+```
 
 ```html
 <!DOCTYPE html>
@@ -18,17 +22,19 @@ Save this file as `index.html`
     }
   </style>
 </head>
+
 <body class="bg-gray-100 text-gray-800">
 
 <!-- Floating Button -->
 <a href="#admin-dashboard"
    class="fixed bottom-6 right-6 bg-blue-900 text-white px-6 py-4 rounded-full shadow-2xl z-50 font-semibold hover:scale-105 transition">
-  Admin Dashboard
+  Live Dashboard
 </a>
 
 <!-- Header -->
 <div class="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center">
   <div>📍 Krishnanagar Municipality - 9, Bahadurgunj, Kapilvastu</div>
+
   <div class="flex gap-4 mt-2 md:mt-0">
     <span>📞 +977 9876543210</span>
     <span>✉️ shivrajhospital43@gmail.com</span>
@@ -56,11 +62,11 @@ Save this file as `index.html`
       <a href="#">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a href="#departments">Departments</a>
       <a href="#staff">Staff</a>
       <a href="#roster">Roster</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
+      <a href="#admin-dashboard">Dashboard</a>
     </div>
 
   </div>
@@ -98,6 +104,7 @@ Save this file as `index.html`
       <h3 class="text-2xl font-bold mb-6">Quick Information</h3>
 
       <div class="space-y-4 text-lg">
+
         <div class="flex justify-between border-b border-white/20 pb-2">
           <span>Emergency</span>
           <span>24 Hours</span>
@@ -117,6 +124,7 @@ Save this file as `index.html`
           <span>Pharmacy</span>
           <span>Open</span>
         </div>
+
       </div>
     </div>
 
@@ -330,41 +338,67 @@ Save this file as `index.html`
   </div>
 </section>
 
-<!-- Admin Dashboard -->
+<!-- LIVE DASHBOARD -->
 <section id="admin-dashboard" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-16">
       <h2 class="text-5xl font-bold text-blue-900 mb-4">
-        Hospital Admin Dashboard
+        Hospital Live Dashboard
       </h2>
+
+      <p class="text-lg text-gray-600">
+        Connected With Google Sheet Live Data
+      </p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
       <div class="bg-blue-900 text-white rounded-3xl p-8 shadow-2xl">
         <div class="text-5xl mb-4">🩺</div>
-        <h3 class="text-2xl font-bold mb-2">Today's OPD</h3>
-        <p>Male: 128</p>
-        <p>Female: 142</p>
+
+        <h3 class="text-2xl font-bold mb-2">
+          Today's OPD
+        </h3>
+
+        <p>Male: <span id="maleOPD">0</span></p>
+        <p>Female: <span id="femaleOPD">0</span></p>
       </div>
 
       <div class="bg-red-600 text-white rounded-3xl p-8 shadow-2xl">
         <div class="text-5xl mb-4">🚑</div>
-        <h3 class="text-2xl font-bold mb-2">Emergency</h3>
-        <div class="text-5xl font-bold">58</div>
+
+        <h3 class="text-2xl font-bold mb-2">
+          Emergency
+        </h3>
+
+        <div id="emergencyData" class="text-5xl font-bold">
+          0
+        </div>
       </div>
 
       <div class="bg-green-600 text-white rounded-3xl p-8 shadow-2xl">
         <div class="text-5xl mb-4">🧪</div>
-        <h3 class="text-2xl font-bold mb-2">Lab Reports</h3>
-        <div class="text-5xl font-bold">132</div>
+
+        <h3 class="text-2xl font-bold mb-2">
+          Lab Reports
+        </h3>
+
+        <div id="labData" class="text-5xl font-bold">
+          0
+        </div>
       </div>
 
       <div class="bg-purple-600 text-white rounded-3xl p-8 shadow-2xl">
         <div class="text-5xl mb-4">📡</div>
-        <h3 class="text-2xl font-bold mb-2">USG Reports</h3>
-        <div class="text-5xl font-bold">29</div>
+
+        <h3 class="text-2xl font-bold mb-2">
+          USG Reports
+        </h3>
+
+        <div id="usgData" class="text-5xl font-bold">
+          0
+        </div>
       </div>
 
     </div>
@@ -376,24 +410,39 @@ Save this file as `index.html`
   <p>© 2026 Shivraj Hospital, Bahadurgunj Kapilvastu. All Rights Reserved.</p>
 </footer>
 
+<script>
+
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHvgX2y4002h3MbCTVgC3I1kwzUnND3hGaKFUC_-YfeKPTALbT1OV7FM6eFp-FoeOJ37o0rI4x_eXF/pub?output=csv";
+
+async function loadSheetData() {
+
+  const response = await fetch(sheetURL);
+  const data = await response.text();
+
+  const rows = data.split("\n");
+  const values = rows[1].split(",");
+
+  document.getElementById("maleOPD").innerText = values[0] || 0;
+  document.getElementById("femaleOPD").innerText = values[1] || 0;
+  document.getElementById("emergencyData").innerText = values[2] || 0;
+  document.getElementById("labData").innerText = values[3] || 0;
+  document.getElementById("usgData").innerText = values[4] || 0;
+}
+
+loadSheetData();
+setInterval(loadSheetData, 30000);
+
+</script>
+
 </body>
 </html>
 ```
 
-# How To Upload
+# HOW TO USE
 
-1. Save as `index.html`
-2. Upload to your GitHub repository
-3. Open:
-
-`Settings → Pages`
-
-4. Select:
-
-* Deploy from branch
-* main branch
-* /root
-
-5. Save
-
-Your website will work correctly on GitHub Pages.
+1. Save this as `index.html`
+2. Upload to GitHub repository
+3. Commit changes
+4. Open GitHub Pages website
+5. Update Google Sheet anytime
+6. Website auto updates every 30 seconds
