@@ -15,6 +15,11 @@
     body {
       font-family: Arial, sans-serif;
     }
+
+    .glass {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+    }
   </style>
 </head>
 
@@ -28,6 +33,7 @@
 
 <!-- TOP HEADER -->
 <div class="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center">
+
   <div>
     📍 Krishnanagar Municipality - 9, Bahadurgunj, Kapilvastu
   </div>
@@ -36,13 +42,16 @@
     <span>📞 +977 9876543210</span>
     <span>✉️ shivrajhospital43@gmail.com</span>
   </div>
+
 </div>
 
 <!-- NAVBAR -->
 <nav class="bg-white shadow-md sticky top-0 z-50">
+
   <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
 
     <div class="flex items-center gap-4">
+
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/0/00/Emblem_of_Nepal.svg"
         class="w-14 h-14"
@@ -57,12 +66,14 @@
           Shivraj Hospital, Bahadurgunj Kapilvastu
         </p>
       </div>
+
     </div>
 
     <div class="hidden md:flex gap-6 font-medium">
       <a href="#">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <a href="#dashboard">Dashboard</a>
       <a href="#staff">Staff</a>
       <a href="#roster">Roster</a>
       <a href="#gallery">Gallery</a>
@@ -71,6 +82,7 @@
     </div>
 
   </div>
+
 </nav>
 
 <!-- HERO -->
@@ -93,6 +105,7 @@
       </p>
 
       <div class="flex flex-wrap gap-4">
+
         <button class="bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold shadow-lg">
           View Services
         </button>
@@ -100,11 +113,12 @@
         <button class="border border-white px-6 py-3 rounded-xl font-semibold">
           Emergency Contact
         </button>
+
       </div>
 
     </div>
 
-    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl">
+    <div class="glass rounded-3xl p-8 border border-white/20 shadow-2xl">
 
       <h3 class="text-2xl font-bold mb-6">
         Quick Information
@@ -146,10 +160,12 @@
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
     <div>
+
       <img
         src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop"
         class="rounded-3xl shadow-2xl"
       />
+
     </div>
 
     <div>
@@ -188,9 +204,11 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-14">
+
       <h2 class="text-4xl font-bold text-blue-900 mb-4">
         Hospital Services
       </h2>
+
     </div>
 
     <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -221,15 +239,17 @@
 
 </section>
 
-<!-- LIVE DASHBOARD -->
+<!-- DASHBOARD -->
 <section id="dashboard" class="py-20 bg-white">
 
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-14">
+
       <h2 class="text-5xl font-bold text-blue-900 mb-4">
         Live Hospital Dashboard
       </h2>
+
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -279,9 +299,11 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-14">
+
       <h2 class="text-4xl font-bold text-blue-900">
         Staff Details
       </h2>
+
     </div>
 
     <div id="staffContainer"
@@ -298,9 +320,11 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-14">
+
       <h2 class="text-4xl font-bold text-blue-900">
         Emergency Duty Roster
       </h2>
+
     </div>
 
     <div id="rosterContainer"
@@ -317,9 +341,11 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-14">
+
       <h2 class="text-4xl font-bold text-blue-900">
         Hospital Gallery
       </h2>
+
     </div>
 
     <div id="galleryContainer"
@@ -336,9 +362,11 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-14">
+
       <h2 class="text-4xl font-bold text-blue-900">
         Hospital Notices
       </h2>
+
     </div>
 
     <div id="noticeContainer"
@@ -355,9 +383,11 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-10">
+
       <h2 class="text-4xl font-bold">
         Contact Information
       </h2>
+
     </div>
 
     <div id="contactContainer"
@@ -370,44 +400,46 @@
 
 <!-- FOOTER -->
 <footer class="bg-black text-gray-400 py-8 text-center">
+
   <p>
     © 2026 Shivraj Hospital, Bahadurgunj Kapilvastu.
   </p>
+
 </footer>
 
 <script>
 
-const dashboardURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHvgX2y4002h3MbCTVgC3I1kwzUnND3hGaKFUC_-YfeKPTALbT1OV7FM6eFp-FoeOJ37o0rI4x_eXF/pub?output=csv";
-const staffURL = dashboardURL;
-const rosterURL = dashboardURL;
-const galleryURL = dashboardURL;
-const noticeURL = dashboardURL;
-const contactURL = dashboardURL;
+const sheetURL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRHvgX2y4002h3MbCTVgC3I1kwzUnND3hGaKFUC_-YfeKPTALbT1OV7FM6eFp-FoeOJ37o0rI4x_eXF/pub?output=csv";
 
 async function loadDashboard() {
 
-  const response = await fetch(dashboardURL);
+  const response = await fetch(sheetURL);
   const data = await response.text();
 
-  const rows = data.split("\n");
-  const values = rows[1].split(",");
+  const rows = data.split("\\n");
 
-  document.getElementById("maleOPD").innerText = values[0] || 0;
-  document.getElementById("femaleOPD").innerText = values[1] || 0;
-  document.getElementById("totalOPD").innerText = values[2] || 0;
-  document.getElementById("emergencyData").innerText = values[3] || 0;
-  document.getElementById("labData").innerText = values[4] || 0;
-  document.getElementById("xrayData").innerText = values[5] || 0;
-  document.getElementById("ecgData").innerText = values[6] || 0;
-  document.getElementById("usgData").innerText = values[7] || 0;
+  if(rows.length > 1){
+
+    const values = rows[1].split(",");
+
+    document.getElementById("maleOPD").innerText = values[0] || 0;
+    document.getElementById("femaleOPD").innerText = values[1] || 0;
+    document.getElementById("totalOPD").innerText = values[2] || 0;
+    document.getElementById("emergencyData").innerText = values[3] || 0;
+    document.getElementById("labData").innerText = values[4] || 0;
+    document.getElementById("xrayData").innerText = values[5] || 0;
+    document.getElementById("ecgData").innerText = values[6] || 0;
+    document.getElementById("usgData").innerText = values[7] || 0;
+  }
 }
 
 async function loadStaff() {
 
-  const response = await fetch(staffURL);
+  const response = await fetch(sheetURL);
   const data = await response.text();
 
-  const rows = data.split("\n").slice(1);
+  const rows = data.split("\\n").slice(1);
 
   let html = "";
 
@@ -417,10 +449,14 @@ async function loadStaff() {
 
     html += `
       <div class="bg-white rounded-3xl overflow-hidden shadow-xl">
-        <img src="${cols[2] || 'https://via.placeholder.com/400'}"
-             class="h-72 w-full object-cover">
+
+        <img
+          src="${cols[2] || 'https://via.placeholder.com/400'}"
+          class="h-72 w-full object-cover"
+        />
 
         <div class="p-6">
+
           <h3 class="text-2xl font-bold text-blue-900 mb-2">
             ${cols[0] || ''}
           </h3>
@@ -428,7 +464,9 @@ async function loadStaff() {
           <p class="text-gray-600 text-lg">
             ${cols[1] || ''}
           </p>
+
         </div>
+
       </div>
     `;
   });
@@ -438,10 +476,10 @@ async function loadStaff() {
 
 async function loadRoster() {
 
-  const response = await fetch(rosterURL);
+  const response = await fetch(sheetURL);
   const data = await response.text();
 
-  const rows = data.split("\n").slice(1);
+  const rows = data.split("\\n").slice(1);
 
   let html = "";
 
@@ -451,12 +489,17 @@ async function loadRoster() {
 
     html += `
       <div class="bg-blue-900 text-white rounded-3xl p-8 shadow-2xl">
+
         <h3 class="text-3xl font-bold mb-4">
           ${cols[0] || ''}
         </h3>
 
         <p>${cols[1] || ''}</p>
-        <p class="mt-4">${cols[2] || ''}</p>
+
+        <p class="mt-4">
+          ${cols[2] || ''}
+        </p>
+
       </div>
     `;
   });
@@ -466,10 +509,10 @@ async function loadRoster() {
 
 async function loadGallery() {
 
-  const response = await fetch(galleryURL);
+  const response = await fetch(sheetURL);
   const data = await response.text();
 
-  const rows = data.split("\n").slice(1);
+  const rows = data.split("\\n").slice(1);
 
   let html = "";
 
@@ -478,8 +521,10 @@ async function loadGallery() {
     const cols = row.split(",");
 
     html += `
-      <img src="${cols[0]}"
-           class="rounded-3xl shadow-lg h-72 w-full object-cover">
+      <img
+        src="${cols[0]}"
+        class="rounded-3xl shadow-lg h-72 w-full object-cover"
+      />
     `;
   });
 
@@ -488,10 +533,10 @@ async function loadGallery() {
 
 async function loadNotices() {
 
-  const response = await fetch(noticeURL);
+  const response = await fetch(sheetURL);
   const data = await response.text();
 
-  const rows = data.split("\n").slice(1);
+  const rows = data.split("\\n").slice(1);
 
   let html = "";
 
@@ -501,6 +546,7 @@ async function loadNotices() {
 
     html += `
       <div class="bg-yellow-100 border-l-8 border-yellow-500 p-6 rounded-2xl shadow">
+
         <h3 class="text-2xl font-bold text-blue-900 mb-2">
           ${cols[0]}
         </h3>
@@ -508,6 +554,7 @@ async function loadNotices() {
         <p class="text-gray-700">
           ${cols[1]}
         </p>
+
       </div>
     `;
   });
@@ -517,17 +564,21 @@ async function loadNotices() {
 
 async function loadContact() {
 
-  const response = await fetch(contactURL);
+  const response = await fetch(sheetURL);
   const data = await response.text();
 
-  const rows = data.split("\n");
-  const values = rows[1].split(",");
+  const rows = data.split("\\n");
 
-  document.getElementById("contactContainer").innerHTML = `
-    <p>📍 ${values[0] || ''}</p>
-    <p>📞 ${values[1] || ''}</p>
-    <p>✉️ ${values[2] || ''}</p>
-  `;
+  if(rows.length > 1){
+
+    const values = rows[1].split(",");
+
+    document.getElementById("contactContainer").innerHTML = `
+      <p>📍 ${values[0] || ''}</p>
+      <p>📞 ${values[1] || ''}</p>
+      <p>✉️ ${values[2] || ''}</p>
+    `;
+  }
 }
 
 loadDashboard();
@@ -538,12 +589,14 @@ loadNotices();
 loadContact();
 
 setInterval(() => {
+
   loadDashboard();
   loadStaff();
   loadRoster();
   loadGallery();
   loadNotices();
   loadContact();
+
 }, 30000);
 
 </script>
