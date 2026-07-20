@@ -4,24 +4,25 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Shivraj Hospital Admin Panel</title>
 
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
-
+<link 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+rel="stylesheet">
 
 
 <style>
 
 
 *{
+
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Segoe UI,Arial,sans-serif;
+
 }
 
 
@@ -30,28 +31,55 @@ body{
 
 background:#eef4fb;
 
-overflow-x:hidden;
+}
+
+
+/* =====================
+LOGIN
+===================== */
+
+
+#loginModal{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.6);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+z-index:9999;
 
 }
-/* DATA ENTRY */
 
-.section{
 
-margin-top:30px;
+
+.login-box{
+
+width:350px;
 
 background:white;
 
-padding:25px;
+padding:30px;
 
 border-radius:12px;
 
-box-shadow:0 5px 15px rgba(0,0,0,.08);
+text-align:center;
 
 }
 
 
 
-.section h3{
+.login-box h2{
 
 color:#0d6efd;
 
@@ -61,53 +89,33 @@ margin-bottom:20px;
 
 
 
-.form-grid{
+.login-box input{
 
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-gap:15px;
-
-}
-
-
-
-.form-grid input{
+width:100%;
 
 padding:12px;
+
+margin-bottom:15px;
 
 border:1px solid #ccc;
 
 border-radius:8px;
 
-font-size:15px;
-
 }
 
 
 
-.form-grid input:focus{
+.login-box button{
 
-outline:none;
+width:100%;
 
-border-color:#0d6efd;
+padding:12px;
 
-}
-
-
-
-.saveBtn{
-
-margin-top:20px;
-
-padding:13px 30px;
-
-background:#198754;
-
-color:white;
+background:#0d6efd;
 
 border:none;
+
+color:white;
 
 border-radius:8px;
 
@@ -119,27 +127,24 @@ cursor:pointer;
 
 
 
-.saveBtn:hover{
-
-background:#157347;
-
-}
 
 
-/* SIDEBAR */
+/* =====================
+SIDEBAR
+===================== */
 
 
 .sidebar{
 
 position:fixed;
 
-left:0;
-
 top:0;
 
-width:250px;
+left:0;
 
 height:100vh;
+
+width:250px;
 
 background:#0d6efd;
 
@@ -155,11 +160,11 @@ padding:25px;
 
 text-align:center;
 
-font-size:24px;
+font-size:22px;
 
 font-weight:bold;
 
-border-bottom:1px solid rgba(255,255,255,.2);
+border-bottom:1px solid rgba(255,255,255,.3);
 
 }
 
@@ -199,13 +204,15 @@ margin-bottom:8px;
 
 border-radius:8px;
 
+cursor:pointer;
+
 }
 
 
 
 .menu a:hover{
 
-background:rgba(255,255,255,.18);
+background:rgba(255,255,255,.2);
 
 }
 
@@ -219,27 +226,25 @@ width:25px;
 
 
 
-/* MAIN */
+
+/* =====================
+MAIN
+===================== */
 
 
 .main{
 
 margin-left:250px;
 
-min-height:100vh;
-
 }
 
 
 
-/* HEADER */
-
-
 .header{
 
-background:white;
+height:75px;
 
-padding:18px 25px;
+background:white;
 
 display:flex;
 
@@ -247,7 +252,9 @@ justify-content:space-between;
 
 align-items:center;
 
-box-shadow:0 2px 10px rgba(0,0,0,.08);
+padding:20px 30px;
+
+box-shadow:0 2px 10px #ddd;
 
 }
 
@@ -267,7 +274,7 @@ display:flex;
 
 align-items:center;
 
-gap:12px;
+gap:10px;
 
 }
 
@@ -285,8 +292,6 @@ border-radius:50%;
 
 
 
-/* CONTAINER */
-
 
 .container{
 
@@ -296,14 +301,18 @@ padding:25px;
 
 
 
-/* CARDS */
+
+/* =====================
+CARDS
+===================== */
 
 
 .cards{
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+grid-template-columns:
+repeat(auto-fit,minmax(180px,1fr));
 
 gap:20px;
 
@@ -321,16 +330,6 @@ border-radius:12px;
 
 box-shadow:0 5px 15px rgba(0,0,0,.08);
 
-transition:.3s;
-
-}
-
-
-
-.card:hover{
-
-transform:translateY(-5px);
-
 }
 
 
@@ -341,8 +340,6 @@ font-size:30px;
 
 color:#0d6efd;
 
-margin-bottom:10px;
-
 }
 
 
@@ -350,6 +347,8 @@ margin-bottom:10px;
 .card h4{
 
 color:#666;
+
+margin-top:10px;
 
 }
 
@@ -366,53 +365,28 @@ margin-top:8px;
 
 
 
-
-/* LOGIN MODAL */
-
-
-#loginModal{
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:100%;
-
-background:rgba(0,0,0,.6);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-z-index:9999;
-
-}
+/* =====================
+SECTION
+===================== */
 
 
-
-.login-card{
-
-width:350px;
+.section{
 
 background:white;
 
-padding:30px;
+padding:25px;
+
+margin-top:25px;
 
 border-radius:12px;
 
-text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
 
 }
 
 
 
-.login-card h2{
+.section h3{
 
 color:#0d6efd;
 
@@ -422,33 +396,39 @@ margin-bottom:20px;
 
 
 
-.login-card input{
+.form-grid{
 
-width:100%;
+display:grid;
 
-padding:12px;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
 
-margin-top:15px;
-
-border:1px solid #ccc;
-
-border-radius:8px;
-
-font-size:15px;
+gap:15px;
 
 }
 
 
 
-.login-card button{
-
-width:100%;
+.form-grid input,
+.form-grid select{
 
 padding:12px;
 
+border:1px solid #ccc;
+
+border-radius:8px;
+
+}
+
+
+
+.saveBtn{
+
 margin-top:20px;
 
-background:#0d6efd;
+padding:12px 30px;
+
+background:#198754;
 
 color:white;
 
@@ -456,19 +436,12 @@ border:none;
 
 border-radius:8px;
 
-font-size:16px;
-
 cursor:pointer;
 
-}
-
-
-
-.login-card button:hover{
-
-background:#0958c7;
+font-size:16px;
 
 }
+
 
 
 
@@ -504,13 +477,11 @@ margin-left:70px;
 
 </style>
 
-
 </head>
 
 
+
 <body>
-
-
 
 
 <!-- LOGIN -->
@@ -519,7 +490,7 @@ margin-left:70px;
 <div id="loginModal">
 
 
-<div class="login-card">
+<div class="login-box">
 
 
 <h2>
@@ -527,15 +498,12 @@ margin-left:70px;
 </h2>
 
 
-
 <input 
 id="username"
-type="text"
 placeholder="Username">
 
 
-
-<input
+<input 
 id="password"
 type="password"
 placeholder="Password">
@@ -558,6 +526,7 @@ Login
 
 
 
+
 <!-- SIDEBAR -->
 
 
@@ -566,106 +535,90 @@ Login
 
 <div class="logo">
 
-
 <i class="fas fa-hospital"></i>
-
 
 <span>
 Shivraj Hospital
 </span>
 
-
 </div>
-
 
 
 
 <div class="menu">
 
 
-<a href="#">
+<a onclick="openSection('Dashboard')">
 <i class="fas fa-chart-line"></i>
 <span>Dashboard</span>
 </a>
 
 
 
-<a href="#" onclick="window.openSection('Doctors')">
-
+<a onclick="openSection('Doctors')">
 <i class="fas fa-user-doctor"></i>
-
-<span class="text">
-Doctors
-</span>
-
+<span>Doctors</span>
 </a>
 
 
 
-<a href="javascript:void(0)" onclick="openSection('Indoor')">
-<i class="fas fa-user-Indoor"></i>
+<a onclick="openSection('Indoor')">
+<i class="fas fa-bed"></i>
 <span>Indoor</span>
 </a>
 
 
 
-<a href="javascript:void(0)" onclick="openSection('Emergency')">
-<i class="fas fa-user-Emergency"></i>
+<a onclick="openSection('Emergency')">
+<i class="fas fa-truck-medical"></i>
 <span>Emergency</span>
 </a>
 
 
 
-<a href="javascript:void(0)" onclick="openSection('Laboratory')">
-<i class="fas fa-user-Laboratory"></i>
+<a onclick="openSection('Laboratory')">
+<i class="fas fa-flask"></i>
 <span>Laboratory</span>
 </a>
 
 
 
-<a href="javascript:void(0)" onclick="openSection('X-Ray')">
-<i class="fas fa-user-x-ray"></i>
+<a onclick="openSection('XRay')">
+<i class="fas fa-x-ray"></i>
 <span>X-Ray</span>
 </a>
 
 
 
-<a href="javascript:void(0)" onclick="openSection('OPD')">
-<i class="fas fa-user-stethoscope"></i>
-<span>OPd</span>
+<a onclick="openSection('OPD')">
+<i class="fas fa-stethoscope"></i>
+<span>OPD</span>
 </a>
 
 
 
-<a href="javascript:void(0)" onclick="openSection('ANC')">
-<i class="fas fa-user-notes-medical"></i>
+<a onclick="openSection('ANC')">
+<i class="fas fa-notes-medical"></i>
 <span>ANC</span>
 </a>
 
 
 
-<a href="javascript:void(0)" onclick="openSection('Notices')">
-<i class="fas fa-user-bullhorn"></i>
+<a onclick="openSection('Notices')">
+<i class="fas fa-bullhorn"></i>
 <span>Notices</span>
 </a>
 
 
 
-<a href="javascript:void(0)" onclick="openSection('Duty Roster')">
-<i class="fas fa-user-calander"></i>
+<a onclick="openSection('DutyRoster')">
+<i class="fas fa-calendar"></i>
 <span>Duty Roster</span>
 </a>
 
 
 
-<a href="javascript:void(0)" onclick="openSection('Settings')">
-<i class="fas fa-user-gear"></i>
-<span>Settings</span>
-</a>
-
-
 </div>
-
 
 </div>
 
@@ -684,27 +637,22 @@ Doctors
 
 
 <h2>
-Hospital Management Dashboard
+Shivraj Hospital Admin Dashboard
 </h2>
-
 
 
 <div class="admin">
 
-
 <img src="https://ui-avatars.com/api/?name=Admin">
-
 
 <strong>
 Administrator
 </strong>
 
-
 </div>
 
 
 </div>
-
 
 
 
@@ -713,113 +661,304 @@ Administrator
 
 <div class="cards">
 
-<!-- dashboard cards -->
+
+<div class="card">
+<i class="fas fa-user-doctor"></i>
+<h4>OPD</h4>
+<h2>0</h2>
+</div>
+
+
+<div class="card">
+<i class="fas fa-truck-medical"></i>
+<h4>Emergency</h4>
+<h2>0</h2>
+</div>
+
+
+<div class="card">
+<i class="fas fa-bed"></i>
+<h4>Indoor</h4>
+<h2>0</h2>
+</div>
+
+
+<div class="card">
+<i class="fas fa-flask"></i>
+<h4>Lab</h4>
+<h2>0</h2>
+</div>
+
+
+<div class="card">
+<i class="fas fa-x-ray"></i>
+<h4>X-Ray</h4>
+<h2>0</h2>
+</div>
+
+
+<div class="card">
+<i class="fas fa-pills"></i>
+<h4>Pharmacy</h4>
+<h2>0</h2>
+</div>
+
+
 
 </div>
+
 
 
 <div id="dynamicSection"></div>
+<!-- ==========================
+DYNAMIC FORMS
+========================== -->
+
+
+<script type="text/template" id="Dashboard">
+
+<div class="section">
+
+<h3>
+<i class="fas fa-chart-line"></i>
+Dashboard Overview
+</h3>
+
+
+<p>
+Welcome to Shivraj Hospital Admin Panel
+</p>
 
 
 </div>
 
+</script>
+
+
+
+
+
+<script type="text/template" id="Doctors">
+
+
+<div class="section">
+
+
+<h3>
 <i class="fas fa-user-doctor"></i>
+Doctor Entry
+</h3>
 
-<h4>Today's OPD</h4>
 
-<h2 id="opdCard">
-0
-</h2>
+
+<div class="form-grid">
+
+
+<input id="doctorName" placeholder="Doctor Name">
+
+
+<input id="doctorDepartment" placeholder="Department">
+
+
+<input id="doctorQualification" placeholder="Qualification">
+
+
+<input id="doctorPhone" placeholder="Phone Number">
+
+
+<input id="doctorPhoto" placeholder="Photo URL">
+
 
 </div>
 
 
 
+<button class="saveBtn" onclick="saveModule('Doctors')">
 
-<div class="card">
+Save Doctor
 
+</button>
+
+
+</div>
+
+
+</script>
+
+
+
+
+
+
+
+<script type="text/template" id="Indoor">
+
+
+<div class="section">
+
+
+<h3>
+<i class="fas fa-bed"></i>
+Indoor Service
+</h3>
+
+
+<div class="form-grid">
+
+
+<input id="admitted" placeholder="Total Admitted">
+
+
+<input id="discharged" placeholder="Total Discharged">
+
+
+<input id="maleIndoor" placeholder="Male Patients">
+
+
+<input id="femaleIndoor" placeholder="Female Patients">
+
+
+<input id="bedOccupancy" placeholder="Bed Occupancy %">
+
+
+</div>
+
+
+<button class="saveBtn" onclick="saveModule('Indoor')">
+
+Save Indoor Data
+
+</button>
+
+
+</div>
+
+
+</script>
+
+
+
+
+
+
+
+<script type="text/template" id="Emergency">
+
+
+<div class="section">
+
+
+<h3>
 <i class="fas fa-truck-medical"></i>
+Emergency Data
+</h3>
 
-<h4>Emergency</h4>
 
-<h2 id="erCard">
-0
-</h2>
+
+<div class="form-grid">
+
+
+<input id="erTotal" placeholder="Total Emergency">
+
+
+<input id="red" placeholder="Red Category">
+
+
+<input id="yellow" placeholder="Yellow Category">
+
+
+<input id="green" placeholder="Green Category">
+
 
 </div>
 
 
 
+<button class="saveBtn" onclick="saveModule('Emergency')">
 
-<div class="card">
+Save Emergency
 
+</button>
+
+
+</div>
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/template" id="Laboratory">
+
+
+<div class="section">
+
+
+<h3>
 <i class="fas fa-flask"></i>
+Laboratory
 
-<h4>Laboratory</h4>
+</h3>
 
-<h2 id="labCard">
-0
-</h2>
+
+
+<div class="form-grid">
+
+
+<input id="labTotal" placeholder="Total Lab">
+
+
+<input id="bloodTest" placeholder="Blood Test">
+
+
+<input id="urineTest" placeholder="Urine Test">
+
+
+<input id="otherTest" placeholder="Other Test">
+
 
 </div>
 
 
 
+<button class="saveBtn" onclick="saveModule('Laboratory')">
 
-<div class="card">
+Save Laboratory
 
+</button>
+
+
+</div>
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/template" id="XRay">
+
+
+<div class="section">
+
+
+<h3>
 <i class="fas fa-x-ray"></i>
 
-<h4>X-Ray</h4>
+X-Ray
 
-<h2 id="xrayCard">
-0
-</h2>
-
-</div>
-
-
-
-
-<div class="card">
-
-<i class="fas fa-heart-pulse"></i>
-
-<h4>ECG</h4>
-
-<h2 id="ecgCard">
-0
-</h2>
-
-</div>
-
-
-
-
-<div class="card">
-
-<i class="fas fa-pills"></i>
-
-<h4>Pharmacy</h4>
-
-<h2 id="pharmacyCard">
-0
-</h2>
-
-</div>
-
-
-
-</div>
-<!-- DAILY STATISTICS ENTRY -->
-
-
-<div class="section">
-
-
-<h3>
-<i class="fas fa-chart-line"></i>
-Daily Statistics Entry
 </h3>
 
 
@@ -827,224 +966,75 @@ Daily Statistics Entry
 <div class="form-grid">
 
 
-
-<input 
-type="date"
-id="date">
+<input id="xrayTotal" placeholder="Total X-Ray">
 
 
-
-<input 
-type="number"
-id="opdMale"
-placeholder="OPD Male">
+<input id="usgTotal" placeholder="USG">
 
 
-
-<input 
-type="number"
-id="opdFemale"
-placeholder="OPD Female">
-
-
-
-<input 
-type="number"
-id="er"
-placeholder="Emergency Patients">
-
-
-
-<input 
-type="number"
-id="lab"
-placeholder="Laboratory">
-
-
-
-<input 
-type="number"
-id="xray"
-placeholder="X-Ray">
-
-
-
-<input 
-type="number"
-id="usg"
-placeholder="USG">
-
-
-
-<input 
-type="number"
-id="ecg"
-placeholder="ECG">
-
-
-
-<input 
-type="number"
-id="pharmacy"
-placeholder="Pharmacy">
-
-
-
-<input 
-type="number"
-id="admitted"
-placeholder="Indoor Admitted">
-
-
-
-<input 
-type="number"
-id="discharged"
-placeholder="Discharged">
-
-
-
-<input 
-type="number"
-id="beds"
-placeholder="Total Beds">
-
+<input id="ecgTotal" placeholder="ECG">
 
 
 </div>
 
 
+<button class="saveBtn" onclick="saveModule('XRay')">
 
-
-<button 
-class="saveBtn"
-id="saveBtn">
-
-
-<i class="fas fa-save"></i>
-
-Save Data
-
-
-</button>
-
-
-
-</div>
-document
-.getElementById("saveBtn")
-.addEventListener(
-"click",
-saveData
-);
-
-window.openSection = function(section){
-
-
-let area = document.getElementById("dynamicSection");
-
-
-if(section=="Doctors"){
-
-
-area.innerHTML = `
-
-<div class="section">
-
-<h3>
-<i class="fas fa-user-doctor"></i>
-Doctor Entry
-</h3>
-
-
-<div class="form-grid">
-
-
-<input id="doctorName" placeholder="Doctor Name">
-
-<input id="department" placeholder="Department">
-
-<input id="qualification" placeholder="Qualification">
-
-<input id="phone" placeholder="Phone Number">
-
-
-</div>
-
-
-<button class="saveBtn" onclick="saveDoctor()">
-
-Save Doctor
+Save X-Ray
 
 </button>
 
 
 </div>
 
-`;
 
-
-}
-
-
-
-};
-async function saveDoctor(){
-
-
-let values=[
-
-window.openSection = function(section){
-
-
-let area = document.getElementById("dynamicSection");
-
-
-if(!area){
-
-alert("dynamicSection not found");
-
-return;
-
-}
+</script>
 
 
 
-if(section === "Doctors"){
 
 
-area.innerHTML = `
+
+
+
+
+<script type="text/template" id="OPD">
+
 
 <div class="section">
 
 
 <h3>
-<i class="fas fa-user-doctor"></i>
-Doctor Entry
+<i class="fas fa-stethoscope"></i>
+
+OPD Data
+
 </h3>
+
 
 
 <div class="form-grid">
 
 
-<input id="doctorName" placeholder="Doctor Name">
+<input id="opdMale" placeholder="Male OPD">
 
 
-<input id="department" placeholder="Department">
+<input id="opdFemale" placeholder="Female OPD">
 
 
-<input id="qualification" placeholder="Qualification">
+<input id="consultant" placeholder="Consultant OPD">
 
 
-<input id="phone" placeholder="Phone Number">
+<input id="specialist" placeholder="Specialist Service">
 
 
 </div>
 
 
-<button class="saveBtn" onclick="saveDoctor()">
 
-Save Doctor
+<button class="saveBtn" onclick="saveModule('OPD')">
+
+Save OPD
 
 </button>
 
@@ -1052,143 +1042,201 @@ Save Doctor
 </div>
 
 
-`;
-
-
-}
-
-
-}
-async function saveDoctor(){
-
-
-const values=[
-
-document.getElementById("doctorName").value,
-
-document.getElementById("department").value,
-
-document.getElementById("qualification").value,
-
-document.getElementById("phone").value
-
-];
-
-
-console.log("Doctor Data:",values);
+</script>
 
 
 
-try{
-
-
-const response = await fetch(API,{
-
-method:"POST",
-
-redirect:"follow",
-
-headers:{
-
-"Content-Type":"text/plain;charset=utf-8"
-
-},
-
-
-body:JSON.stringify({
-
-sheet:"Doctors",
-
-values:values
-
-})
-
-
-});
 
 
 
-const result = await response.text();
-
-
-console.log("Server:",result);
 
 
 
-alert("✅ Doctor Saved Successfully");
+<script type="text/template" id="ANC">
 
 
-}
-
-catch(error){
+<div class="section">
 
 
-console.error(error);
+<h3>
+<i class="fas fa-notes-medical"></i>
+
+ANC Service
+
+</h3>
 
 
-alert("❌ Save Failed : "+error.message);
+
+<div class="form-grid">
 
 
-}
+<input id="ancVisit" placeholder="ANC Visit">
 
 
-}
+<input id="ancNew" placeholder="New ANC">
+
+
+<input id="delivery" placeholder="Delivery">
+
+
+</div>
+
+
+
+<button class="saveBtn" onclick="saveModule('ANC')">
+
+Save ANC
+
+</button>
+
+
+</div>
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/template" id="Notices">
+
+
+<div class="section">
+
+
+<h3>
+<i class="fas fa-bullhorn"></i>
+
+Notice Management
+
+</h3>
+
+
+
+<div class="form-grid">
+
+
+<input id="noticeTitle" placeholder="Notice Title">
+
+
+<input id="noticeLink" placeholder="PDF/Image Link">
+
+
+</div>
+
+
+
+<button class="saveBtn" onclick="saveModule('Notices')">
+
+Save Notice
+
+</button>
+
+
+</div>
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/template" id="DutyRoster">
+
+
+<div class="section">
+
+
+<h3>
+<i class="fas fa-calendar"></i>
+
+Duty Roster
+
+</h3>
+
+
+
+<div class="form-grid">
+
+
+<input id="dutyDate" placeholder="Date">
+
+
+<input id="morning" placeholder="Morning Duty">
+
+
+<input id="evening" placeholder="Evening Duty">
+
+
+<input id="night" placeholder="Night Duty">
+
+
+</div>
+
+
+
+<button class="saveBtn" onclick="saveModule('DutyRoster')">
+
+Save Duty Roster
+
+</button>
+
+
+</div>
+
+
+</script>
 <script>
 
 
-/* ===========================
- GOOGLE SHEET API
-=========================== */
+// =============================
+// GOOGLE SHEET API
+// =============================
 
 
-const API = "https://script.google.com/macros/s/AKfycbyqDnLjXSo3XLdRJDibkK5BdyvCnoz1djt_RrzxqUPNY90D5bneH_8UcpB803FRTi31/exec";
-
-
-
-
-
-/* ===========================
- AUTO TODAY DATE
-=========================== */
-
-
-document.getElementById("date").value =
-new Date().toISOString().split("T")[0];
+const API = "https://script.google.com/macros/s/AKfycbwk948_IUZbu1dLZ6WXjvXbRizguW-2dLGRzuYzr5fuxEwGh2mFDXEs-Nd-c_OQ0d6Z/exec";
 
 
 
 
 
-
-
-/* ===========================
- ADMIN LOGIN
-=========================== */
+// =============================
+// LOGIN
+// =============================
 
 
 function login(){
 
 
-let username =
+let user =
 document.getElementById("username").value;
 
 
-let password =
+let pass =
 document.getElementById("password").value;
 
 
 
-if(username === "admin" && password === "12345"){
-
-
-alert("✅ Login Successful");
+if(user==="admin" && pass==="12345"){
 
 
 document.getElementById("loginModal").style.display="none";
 
 
-}
+alert("✅ Login Successful");
 
+
+}
 
 else{
 
@@ -1206,63 +1254,98 @@ alert("❌ Invalid Username or Password");
 
 
 
+// =============================
+// OPEN SECTION
+// =============================
 
 
-/* ===========================
- SAVE DATA TO GOOGLE SHEET
-=========================== */
-
-
-async function saveData(){
+window.openSection=function(section){
 
 
 
-const values=[
+let box =
+document.getElementById("dynamicSection");
 
 
-document.getElementById("date").value,
+
+let template =
+document.getElementById(section);
 
 
-document.getElementById("opdMale").value,
+
+if(template){
 
 
-document.getElementById("opdFemale").value,
+box.innerHTML =
+template.innerHTML;
 
 
-document.getElementById("er").value,
+}
+
+else{
 
 
-document.getElementById("lab").value,
+box.innerHTML=
+`
+
+<div class="section">
+
+<h3>
+${section}
+</h3>
+
+</div>
+
+`;
+
+}
 
 
-document.getElementById("xray").value,
-
-
-document.getElementById("usg").value,
-
-
-document.getElementById("ecg").value,
-
-
-document.getElementById("pharmacy").value,
-
-
-document.getElementById("admitted").value,
-
-
-document.getElementById("discharged").value,
-
-
-document.getElementById("beds").value
-
-
-];
+};
 
 
 
 
 
-console.log("Sending Data:",values);
+
+
+
+
+// =============================
+// SAVE MODULE DATA
+// =============================
+
+
+async function saveModule(sheetName){
+
+
+
+let values=[];
+
+
+
+let inputs =
+document.querySelectorAll("#dynamicSection input");
+
+
+
+inputs.forEach(function(input){
+
+
+values.push(input.value);
+
+
+});
+
+
+
+
+
+console.log(
+"Saving:",
+sheetName,
+values
+);
 
 
 
@@ -1271,8 +1354,8 @@ console.log("Sending Data:",values);
 try{
 
 
-
-const response = await fetch(API,{
+let response =
+await fetch(API,{
 
 
 method:"POST",
@@ -1284,7 +1367,8 @@ redirect:"follow",
 headers:{
 
 
-"Content-Type":"text/plain;charset=utf-8"
+"Content-Type":
+"text/plain;charset=utf-8"
 
 
 },
@@ -1293,7 +1377,7 @@ headers:{
 body:JSON.stringify({
 
 
-sheet:"Dashboard",
+sheet:sheetName,
 
 
 values:values
@@ -1308,72 +1392,59 @@ values:values
 
 
 
-const result = await response.text();
+let result =
+await response.text();
 
 
 
-console.log("Server Response:",result);
+console.log(
+"Server:",
+result
+);
 
 
 
-
-
-alert("✅ Data Saved Successfully");
+alert(
+"✅ "+sheetName+" Saved Successfully"
+);
 
 
 
 }
+
+
 
 catch(error){
 
 
-
-console.error("Save Error:",error);
+console.error(error);
 
 
 alert(
-"❌ Data Save Failed\n"+
+"❌ Save Failed : "+
 error.message
 );
 
 
-
-}
-
-
 }
 
 
 
+}
 
 
-
-
-/* ===========================
- SAVE BUTTON
-=========================== */
-
-
-document
-.getElementById("saveBtn")
-.addEventListener(
-"click",
-saveData
-);
 
 
 
 </script>
-
-<script>
-
-function openSection(section){
-
-    alert(section + " section opened");
-
-}
-
 </script>
+
+
+</div>
+
+</div>
+
+
 </body>
 
 </html>
