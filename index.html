@@ -380,8 +380,8 @@ const API =
 "https://script.google.com/macros/s/AKfycbzpbKRU6kCKackXSUjq5qJh-6jUOLBkcjVaoGvvmYurSFEMzx7t5IiqpbTvHV9uFKIU/exec";
 
 async function loadDashboard() {
-
-  const response = await fetch(sheetURL);
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAiXXDqTnF_aPIskvxLbrtkMacXtlrNriiBI4stxVybAYFj-SGbcO_YcQVurTPbqM0HR23Cw67mJC3/pub?output=csv";
+  const response = await fetch(SHEET_URL);
   const data = await response.text();
 
   const rows = data.split("\\n");
