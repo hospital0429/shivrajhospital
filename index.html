@@ -607,7 +607,9 @@ let rows = csv.trim().split("\n");
 
 // Last row (latest data)
 
-let latest = rows[rows.length-1].split(",");
+let validRows = rows.filter(row => row.split(",")[1]);
+
+let latest = validRows[validRows.length-1].split(",");
 
 
 
