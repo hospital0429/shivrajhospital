@@ -669,14 +669,10 @@ alert("✅ Data Saved Successfully");
 
 // loadCards();
 
-}catch(error){
-
-alert("❌ Save Failed");
-
-console.log(error);
-
+catch(error){
+    console.error("Full Error:", error);
+    alert(error.toString());
 }
-
 }
 
 
