@@ -410,14 +410,23 @@ async function loadDashboard() {
 
     const values = rows[1].split(",");
 
-    document.getElementById("maleOPD").innerText = values[0] || 0;
-    document.getElementById("femaleOPD").innerText = values[1] || 0;
-    document.getElementById("totalOPD").innerText = values[2] || 0;
-    document.getElementById("emergencyData").innerText = values[3] || 0;
-    document.getElementById("labData").innerText = values[4] || 0;
-    document.getElementById("xrayData").innerText = values[5] || 0;
-    document.getElementById("ecgData").innerText = values[6] || 0;
-    document.getElementById("usgData").innerText = values[7] || 0;
+   document.getElementById("maleOPD").innerHTML = latest[1];
+
+document.getElementById("femaleOPD").innerHTML = latest[2];
+
+document.getElementById("totalOPD").innerHTML =
+Number(latest[1]) + Number(latest[2]);
+
+
+document.getElementById("emergencyData").innerHTML = latest[3];
+
+document.getElementById("labData").innerHTML = latest[4];
+
+document.getElementById("ecgData").innerHTML = latest[6];
+
+document.getElementById("usgData").innerHTML = latest[7];
+
+document.getElementById("xrayData").innerHTML = latest[8];
   }
 }
 
