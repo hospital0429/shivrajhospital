@@ -590,7 +590,7 @@ Shivraj Hospital
 
 
 
-<a href="javascript:void(0)" onclick="openSection('Doctors')">
+<a href="#" id="doctorMenu">
 
 <i class="fas fa-user-doctor"></i>
 
@@ -932,16 +932,11 @@ document
 saveData
 );
 
+window.openSection = function(section){
 
+    alert(section + " section opened");
 
-function openSection(section){
-
-    alert(section+" clicked");
-
-}
-
-
-const API = "https://script.google.com/macros/s/AKfycbyqDnLjXSo3XLdRJDibkK5BdyvCnoz1djt_RrzxqUPNY90D5bneH_8UcpB803FRTi31/exec";
+};
 <script>
 
 
