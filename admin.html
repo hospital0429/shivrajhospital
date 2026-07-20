@@ -1062,7 +1062,7 @@ Save Doctor
 async function saveDoctor(){
 
 
-let values=[
+const values=[
 
 document.getElementById("doctorName").value,
 
@@ -1075,18 +1075,25 @@ document.getElementById("phone").value
 ];
 
 
-console.log(values);
+console.log("Doctor Data:",values);
 
 
-let response = await fetch(API,{
+
+try{
+
+
+const response = await fetch(API,{
 
 method:"POST",
+
+redirect:"follow",
 
 headers:{
 
 "Content-Type":"text/plain;charset=utf-8"
 
 },
+
 
 body:JSON.stringify({
 
@@ -1096,10 +1103,33 @@ values:values
 
 })
 
+
 });
 
 
-alert("Doctor Saved Successfully");
+
+const result = await response.text();
+
+
+console.log("Server:",result);
+
+
+
+alert("✅ Doctor Saved Successfully");
+
+
+}
+
+catch(error){
+
+
+console.error(error);
+
+
+alert("❌ Save Failed : "+error.message);
+
+
+}
 
 
 }
