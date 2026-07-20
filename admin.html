@@ -934,9 +934,100 @@ saveData
 
 window.openSection = function(section){
 
-    alert(section + " section opened");
+
+let area = document.getElementById("dynamicSection");
+
+
+if(section=="Doctors"){
+
+
+area.innerHTML = `
+
+<div class="section">
+
+<h3>
+<i class="fas fa-user-doctor"></i>
+Doctor Entry
+</h3>
+
+
+<div class="form-grid">
+
+
+<input id="doctorName" placeholder="Doctor Name">
+
+<input id="department" placeholder="Department">
+
+<input id="qualification" placeholder="Qualification">
+
+<input id="phone" placeholder="Phone Number">
+
+
+</div>
+
+
+<button class="saveBtn" onclick="saveDoctor()">
+
+Save Doctor
+
+</button>
+
+
+</div>
+
+`;
+
+
+}
+
+
 
 };
+async function saveDoctor(){
+
+
+let values=[
+
+document.getElementById("doctorName").value,
+
+document.getElementById("department").value,
+
+document.getElementById("qualification").value,
+
+document.getElementById("phone").value
+
+];
+
+
+
+await fetch(API,{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":"text/plain;charset=utf-8"
+
+},
+
+
+body:JSON.stringify({
+
+sheet:"Doctors",
+
+values:values
+
+})
+
+
+});
+
+
+alert("Doctor Saved Successfully");
+
+
+}
+<div id="dynamicSection"></div>
 <script>
 
 
