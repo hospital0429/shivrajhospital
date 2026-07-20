@@ -632,8 +632,8 @@ Shivraj Hospital
 
 
 
-<a href="#">
-<i class="fas fa-notes-medical"></i>
+<a href="javascript:void(0)" onclick="openSection('ANC')">
+<i class="fas fa-user-notes-medical"></i>
 <span>ANC</span>
 </a>
 
@@ -646,18 +646,17 @@ Shivraj Hospital
 
 
 
-<a href="#">
-<i class="fas fa-calendar"></i>
+<a href="javascript:void(0)" onclick="openSection('Duty Roster')">
+<i class="fas fa-user-calander"></i>
 <span>Duty Roster</span>
 </a>
 
 
 
-<a href="#">
-<i class="fas fa-gear"></i>
+<a href="javascript:void(0)" onclick="openSection('Settings')">
+<i class="fas fa-user-gear"></i>
 <span>Settings</span>
 </a>
-
 
 
 </div>
@@ -921,6 +920,23 @@ Save Data
 
 
 </div>
+ document
+.getElementById("saveBtn")
+.addEventListener(
+"click",
+saveData
+);
+
+
+
+function openSection(section){
+
+    alert(section + " section opened");
+
+}
+
+
+</script>
 <script>
 
 
