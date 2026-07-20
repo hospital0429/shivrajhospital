@@ -562,6 +562,114 @@ setInterval(() => {
 }, 30000);
 
 </script>
+<script>
 
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAiXXDqTnF_aPIskvxLbrtkMacXtlrNriiBI4stxVybAYFj-SGbcO_YcQVurTPbqM0HR23Cw67mJC3/pub?output=csv";
+
+
+async function loadHospitalDashboard(){
+
+try{
+
+
+const response = await fetch(SHEET_URL);
+
+const csv = await response.text();
+
+
+let rows = csv.trim().split("\n");
+
+
+// Last row (latest data)
+
+let latest = rows[rows.length-1].split(",");
+
+
+
+console.log(latest);
+
+
+// Column mapping
+// A Date
+// B OPD Male
+// C OPD Female
+// D ER
+// E Lab
+// F Pharmacy
+// G ECG
+// H USG
+// I XRay
+
+
+
+let opdMale = Number(latest[1]) || 0;
+
+let opdFemale = Number(latest[2]) || 0;
+
+
+
+document.getElementById("maleOPD").innerHTML = opdMale;
+
+
+document.getElementById("femaleOPD").innerHTML = opdFemale;
+
+
+document.getElementById("totalOPD").innerHTML =
+opdMale + opdFemale;
+
+
+
+document.getElementById("emergencyData").innerHTML =
+Number(latest[3]) || 0;
+
+
+
+document.getElementById("labData").innerHTML =
+Number(latest[4]) || 0;
+
+
+
+document.getElementById("ecgData").innerHTML =
+Number(latest[6]) || 0;
+
+
+
+document.getElementById("usgData").innerHTML =
+Number(latest[7]) || 0;
+
+
+
+document.getElementById("xrayData").innerHTML =
+Number(latest[8]) || 0;
+
+
+
+}
+
+catch(error){
+
+console.log("Dashboard Error:",error);
+
+}
+
+
+}
+
+
+
+// Load first time
+
+loadHospitalDashboard();
+
+
+// Auto update every 1 minute
+
+setInterval(
+loadHospitalDashboard,
+60000
+);
+
+
+</script>
 </body>
 </html>
