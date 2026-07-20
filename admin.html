@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Shivraj Hospital Admin Panel</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 
 <style>
 
@@ -13,108 +14,108 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+font-family:Segoe UI,Arial,sans-serif;
 }
 
 body{
-background:#eef5ff;
+background:#eef4fb;
+overflow-x:hidden;
 }
 
-/* LOGIN */
+/*=====================
+ SIDEBAR
+======================*/
 
-#loginPage{
+.sidebar{
 
+position:fixed;
+left:0;
+top:0;
+
+width:250px;
 height:100vh;
 
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-}
-
-.login-box{
-
-width:380px;
-
-background:#fff;
-
-padding:35px;
-
-border-radius:15px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.15);
-
-}
-
-.login-box h2{
-
-text-align:center;
-
-color:#0d6efd;
-
-margin-bottom:25px;
-
-}
-
-.login-box input{
-
-width:100%;
-
-padding:12px;
-
-margin-bottom:15px;
-
-border:1px solid #ccc;
-
-border-radius:8px;
-
-font-size:15px;
-
-}
-
-.login-box button{
-
-width:100%;
-
-padding:12px;
-
 background:#0d6efd;
-
 color:#fff;
 
-border:none;
+}
 
-border-radius:8px;
+.logo{
 
-cursor:pointer;
+padding:25px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
 
-font-size:16px;
+border-bottom:1px solid rgba(255,255,255,.2);
 
 }
 
-.login-box button:hover{
+.logo i{
 
-background:#0a58ca;
-
-}
-
-/* DASHBOARD */
-
-#dashboard{
-
-display:none;
+font-size:40px;
+margin-bottom:10px;
+display:block;
 
 }
 
-.header{
+.menu{
 
-background:#0d6efd;
+padding:15px;
+
+}
+
+.menu a{
+
+display:block;
 
 color:white;
 
-padding:15px 25px;
+text-decoration:none;
+
+padding:12px;
+
+margin-bottom:8px;
+
+border-radius:8px;
+
+transition:.3s;
+
+}
+
+.menu a:hover{
+
+background:rgba(255,255,255,.18);
+
+}
+
+.menu i{
+
+width:25px;
+
+}
+
+/*=====================
+ MAIN
+======================*/
+
+.main{
+
+margin-left:250px;
+
+min-height:100vh;
+
+}
+
+/*=====================
+ HEADER
+======================*/
+
+.header{
+
+background:white;
+
+padding:18px 25px;
 
 display:flex;
 
@@ -122,29 +123,38 @@ justify-content:space-between;
 
 align-items:center;
 
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+
 }
 
 .header h2{
 
-font-size:22px;
+color:#0d6efd;
 
 }
 
-.logout{
+.admin{
 
-background:red;
+display:flex;
 
-color:white;
+align-items:center;
 
-border:none;
-
-padding:8px 15px;
-
-border-radius:6px;
-
-cursor:pointer;
+gap:12px;
 
 }
+
+.admin img{
+
+width:45px;
+height:45px;
+
+border-radius:50%;
+
+}
+
+/*=====================
+ DASHBOARD
+======================*/
 
 .container{
 
@@ -158,9 +168,7 @@ display:grid;
 
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 
-gap:15px;
-
-margin-bottom:30px;
+gap:20px;
 
 }
 
@@ -172,43 +180,61 @@ padding:20px;
 
 border-radius:12px;
 
-box-shadow:0 3px 10px rgba(0,0,0,.1);
+box-shadow:0 5px 15px rgba(0,0,0,.08);
 
-text-align:center;
+transition:.3s;
 
 }
 
-.card h3{
+.card:hover{
 
-font-size:16px;
+transform:translateY(-5px);
+
+}
+
+.card i{
+
+font-size:30px;
+
+color:#0d6efd;
 
 margin-bottom:10px;
 
-color:#444;
+}
+
+.card h4{
+
+color:#666;
+
+margin-bottom:8px;
 
 }
 
-.card h1{
+.card h2{
 
 color:#0d6efd;
 
 }
 
+/*=====================
+ DATA ENTRY
+======================*/
+
 .section{
+
+margin-top:30px;
 
 background:white;
 
-padding:20px;
+padding:25px;
 
 border-radius:12px;
 
-box-shadow:0 3px 10px rgba(0,0,0,.1);
-
-margin-top:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
 
 }
 
-.section h2{
+.section h3{
 
 margin-bottom:20px;
 
@@ -216,7 +242,7 @@ color:#0d6efd;
 
 }
 
-.grid{
+.form-grid{
 
 display:grid;
 
@@ -226,13 +252,23 @@ gap:15px;
 
 }
 
-.grid input{
+.form-grid input{
 
-padding:10px;
+padding:12px;
 
 border:1px solid #ccc;
 
 border-radius:8px;
+
+font-size:15px;
+
+outline:none;
+
+}
+
+.form-grid input:focus{
+
+border-color:#0d6efd;
 
 }
 
@@ -240,7 +276,7 @@ border-radius:8px;
 
 margin-top:20px;
 
-padding:12px 25px;
+padding:13px 28px;
 
 background:#198754;
 
@@ -250,9 +286,9 @@ border:none;
 
 border-radius:8px;
 
-cursor:pointer;
-
 font-size:16px;
+
+cursor:pointer;
 
 }
 
@@ -262,13 +298,35 @@ background:#157347;
 
 }
 
-@media(max-width:700px){
+/*=====================
+ MOBILE
+======================*/
 
-.header{
+@media(max-width:900px){
 
-flex-direction:column;
+.sidebar{
 
-gap:10px;
+width:70px;
+
+}
+
+.sidebar .text{
+
+display:none;
+
+}
+
+.main{
+
+margin-left:70px;
+
+}
+
+.logo{
+
+font-size:18px;
+
+padding:20px 10px;
 
 }
 
@@ -280,33 +338,63 @@ gap:10px;
 
 <body>
 
-<!-- LOGIN PAGE -->
+<!-- SIDEBAR -->
 
-<div id="loginPage">
+<div class="sidebar">
 
-<div class="login-box">
+<div class="logo">
 
-<h2>🏥 Shivraj Hospital</h2>
+<i class="fas fa-hospital"></i>
 
-<input type="text" id="username" placeholder="Username">
+<span class="text">Shivraj Hospital</span>
 
-<input type="password" id="password" placeholder="Password">
+</div>
 
-<button onclick="login()">Login</button>
+<div class="menu">
+
+<a href="#"><i class="fas fa-chart-line"></i> <span class="text">Dashboard</span></a>
+
+<a href="#"><i class="fas fa-user-doctor"></i> <span class="text">Doctors</span></a>
+
+<a href="#"><i class="fas fa-bed"></i> <span class="text">Indoor</span></a>
+
+<a href="#"><i class="fas fa-truck-medical"></i> <span class="text">Emergency</span></a>
+
+<a href="#"><i class="fas fa-flask"></i> <span class="text">Laboratory</span></a>
+
+<a href="#"><i class="fas fa-x-ray"></i> <span class="text">X-Ray</span></a>
+
+<a href="#"><i class="fas fa-stethoscope"></i> <span class="text">OPD</span></a>
+
+<a href="#"><i class="fas fa-notes-medical"></i> <span class="text">ANC</span></a>
+
+<a href="#"><i class="fas fa-image"></i> <span class="text">Gallery</span></a>
+
+<a href="#"><i class="fas fa-bullhorn"></i> <span class="text">Notices</span></a>
+
+<a href="#"><i class="fas fa-calendar"></i> <span class="text">Duty Roster</span></a>
+
+<a href="#"><i class="fas fa-gear"></i> <span class="text">Settings</span></a>
 
 </div>
 
 </div>
 
-<!-- DASHBOARD -->
+<!-- MAIN -->
 
-<div id="dashboard">
+<div class="main">
 
 <div class="header">
 
-<h2>🏥 Shivraj Hospital Admin Dashboard</h2>
+<h2>Hospital Management Dashboard</h2>
 
-<button class="logout" onclick="logout()">Logout</button>
+<div class="admin">
+
+<img src="https://ui-avatars.com/api/?name=Admin" alt="Admin">
+
+<strong>Administrator</strong>
+
+</div>
 
 </div>
 
@@ -315,42 +403,72 @@ gap:10px;
 <div class="cards">
 
 <div class="card">
-<h3>Today's OPD</h3>
-<h1 id="cardOPD">0</h1>
+
+<i class="fas fa-user-doctor"></i>
+
+<h4>Today's OPD</h4>
+
+<h2 id="opdCard">0</h2>
+
 </div>
 
 <div class="card">
-<h3>Emergency</h3>
-<h1 id="cardER">0</h1>
+
+<i class="fas fa-truck-medical"></i>
+
+<h4>Emergency</h4>
+
+<h2 id="erCard">0</h2>
+
 </div>
 
 <div class="card">
-<h3>Laboratory</h3>
-<h1 id="cardLab">0</h1>
+
+<i class="fas fa-flask"></i>
+
+<h4>Laboratory</h4>
+
+<h2 id="labCard">0</h2>
+
 </div>
 
 <div class="card">
-<h3>Pharmacy</h3>
-<h1 id="cardPharmacy">0</h1>
+
+<i class="fas fa-x-ray"></i>
+
+<h4>X-Ray</h4>
+
+<h2 id="xrayCard">0</h2>
+
 </div>
 
 <div class="card">
-<h3>X-Ray</h3>
-<h1 id="cardXray">0</h1>
+
+<i class="fas fa-heart-pulse"></i>
+
+<h4>ECG</h4>
+
+<h2 id="ecgCard">0</h2>
+
 </div>
 
 <div class="card">
-<h3>USG</h3>
-<h1 id="cardUSG">0</h1>
+
+<i class="fas fa-pills"></i>
+
+<h4>Pharmacy</h4>
+
+<h2 id="pharmacyCard">0</h2>
+
 </div>
 
 </div>
 
 <div class="section">
 
-<h2>Daily Hospital Data Entry</h2>
+<h3>Daily Statistics Entry</h3>
 
-<div class="grid">
+<div class="form-grid">
 
 <input type="date" id="date">
 
@@ -362,13 +480,13 @@ gap:10px;
 
 <input type="number" id="lab" placeholder="Laboratory">
 
-<input type="number" id="pharmacy" placeholder="Pharmacy">
-
-<input type="number" id="ecg" placeholder="ECG">
+<input type="number" id="xray" placeholder="X-Ray">
 
 <input type="number" id="usg" placeholder="USG">
 
-<input type="number" id="xray" placeholder="X-Ray">
+<input type="number" id="ecg" placeholder="ECG">
+
+<input type="number" id="pharmacy" placeholder="Pharmacy">
 
 <input type="number" id="admitted" placeholder="Admitted">
 
@@ -378,8 +496,9 @@ gap:10px;
 
 </div>
 
-<button class="saveBtn" onclick="saveData()">
-💾 Save Data
+<button class="saveBtn" id="saveBtn">
+<i class="fas fa-save"></i>
+ Save Data
 </button>
 
 </div>
@@ -387,8 +506,89 @@ gap:10px;
 </div>
 
 </div>
+<!-- ===========================
+LOGIN MODAL
+=========================== -->
+
+<div id="loginModal" style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;">
+
+<div style="
+width:350px;
+background:#fff;
+padding:30px;
+border-radius:12px;
+text-align:center;">
+
+<h2 style="color:#0d6efd;">🏥 Admin Login</h2>
+
+<input
+type="text"
+id="username"
+placeholder="Username"
+style="
+width:100%;
+padding:12px;
+margin-top:20px;
+border:1px solid #ccc;
+border-radius:8px;">
+
+<input
+type="password"
+id="password"
+placeholder="Password"
+style="
+width:100%;
+padding:12px;
+margin-top:15px;
+border:1px solid #ccc;
+border-radius:8px;">
+
+<button
+onclick="login()"
+style="
+width:100%;
+padding:12px;
+margin-top:20px;
+background:#0d6efd;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;">
+
+Login
+
+</button>
+
+</div>
+
+</div>
 
 <script>
+
+const API="https://script.google.com/macros/s/AKfycbzpbKRU6kCKackXSUjq5qJh-6jUOLBkcjVaoGvvmYurSFEMzx7t5IiqpbTvHV9uFKIU/exec";
+
+/* ======================
+TODAY DATE
+====================== */
+
+document.getElementById("date").value=
+new Date().toISOString().split("T")[0];
+
+
+/* ======================
+LOGIN
+====================== */
 
 function login(){
 
@@ -398,47 +598,98 @@ let p=document.getElementById("password").value;
 
 if(u==="admin" && p==="shivraj@123"){
 
-document.getElementById("loginPage").style.display="none";
-
-document.getElementById("dashboard").style.display="block";
+document.getElementById("loginModal").style.display="none";
 
 }else{
 
-alert("Invalid Username or Password");
+alert("Wrong Username or Password");
 
 }
 
 }
 
-function logout(){
 
-location.reload();
-
-}
-<script>
-
-const API =
-"https://script.google.com/macros/s/AKfycbzpbKRU6kCKackXSUjq5qJh-6jUOLBkcjVaoGvvmYurSFEMzx7t5IiqpbTvHV9uFKIU/exec";
-function login(){
-
-...
-
-}
-
-function logout(){
-
-...
-
-}
+/* ======================
+SAVE DATA
+====================== */
 
 async function saveData(){
 
-...
+const values=[
+
+document.getElementById("date").value,
+
+document.getElementById("opdMale").value,
+
+document.getElementById("opdFemale").value,
+
+document.getElementById("er").value,
+
+document.getElementById("lab").value,
+
+document.getElementById("pharmacy").value,
+
+document.getElementById("ecg").value,
+
+document.getElementById("usg").value,
+
+document.getElementById("xray").value,
+
+document.getElementById("admitted").value,
+
+document.getElementById("discharged").value,
+
+document.getElementById("beds").value
+
+];
+
+try{
+
+const response=await fetch(API,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+sheet:"Dashboard",
+
+values:values
+
+})
+
+});
+
+const result=await response.text();
+
+alert("✅ Data Saved Successfully");
+
+loadCards();
+
+}catch(error){
+
+alert("❌ Save Failed");
+
+console.log(error);
 
 }
 
-</script>
+}
+
+
+/* ======================
+BUTTON
+====================== */
+
+document
+.getElementById("saveBtn")
+.addEventListener("click",saveData);
+
 </script>
 
 </body>
+
 </html>
