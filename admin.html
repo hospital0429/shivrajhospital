@@ -645,33 +645,36 @@ document.getElementById("beds").value
 
 try{
 
-const response=await fetch(API,{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-
-sheet:"Dashboard",
-
-values:values
-
-})
-
+const response = await fetch(API,{
+  method:"POST",
+  headers:{
+    "Content-Type":"application/json"
+  },
+  body:JSON.stringify({
+    sheet:"Dashboard",
+    values:values
+  })
 });
 
-const result=await response.text();
+const text = await response.text();
 
-alert("✅ Data Saved Successfully");
+console.log("Status:", response.status);
+console.log("Response:", text);
+
+if(!response.ok){
+    throw new Error(text);
+}
+
+alert("Saved Successfully");
 
 // loadCards();
 
 catch(error){
-    console.error("Full Error:", error);
-    alert(error.toString());
+
+console.error(error);
+
+alert("Save Failed: " + error.message);
+
 }
 }
 
