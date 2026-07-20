@@ -1,263 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Shivraj Hospital Admin Panel</title>
 
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 
 
+
 <style>
+
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:"Segoe UI",Arial,sans-serif;
+font-family:Segoe UI,Arial,sans-serif;
 }
+
 
 
 body{
 
 background:#eef4fb;
 
-}
-
-
-
-/* SIDEBAR */
-
-.sidebar{
-
-position:fixed;
-left:0;
-top:0;
-
-width:250px;
-height:100vh;
-
-background:#0d6efd;
-
-color:white;
+overflow-x:hidden;
 
 }
-
-
-.logo{
-
-padding:25px;
-
-text-align:center;
-
-font-size:22px;
-
-font-weight:bold;
-
-border-bottom:1px solid rgba(255,255,255,.3);
-
-}
-
-
-.logo i{
-
-font-size:45px;
-
-display:block;
-
-margin-bottom:10px;
-
-}
-
-
-
-.menu{
-
-padding:15px;
-
-}
-
-
-.menu a{
-
-display:block;
-
-color:white;
-
-text-decoration:none;
-
-padding:12px;
-
-margin-bottom:8px;
-
-border-radius:8px;
-
-}
-
-
-
-.menu a:hover{
-
-background:rgba(255,255,255,.2);
-
-}
-
-
-
-.menu i{
-
-width:25px;
-
-}
-
-
-
-
-
-/* MAIN */
-
-
-.main{
-
-margin-left:250px;
-
-}
-
-
-
-.header{
-
-height:75px;
-
-background:white;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-padding:20px 30px;
-
-box-shadow:0 3px 10px #ddd;
-
-}
-
-
-.header h2{
-
-color:#0d6efd;
-
-}
-
-
-
-.admin{
-
-display:flex;
-
-align-items:center;
-
-gap:10px;
-
-}
-
-
-
-.admin img{
-
-width:45px;
-
-height:45px;
-
-border-radius:50%;
-
-}
-
-
-
-
-
-.container{
-
-padding:25px;
-
-}
-
-
-
-/* CARDS */
-
-
-.cards{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-
-gap:20px;
-
-}
-
-
-
-.card{
-
-background:white;
-
-padding:20px;
-
-border-radius:12px;
-
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-
-}
-
-
-
-.card i{
-
-font-size:30px;
-
-color:#0d6efd;
-
-}
-
-
-
-.card h4{
-
-margin-top:10px;
-
-color:#666;
-
-}
-
-
-.card h2{
-
-color:#0d6efd;
-
-margin-top:8px;
-
-}
-
-
-
-
-
-
-
-/* FORM SECTION */
-
+/* DATA ENTRY */
 
 .section{
 
-background:white;
-
 margin-top:30px;
+
+background:white;
 
 padding:25px;
 
@@ -305,17 +87,27 @@ font-size:15px;
 
 
 
+.form-grid input:focus{
+
+outline:none;
+
+border-color:#0d6efd;
+
+}
+
+
+
 .saveBtn{
 
 margin-top:20px;
 
-padding:12px 30px;
+padding:13px 30px;
 
 background:#198754;
 
-border:none;
-
 color:white;
+
+border:none;
 
 border-radius:8px;
 
@@ -334,10 +126,248 @@ background:#157347;
 }
 
 
+/* SIDEBAR */
+
+
+.sidebar{
+
+position:fixed;
+
+left:0;
+
+top:0;
+
+width:250px;
+
+height:100vh;
+
+background:#0d6efd;
+
+color:white;
+
+}
 
 
 
-/* LOGIN */
+.logo{
+
+padding:25px;
+
+text-align:center;
+
+font-size:24px;
+
+font-weight:bold;
+
+border-bottom:1px solid rgba(255,255,255,.2);
+
+}
+
+
+
+.logo i{
+
+font-size:40px;
+
+display:block;
+
+margin-bottom:10px;
+
+}
+
+
+
+.menu{
+
+padding:15px;
+
+}
+
+
+
+.menu a{
+
+display:block;
+
+color:white;
+
+text-decoration:none;
+
+padding:12px;
+
+margin-bottom:8px;
+
+border-radius:8px;
+
+}
+
+
+
+.menu a:hover{
+
+background:rgba(255,255,255,.18);
+
+}
+
+
+
+.menu i{
+
+width:25px;
+
+}
+
+
+
+/* MAIN */
+
+
+.main{
+
+margin-left:250px;
+
+min-height:100vh;
+
+}
+
+
+
+/* HEADER */
+
+
+.header{
+
+background:white;
+
+padding:18px 25px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+}
+
+
+
+.header h2{
+
+color:#0d6efd;
+
+}
+
+
+
+.admin{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+
+
+.admin img{
+
+width:45px;
+
+height:45px;
+
+border-radius:50%;
+
+}
+
+
+
+/* CONTAINER */
+
+
+.container{
+
+padding:25px;
+
+}
+
+
+
+/* CARDS */
+
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+gap:20px;
+
+}
+
+
+
+.card{
+
+background:white;
+
+padding:20px;
+
+border-radius:12px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+
+
+.card:hover{
+
+transform:translateY(-5px);
+
+}
+
+
+
+.card i{
+
+font-size:30px;
+
+color:#0d6efd;
+
+margin-bottom:10px;
+
+}
+
+
+
+.card h4{
+
+color:#666;
+
+}
+
+
+
+.card h2{
+
+color:#0d6efd;
+
+margin-top:8px;
+
+}
+
+
+
+
+
+/* LOGIN MODAL */
 
 
 #loginModal{
@@ -356,9 +386,9 @@ background:rgba(0,0,0,.6);
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
+
+align-items:center;
 
 z-index:9999;
 
@@ -366,7 +396,7 @@ z-index:9999;
 
 
 
-.loginBox{
+.login-card{
 
 width:350px;
 
@@ -374,7 +404,7 @@ background:white;
 
 padding:30px;
 
-border-radius:15px;
+border-radius:12px;
 
 text-align:center;
 
@@ -382,7 +412,7 @@ text-align:center;
 
 
 
-.loginBox h2{
+.login-card h2{
 
 color:#0d6efd;
 
@@ -392,27 +422,31 @@ margin-bottom:20px;
 
 
 
-.loginBox input{
+.login-card input{
 
 width:100%;
 
 padding:12px;
 
-margin-bottom:15px;
+margin-top:15px;
 
 border:1px solid #ccc;
 
 border-radius:8px;
 
+font-size:15px;
+
 }
 
 
 
-.loginBtn{
+.login-card button{
 
 width:100%;
 
 padding:12px;
+
+margin-top:20px;
 
 background:#0d6efd;
 
@@ -428,6 +462,13 @@ cursor:pointer;
 
 }
 
+
+
+.login-card button:hover{
+
+background:#0958c7;
+
+}
 
 
 
@@ -461,8 +502,6 @@ margin-left:70px;
 
 
 
-
-
 </style>
 
 
@@ -473,18 +512,20 @@ margin-left:70px;
 
 
 
+
 <!-- LOGIN -->
 
 
 <div id="loginModal">
 
 
-<div class="loginBox">
+<div class="login-card">
 
 
 <h2>
 🏥 Admin Login
 </h2>
+
 
 
 <input 
@@ -493,14 +534,15 @@ type="text"
 placeholder="Username">
 
 
-<input 
+
+<input
 id="password"
 type="password"
 placeholder="Password">
 
 
 
-<button class="loginBtn" onclick="login()">
+<button onclick="login()">
 
 Login
 
@@ -516,7 +558,6 @@ Login
 
 
 
-
 <!-- SIDEBAR -->
 
 
@@ -525,13 +566,17 @@ Login
 
 <div class="logo">
 
+
 <i class="fas fa-hospital"></i>
+
 
 <span>
 Shivraj Hospital
 </span>
 
+
 </div>
+
 
 
 
@@ -544,10 +589,12 @@ Shivraj Hospital
 </a>
 
 
+
 <a href="#">
 <i class="fas fa-user-doctor"></i>
 <span>Doctors</span>
 </a>
+
 
 
 <a href="#">
@@ -556,10 +603,12 @@ Shivraj Hospital
 </a>
 
 
+
 <a href="#">
 <i class="fas fa-truck-medical"></i>
 <span>Emergency</span>
 </a>
+
 
 
 <a href="#">
@@ -568,10 +617,19 @@ Shivraj Hospital
 </a>
 
 
+
 <a href="#">
 <i class="fas fa-x-ray"></i>
 <span>X-Ray</span>
 </a>
+
+
+
+<a href="#">
+<i class="fas fa-stethoscope"></i>
+<span>OPD</span>
+</a>
+
 
 
 <a href="#">
@@ -580,10 +638,26 @@ Shivraj Hospital
 </a>
 
 
+
 <a href="#">
 <i class="fas fa-bullhorn"></i>
 <span>Notices</span>
 </a>
+
+
+
+<a href="#">
+<i class="fas fa-calendar"></i>
+<span>Duty Roster</span>
+</a>
+
+
+
+<a href="#">
+<i class="fas fa-gear"></i>
+<span>Settings</span>
+</a>
+
 
 
 </div>
@@ -602,12 +676,11 @@ Shivraj Hospital
 <div class="main">
 
 
-
 <div class="header">
 
 
 <h2>
-Shivraj Hospital Admin Dashboard
+Hospital Management Dashboard
 </h2>
 
 
@@ -642,9 +715,7 @@ Administrator
 
 <i class="fas fa-user-doctor"></i>
 
-<h4>
-Today's OPD
-</h4>
+<h4>Today's OPD</h4>
 
 <h2 id="opdCard">
 0
@@ -659,9 +730,7 @@ Today's OPD
 
 <i class="fas fa-truck-medical"></i>
 
-<h4>
-Emergency
-</h4>
+<h4>Emergency</h4>
 
 <h2 id="erCard">
 0
@@ -672,14 +741,11 @@ Emergency
 
 
 
-
 <div class="card">
 
 <i class="fas fa-flask"></i>
 
-<h4>
-Laboratory
-</h4>
+<h4>Laboratory</h4>
 
 <h2 id="labCard">
 0
@@ -690,14 +756,11 @@ Laboratory
 
 
 
-
 <div class="card">
 
 <i class="fas fa-x-ray"></i>
 
-<h4>
-X-Ray
-</h4>
+<h4>X-Ray</h4>
 
 <h2 id="xrayCard">
 0
@@ -708,14 +771,11 @@ X-Ray
 
 
 
-
 <div class="card">
 
 <i class="fas fa-heart-pulse"></i>
 
-<h4>
-ECG
-</h4>
+<h4>ECG</h4>
 
 <h2 id="ecgCard">
 0
@@ -726,14 +786,11 @@ ECG
 
 
 
-
 <div class="card">
 
 <i class="fas fa-pills"></i>
 
-<h4>
-Pharmacy
-</h4>
+<h4>Pharmacy</h4>
 
 <h2 id="pharmacyCard">
 0
@@ -744,21 +801,27 @@ Pharmacy
 
 
 </div>
+<!-- DAILY STATISTICS ENTRY -->
 
-<!-- DAILY DATA ENTRY SECTION -->
 
 <div class="section">
 
+
 <h3>
 <i class="fas fa-chart-line"></i>
- Daily Statistics Entry
+Daily Statistics Entry
 </h3>
+
 
 
 <div class="form-grid">
 
 
-<input type="date" id="date">
+
+<input 
+type="date"
+id="date">
+
 
 
 <input 
@@ -767,10 +830,12 @@ id="opdMale"
 placeholder="OPD Male">
 
 
+
 <input 
 type="number"
 id="opdFemale"
 placeholder="OPD Female">
+
 
 
 <input 
@@ -779,10 +844,12 @@ id="er"
 placeholder="Emergency Patients">
 
 
+
 <input 
 type="number"
 id="lab"
 placeholder="Laboratory">
+
 
 
 <input 
@@ -791,10 +858,12 @@ id="xray"
 placeholder="X-Ray">
 
 
+
 <input 
 type="number"
 id="usg"
 placeholder="USG">
+
 
 
 <input 
@@ -803,10 +872,12 @@ id="ecg"
 placeholder="ECG">
 
 
+
 <input 
 type="number"
 id="pharmacy"
 placeholder="Pharmacy">
+
 
 
 <input 
@@ -815,10 +886,12 @@ id="admitted"
 placeholder="Indoor Admitted">
 
 
+
 <input 
 type="number"
 id="discharged"
 placeholder="Discharged">
+
 
 
 <input 
@@ -827,7 +900,9 @@ id="beds"
 placeholder="Total Beds">
 
 
+
 </div>
+
 
 
 
@@ -835,32 +910,23 @@ placeholder="Total Beds">
 class="saveBtn"
 id="saveBtn">
 
+
 <i class="fas fa-save"></i>
 
 Save Data
+
 
 </button>
 
 
 
 </div>
-
-
-
-</div>
-
-</div>
-
-
-
-
-
 <script>
 
 
-/* =========================
- GOOGLE SHEET API URL
-========================= */
+/* ===========================
+ GOOGLE SHEET API
+=========================== */
 
 
 const API = "https://script.google.com/macros/s/AKfycbyqDnLjXSo3XLdRJDibkK5BdyvCnoz1djt_RrzxqUPNY90D5bneH_8UcpB803FRTi31/exec";
@@ -869,9 +935,9 @@ const API = "https://script.google.com/macros/s/AKfycbyqDnLjXSo3XLdRJDibkK5BdyvC
 
 
 
-/* =========================
- SET TODAY DATE
-========================= */
+/* ===========================
+ AUTO TODAY DATE
+=========================== */
 
 
 document.getElementById("date").value =
@@ -883,9 +949,9 @@ new Date().toISOString().split("T")[0];
 
 
 
-/* =========================
- LOGIN FUNCTION
-========================= */
+/* ===========================
+ ADMIN LOGIN
+=========================== */
 
 
 function login(){
@@ -900,7 +966,7 @@ document.getElementById("password").value;
 
 
 
-if(username==="admin" && password==="12345"){
+if(username === "admin" && password === "12345"){
 
 
 alert("✅ Login Successful");
@@ -910,6 +976,7 @@ document.getElementById("loginModal").style.display="none";
 
 
 }
+
 
 else{
 
@@ -928,39 +995,51 @@ alert("❌ Invalid Username or Password");
 
 
 
-/* =========================
+
+/* ===========================
  SAVE DATA TO GOOGLE SHEET
-========================= */
+=========================== */
 
 
 async function saveData(){
 
 
 
-let values=[
+const values=[
 
 
 document.getElementById("date").value,
 
+
 document.getElementById("opdMale").value,
+
 
 document.getElementById("opdFemale").value,
 
+
 document.getElementById("er").value,
+
 
 document.getElementById("lab").value,
 
+
 document.getElementById("xray").value,
+
 
 document.getElementById("usg").value,
 
+
 document.getElementById("ecg").value,
+
 
 document.getElementById("pharmacy").value,
 
+
 document.getElementById("admitted").value,
 
+
 document.getElementById("discharged").value,
+
 
 document.getElementById("beds").value
 
@@ -970,14 +1049,18 @@ document.getElementById("beds").value
 
 
 
+
 console.log("Sending Data:",values);
+
+
 
 
 
 try{
 
 
-let response = await fetch(API,{
+
+const response = await fetch(API,{
 
 
 method:"POST",
@@ -1013,11 +1096,12 @@ values:values
 
 
 
-let result = await response.text();
+const result = await response.text();
 
 
 
 console.log("Server Response:",result);
+
 
 
 
@@ -1031,7 +1115,8 @@ alert("✅ Data Saved Successfully");
 catch(error){
 
 
-console.error(error);
+
+console.error("Save Error:",error);
 
 
 alert(
@@ -1040,21 +1125,21 @@ error.message
 );
 
 
-}
-
-
 
 }
 
 
+}
 
 
 
 
 
-/* =========================
- BUTTON CLICK
-========================= */
+
+
+/* ===========================
+ SAVE BUTTON
+=========================== */
 
 
 document
@@ -1067,7 +1152,6 @@ saveData
 
 
 </script>
-
 
 
 </body>
