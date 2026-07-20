@@ -1,681 +1,919 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shivraj Hospital</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+<title>Shivraj Hospital</title>
 
-    body {
-      font-family: Arial, sans-serif;
-    }
+<script src="https://cdn.tailwindcss.com"></script>
 
-    .glass {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(12px);
-    }
-  </style>
+<style>
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,sans-serif;
+}
+
+.glass{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(12px);
+}
+
+</style>
+
 </head>
+
 
 <body class="bg-gray-100 text-gray-800">
 
-<!-- FLOATING BUTTON -->
+
+<!-- FLOATING DASHBOARD BUTTON -->
+
 <a href="#dashboard"
-   class="fixed bottom-6 right-6 bg-blue-900 text-white px-6 py-4 rounded-full shadow-2xl z-50 font-semibold hover:scale-105 transition">
-   Live Dashboard
+class="fixed bottom-6 right-6 bg-blue-900 text-white px-6 py-4 rounded-full shadow-xl z-50">
+
+📊 Live Dashboard
+
 </a>
 
-<!-- TOP HEADER -->
-<div class="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center">
 
-  <div>
-    📍 Krishnanagar Municipality - 9, Bahadurgunj, Kapilvastu
-  </div>
 
-  <div class="flex gap-4 mt-2 md:mt-0">
-    <span>📞 +977 9876543210</span>
-    <span>✉️ shivrajhospital43@gmail.com</span>
-  </div>
+<!-- TOP BAR -->
+
+<div class="bg-blue-900 text-white px-5 py-3 flex flex-col md:flex-row justify-between text-sm">
+
+<div>
+📍 Krishnanagar Municipality - 9, Bahadurgunj, Kapilvastu
+</div>
+
+<div class="flex gap-4">
+📞 +977 9876543210
+
+✉️ shivrajhospital43@gmail.com
+</div>
 
 </div>
 
+
+
+
 <!-- NAVBAR -->
-<nav class="bg-white shadow-md sticky top-0 z-50">
 
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+<nav class="bg-white shadow sticky top-0 z-40">
 
-    <div class="flex items-center gap-4">
 
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/0/00/Emblem_of_Nepal.svg"
-        class="w-14 h-14"
-      />
+<div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
 
-      <div>
-        <h1 class="text-2xl font-bold text-blue-900">
-          शिवराज अस्पताल
-        </h1>
 
-        <p class="text-sm text-gray-600">
-          Shivraj Hospital, Bahadurgunj Kapilvastu
-        </p>
-      </div>
+<div class="flex items-center gap-4">
 
-    </div>
 
-    <div class="hidden md:flex gap-6 font-medium">
-      <a href="#">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#dashboard">Dashboard</a>
-      <a href="#staff">Staff</a>
-      <a href="#roster">Roster</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#notices">Notices</a>
-      <a href="#contact">Contact</a>
-    </div>
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/0/00/Emblem_of_Nepal.svg"
+class="w-14 h-14">
 
-  </div>
+
+<div>
+
+<h1 class="text-2xl font-bold text-blue-900">
+
+शिवराज अस्पताल
+
+</h1>
+
+
+<p class="text-gray-600 text-sm">
+
+Shivraj Hospital, Bahadurgunj Kapilvastu
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="hidden md:flex gap-5 font-semibold">
+
+
+<a href="#">Home</a>
+
+<a href="#about">About</a>
+
+<a href="#services">Services</a>
+
+<a href="#dashboard">Dashboard</a>
+
+<a href="#staff">Staff</a>
+
+<a href="#roster">Roster</a>
+
+<a href="#gallery">Gallery</a>
+
+<a href="#notices">Notice</a>
+
+<a href="#contact">Contact</a>
+
+
+</div>
+
+
+</div>
+
 
 </nav>
 
-<!-- HERO -->
+
+
+
+
+<!-- HERO SECTION -->
+
+
 <section class="bg-blue-900 text-white py-24">
 
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
 
-    <div>
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
 
-      <div class="inline-block bg-red-600 px-4 py-1 rounded-full text-sm mb-4 animate-pulse">
-        24/7 Emergency Health Service
-      </div>
 
-      <h2 class="text-5xl font-extrabold leading-tight mb-6">
-        Welcome to <br> Shivraj Hospital
-      </h2>
+<div>
 
-      <p class="text-lg text-gray-200 mb-8 leading-relaxed">
-        Government healthcare service center providing quality medical services.
-      </p>
 
-      <div class="flex flex-wrap gap-4">
+<div class="bg-red-600 inline-block px-4 py-2 rounded-full mb-5">
 
-        <button class="bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold shadow-lg">
-          View Services
-        </button>
+24/7 Emergency Service
 
-        <button class="border border-white px-6 py-3 rounded-xl font-semibold">
-          Emergency Contact
-        </button>
+</div>
 
-      </div>
 
-    </div>
 
-    <div class="glass rounded-3xl p-8 border border-white/20 shadow-2xl">
+<h2 class="text-5xl font-bold leading-tight mb-6">
 
-      <h3 class="text-2xl font-bold mb-6">
-        Quick Information
-      </h3>
+Welcome To
+<br>
+Shivraj Hospital
 
-      <div class="space-y-4 text-lg">
+</h2>
 
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>Emergency</span>
-          <span>24 Hours</span>
-        </div>
 
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>OPD Service</span>
-          <span>Daily Available</span>
-        </div>
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>Maternity</span>
-          <span>24 Hours</span>
-        </div>
 
-        <div class="flex justify-between border-b border-white/20 pb-2">
-          <span>Laboratory</span>
-          <span>Available</span>
-        </div>
+<p class="text-xl text-gray-200 mb-8">
 
-      </div>
+Quality healthcare service with modern medical facilities.
 
-    </div>
+</p>
 
-  </div>
+
+
+<button class="bg-white text-blue-900 px-7 py-3 rounded-xl font-bold">
+
+View Services
+
+</button>
+
+
+</div>
+
+
+
+
+<div class="glass rounded-3xl p-8 border border-white/20">
+
+
+<h3 class="text-3xl font-bold mb-6">
+
+Quick Information
+
+</h3>
+
+
+
+<div class="space-y-4 text-lg">
+
+
+<div class="flex justify-between border-b border-white/20 pb-3">
+
+<span>Emergency</span>
+
+<span>24 Hours</span>
+
+</div>
+
+
+<div class="flex justify-between border-b border-white/20 pb-3">
+
+<span>OPD</span>
+
+<span>Daily</span>
+
+</div>
+
+
+<div class="flex justify-between border-b border-white/20 pb-3">
+
+<span>Maternity</span>
+
+<span>Available</span>
+
+</div>
+
+
+<div class="flex justify-between">
+
+<span>Laboratory</span>
+
+<span>Available</span>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
 
 </section>
+
+
+
+
+
+
 
 <!-- ABOUT -->
+
+
 <section id="about" class="py-20 bg-white">
 
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
-    <div>
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
 
-      <img
-        src="https://drive.google.com/uc?id=1EcxGTVnvHyfsH8fSSjT27WdH50jSaHAY=80&w=1200&auto=format&fit=crop"
-        class="rounded-3xl shadow-2xl"
-      />
 
-    </div>
+<img
 
-    <div>
+src="https://drive.google.com/uc?id=1EcxGTVnvHyfsH8fSSjT27WdH50jSaHAY"
 
-      <h2 class="text-4xl font-bold text-blue-900 mb-6">
-        About Shivraj Hospital
-      </h2>
+class="rounded-3xl shadow-xl">
 
-      <p class="text-lg text-gray-600 leading-relaxed mb-6">
-        Shivraj Hospital is committed to delivering quality healthcare services with modern medical facilities and compassionate care.
-      </p>
 
-      <div class="grid grid-cols-2 gap-4">
+<div>
 
-        <div class="bg-blue-50 p-5 rounded-2xl shadow-sm">
-          <h4 class="text-3xl font-bold text-blue-900">24/7</h4>
-          <p>Emergency Service</p>
-        </div>
 
-        <div class="bg-blue-50 p-5 rounded-2xl shadow-sm">
-          <h4 class="text-3xl font-bold text-blue-900">20+</h4>
-          <p>Health Services</p>
-        </div>
+<h2 class="text-4xl font-bold text-blue-900 mb-5">
 
-      </div>
+About Shivraj Hospital
 
-    </div>
+</h2>
 
-  </div>
+
+<p class="text-lg text-gray-600 leading-relaxed">
+
+Shivraj Hospital is committed to providing quality healthcare services with experienced medical professionals and patient centered care.
+
+</p>
+
+
+
+<div class="grid grid-cols-2 gap-5 mt-8">
+
+
+<div class="bg-blue-50 rounded-xl p-5">
+
+<h3 class="text-3xl font-bold text-blue-900">
+
+24/7
+
+</h3>
+
+<p>
+Emergency Service
+</p>
+
+
+</div>
+
+
+
+<div class="bg-blue-50 rounded-xl p-5">
+
+<h3 class="text-3xl font-bold text-blue-900">
+
+20+
+
+</h3>
+
+<p>
+
+Health Services
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
 
 </section>
 
-    </div>
 
-  </div>
 
-</section>
+
+
+
 
 <!-- DASHBOARD -->
+
+
 <section id="dashboard" class="py-20 bg-white">
 
-  <div class="max-w-7xl mx-auto px-6">
 
-    <div class="text-center mb-14">
+<div class="max-w-7xl mx-auto px-6">
 
-      <h2 class="text-5xl font-bold text-blue-900 mb-4">
-        Live Hospital Dashboard
-      </h2>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<h2 class="text-center text-5xl font-bold text-blue-900 mb-12">
 
-      <div class="bg-blue-900 text-white rounded-3xl p-8">
-        <h3 class="text-2xl font-bold mb-4">OPD</h3>
+Live Hospital Dashboard
 
-        <p>Male: <span id="maleOPD">0</span></p>
-        <p>Female: <span id="femaleOPD">0</span></p>
-        <p>Total: <span id="totalOPD">0</span></p>
-      </div>
+</h2>
 
-      <div class="bg-red-600 text-white rounded-3xl p-8">
-        <h3 class="text-2xl font-bold mb-4">Emergency</h3>
-        <div id="emergencyData" class="text-5xl font-bold">0</div>
-      </div>
 
-      <div class="bg-green-600 text-white rounded-3xl p-8">
-        <h3 class="text-2xl font-bold mb-4">Lab</h3>
-        <div id="labData" class="text-5xl font-bold">0</div>
-      </div>
 
-      <div class="bg-purple-600 text-white rounded-3xl p-8">
-        <h3 class="text-2xl font-bold mb-4">X-Ray</h3>
-        <div id="xrayData" class="text-5xl font-bold">0</div>
-      </div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-      <div class="bg-pink-600 text-white rounded-3xl p-8">
-        <h3 class="text-2xl font-bold mb-4">ECG</h3>
-        <div id="ecgData" class="text-5xl font-bold">0</div>
-      </div>
 
-      <div class="bg-yellow-500 text-white rounded-3xl p-8">
-        <h3 class="text-2xl font-bold mb-4">USG</h3>
-        <div id="usgData" class="text-5xl font-bold">0</div>
-      </div>
 
-    </div>
+<div class="bg-blue-900 text-white rounded-3xl p-8">
 
-  </div>
+<h3 class="text-2xl font-bold mb-4">
+
+OPD
+
+</h3>
+
+
+<p>
+Male:
+<span id="maleOPD">
+0
+</span>
+
+</p>
+
+
+<p>
+Female:
+<span id="femaleOPD">
+0
+</span>
+
+</p>
+
+
+<p class="font-bold mt-3">
+
+Total:
+<span id="totalOPD">
+0
+</span>
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="bg-red-600 text-white rounded-3xl p-8">
+
+<h3 class="text-2xl font-bold">
+
+Emergency
+
+</h3>
+
+
+<div id="emergencyData" class="text-5xl mt-5">
+
+0
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="bg-green-600 text-white rounded-3xl p-8">
+
+<h3 class="text-2xl font-bold">
+
+Lab
+
+</h3>
+
+
+<div id="labData" class="text-5xl mt-5">
+
+0
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="bg-purple-600 text-white rounded-3xl p-8">
+
+<h3 class="text-2xl font-bold">
+
+X-Ray
+
+</h3>
+
+
+<div id="xrayData" class="text-5xl mt-5">
+
+0
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="bg-pink-600 text-white rounded-3xl p-8">
+
+<h3 class="text-2xl font-bold">
+
+ECG
+
+</h3>
+
+
+<div id="ecgData" class="text-5xl mt-5">
+
+0
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="bg-yellow-500 text-white rounded-3xl p-8">
+
+<h3 class="text-2xl font-bold">
+
+USG
+
+</h3>
+
+
+<div id="usgData" class="text-5xl mt-5">
+
+0
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
 
 </section>
+<!-- SERVICES SECTION -->
+
+<section id="services" class="py-20 bg-gray-100">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold text-center text-blue-900 mb-12">
+Hospital Services
+</h2>
+
+
+<div class="grid md:grid-cols-3 gap-8">
+
+
+<div class="bg-white rounded-3xl p-8 shadow">
+<h3 class="text-2xl font-bold text-blue-900">
+🏥 OPD Service
+</h3>
+<p class="mt-3 text-gray-600">
+General and specialist outpatient services.
+</p>
+</div>
+
+
+
+<div class="bg-white rounded-3xl p-8 shadow">
+<h3 class="text-2xl font-bold text-blue-900">
+🚑 Emergency
+</h3>
+<p class="mt-3 text-gray-600">
+24 hours emergency medical service.
+</p>
+</div>
+
+
+
+<div class="bg-white rounded-3xl p-8 shadow">
+<h3 class="text-2xl font-bold text-blue-900">
+🧪 Laboratory
+</h3>
+<p class="mt-3 text-gray-600">
+Modern laboratory investigation facility.
+</p>
+</div>
+
+
+
+<div class="bg-white rounded-3xl p-8 shadow">
+<h3 class="text-2xl font-bold text-blue-900">
+🩻 X-Ray / USG
+</h3>
+<p class="mt-3 text-gray-600">
+Radiology and imaging services.
+</p>
+</div>
+
+
+
+<div class="bg-white rounded-3xl p-8 shadow">
+<h3 class="text-2xl font-bold text-blue-900">
+👩‍🍼 Maternity
+</h3>
+<p class="mt-3 text-gray-600">
+ANC and delivery services.
+</p>
+</div>
+
+
+
+<div class="bg-white rounded-3xl p-8 shadow">
+<h3 class="text-2xl font-bold text-blue-900">
+💊 Pharmacy
+</h3>
+<p class="mt-3 text-gray-600">
+Medicine availability service.
+</p>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
 
 <!-- STAFF -->
-<section id="staff" class="py-20 bg-gray-100">
 
-  <div class="max-w-7xl mx-auto px-6">
+<section id="staff" class="py-20 bg-white">
 
-    <div class="text-center mb-14">
+<div class="max-w-7xl mx-auto px-6">
 
-      <h2 class="text-4xl font-bold text-blue-900">
-        Staff Details
-      </h2>
 
-    </div>
+<h2 class="text-4xl font-bold text-center text-blue-900 mb-12">
+Hospital Staff
+</h2>
 
-    <div id="staffContainer"
-         class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    </div>
 
-  </div>
+
+<div id="staffContainer"
+class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+<!-- DUTY ROSTER -->
+
+<section id="roster" class="py-20 bg-gray-100">
+
+<div class="max-w-7xl mx-auto px-6">
+
+
+<h2 class="text-4xl font-bold text-center text-blue-900 mb-12">
+
+Emergency Duty Roster
+
+</h2>
+
+
+
+<div id="rosterContainer"
+class="grid md:grid-cols-3 gap-8">
+
+</div>
+
+
+</div>
 
 </section>
 
-<!-- ROSTER -->
-<section id="roster" class="py-20 bg-white">
 
-  <div class="max-w-7xl mx-auto px-6">
 
-    <div class="text-center mb-14">
 
-      <h2 class="text-4xl font-bold text-blue-900">
-        Emergency Duty Roster
-      </h2>
 
-    </div>
-
-    <div id="rosterContainer"
-         class="grid md:grid-cols-3 gap-8">
-    </div>
-
-  </div>
-
-</section>
 
 <!-- GALLERY -->
-<section id="gallery" class="py-20 bg-gray-100">
 
-  <div class="max-w-7xl mx-auto px-6">
+<section id="gallery" class="py-20 bg-white">
 
-    <div class="text-center mb-14">
 
-      <h2 class="text-4xl font-bold text-blue-900">
-        Hospital Gallery
-      </h2>
+<div class="max-w-7xl mx-auto px-6">
 
-    </div>
 
-    <div id="galleryContainer"
-         class="grid md:grid-cols-3 gap-6">
-    </div>
+<h2 class="text-4xl font-bold text-center text-blue-900 mb-12">
 
-  </div>
+Hospital Gallery
+
+</h2>
+
+
+
+<div id="galleryContainer"
+class="grid md:grid-cols-3 gap-8">
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- NOTICE -->
+
+
+<section id="notices" class="py-20 bg-gray-100">
+
+
+<div class="max-w-7xl mx-auto px-6">
+
+
+<h2 class="text-4xl font-bold text-center text-blue-900 mb-12">
+
+Hospital Notices
+
+</h2>
+
+
+<div id="noticeContainer"
+class="space-y-5">
+
+
+</div>
+
+
+</div>
+
 
 </section>
 
-<!-- NOTICES -->
-<section id="notices" class="py-20 bg-white">
 
-  <div class="max-w-7xl mx-auto px-6">
 
-    <div class="text-center mb-14">
 
-      <h2 class="text-4xl font-bold text-blue-900">
-        Hospital Notices
-      </h2>
 
-    </div>
 
-    <div id="noticeContainer"
-         class="space-y-6">
-    </div>
-
-  </div>
-
-</section>
 
 <!-- CONTACT -->
+
+
 <section id="contact" class="py-20 bg-blue-900 text-white">
 
-  <div class="max-w-7xl mx-auto px-6">
 
-    <div class="text-center mb-10">
+<div class="max-w-7xl mx-auto px-6 text-center">
 
-      <h2 class="text-4xl font-bold">
-        Contact Information
-      </h2>
 
-    </div>
+<h2 class="text-4xl font-bold mb-8">
 
-    <div id="contactContainer"
-         class="text-center text-xl space-y-4">
-    </div>
+Contact Information
 
-  </div>
+</h2>
+
+
+
+<div id="contactContainer"
+class="text-xl space-y-3">
+
+
+<p>
+📍 Krishnanagar Municipality - 9, Bahadurgunj, Kapilvastu
+</p>
+
+
+<p>
+📞 +977 9876543210
+</p>
+
+
+<p>
+✉️ shivrajhospital43@gmail.com
+</p>
+
+
+</div>
+
+
+
+</div>
+
 
 </section>
 
+
+
+
+
+
+
 <!-- FOOTER -->
+
+
 <footer class="bg-black text-gray-400 py-8 text-center">
 
-  <p>
-    © 2026 Shivraj Hospital, Bahadurgunj Kapilvastu.
-  </p>
+
+<p>
+
+© 2026 Shivraj Hospital, Bahadurgunj Kapilvastu
+
+</p>
+
 
 </footer>
-
 <script>
 
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAiXXDqTnF_aPIskvxLbrtkMacXtlrNriiBI4stxVybAYFj-SGbcO_YcQVurTPbqM0HR23Cw67mJC3/pub?output=csv";
+
+// ===============================
+// GOOGLE SHEET CSV LINK
+// ===============================
+
+
+const SHEET_URL = 
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vQAiXXDqTnF_aPIskvxLbrtkMacXtlrNriiBI4stxVybAYFj-SGbcO_YcQVurTPbqM0HR23Cw67mJC3/pub?output=csv";
+
+
+
+
+
+// ===============================
+// DASHBOARD DATA
+// ===============================
 
 
 async function loadDashboard(){
 
-try{
-
-const response = await fetch(SHEET_URL);
-
-const csv = await response.text();
-
-console.log(csv);
-
-
-}
-catch(error){
-
-console.log(error);
-
-}
-
-}
-
-
-loadDashboard();
-</script>
-const API =
-"https://script.google.com/macros/s/AKfycbzpbKRU6kCKackXSUjq5qJh-6jUOLBkcjVaoGvvmYurSFEMzx7t5IiqpbTvHV9uFKIU/exec";
-
-async function loadDashboard() {
-  const response = await fetch(SHEET_URL);
-  const data = await response.text();
-
-  const rows = data.split("\\n");
-
-  if(rows.length > 1){
-
-    const values = rows[1].split(",");
-
-   document.getElementById("maleOPD").innerHTML = latest[1];
-
-document.getElementById("femaleOPD").innerHTML = latest[2];
-
-document.getElementById("totalOPD").innerHTML =
-Number(latest[1]) + Number(latest[2]);
-
-
-document.getElementById("emergencyData").innerHTML = latest[3];
-
-document.getElementById("labData").innerHTML = latest[4];
-
-document.getElementById("ecgData").innerHTML = latest[6];
-
-document.getElementById("usgData").innerHTML = latest[7];
-
-document.getElementById("xrayData").innerHTML = latest[8];
-  }
-}
-
-async function loadStaff() {
-
-  const response = await fetch(sheetURL);
-  const data = await response.text();
-
-  const rows = data.split("\\n").slice(1);
-
-  let html = "";
-
-  rows.forEach(row => {
-
-    const cols = row.split(",");
-
-    html += `
-      <div class="bg-white rounded-3xl overflow-hidden shadow-xl">
-
-        <img src="${cols[2] || 'https://via.placeholder.com/400'}"
-          class="h-72 w-full object-cover"
-        />
-
-        <div class="p-6">
-
-          <h3 class="text-2xl font-bold text-blue-900 mb-2">
-            ${cols[0] || ''}
-          </h3>
-
-          <p class="text-gray-600 text-lg">
-            ${cols[1] || ''}
-          </p>
-
-        </div>
-
-      </div>
-    `;
-  });
-
-  document.getElementById("staffContainer").innerHTML = html;
-}
-
-async function loadRoster() {
-
-  const response = await fetch(sheetURL);
-  const data = await response.text();
-
-  const rows = data.split("\\n").slice(1);
-
-  let html = "";
-
-  rows.forEach(row => {
-
-    const cols = row.split(",");
-
-    html += `
-      <div class="bg-blue-900 text-white rounded-3xl p-8 shadow-2xl">
-
-        <h3 class="text-3xl font-bold mb-4">
-          ${cols[0] || ''}
-        </h3>
-
-        <p>${cols[1] || ''}</p>
-
-        <p class="mt-4">
-          ${cols[2] || ''}
-        </p>
-
-      </div>
-    `;
-  });
-
-  document.getElementById("rosterContainer").innerHTML = html;
-}
-
-async function loadGallery() {
-
-  const response = await fetch(sheetURL);
-  const data = await response.text();
-
-  const rows = data.split("\\n").slice(1);
-
-  let html = "";
-
-  rows.forEach(row => {
-
-    const cols = row.split(",");
-
-    html += `
-      <img
-        src="${cols[0]}"
-        class="rounded-3xl shadow-lg h-72 w-full object-cover"
-      />
-    `;
-  });
-
-  document.getElementById("galleryContainer").innerHTML = html;
-}
-
-async function loadNotices() {
-
-  const response = await fetch(sheetURL);
-  const data = await response.text();
-
-  const rows = data.split("\\n").slice(1);
-
-  let html = "";
-
-  rows.forEach(row => {
-
-    const cols = row.split(",");
-
-    html += `
-      <div class="bg-yellow-100 border-l-8 border-yellow-500 p-6 rounded-2xl shadow">
-
-        <h3 class="text-2xl font-bold text-blue-900 mb-2">
-          ${cols[0]}
-        </h3>
-
-        <p class="text-gray-700">
-          ${cols[1]}
-        </p>
-
-      </div>
-    `;
-  });
-
-  document.getElementById("noticeContainer").innerHTML = html;
-}
-
-async function loadContact() {
-
-  const response = await fetch(sheetURL);
-  const data = await response.text();
-
-  const rows = data.split("\\n");
-
-  if(rows.length > 1){
-
-    const values = rows[1].split(",");
-
-    document.getElementById("contactContainer").innerHTML = `
-      <p>📍 ${values[0] || ''}</p>
-      <p>📞 ${values[1] || ''}</p>
-      <p>✉️ ${values[2] || ''}</p>
-    `;
-  }
-}
-
-loadDashboard();
-loadStaff();
-loadRoster();
-loadGallery();
-loadNotices();
-loadContact();
-
-setInterval(() => {
-
-  loadDashboard();
-  loadStaff();
-  loadRoster();
-  loadGallery();
-  loadNotices();
-  loadContact();
-
-}, 30000);
-
-</script>
-<script>
-
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAiXXDqTnF_aPIskvxLbrtkMacXtlrNriiBI4stxVybAYFj-SGbcO_YcQVurTPbqM0HR23Cw67mJC3/pub?output=csv";
-
-
-async function loadHospitalDashboard(){
 
 try{
 
 
-const response = await fetch(SHEET_URL);
-
-const csv = await response.text();
+let response = await fetch(SHEET_URL);
 
 
-let rows = csv.trim().split("\n");
-
-
-// Last row (latest data)
-
-let validRows = rows.filter(row => row.split(",")[1]);
-
-let latest = validRows[validRows.length-1].split(",");
+let csv = await response.text();
 
 
 
-console.log(latest);
-
-
-// Column mapping
-// A Date
-// B OPD Male
-// C OPD Female
-// D ER
-// E Lab
-// F Pharmacy
-// G ECG
-// H USG
-// I XRay
+let rows = csv
+.trim()
+.split("\n");
 
 
 
-let opdMale = Number(latest[1]) || 0;
+// remove empty rows
 
-let opdFemale = Number(latest[2]) || 0;
-
-
-
-document.getElementById("maleOPD").innerHTML = opdMale;
+let validRows = rows.filter(row=>{
 
 
-document.getElementById("femaleOPD").innerHTML = opdFemale;
+let c=row.split(",");
+
+
+return c[1] && c[2];
+
+
+});
+
+
+
+let latest =
+validRows[validRows.length-1]
+.split(",");
+
+
+
+console.log("Dashboard:",latest);
+
+
+
+
+
+let male =
+Number(latest[1]) || 0;
+
+
+let female =
+Number(latest[2]) || 0;
+
+
+
+document.getElementById("maleOPD").innerHTML =
+male;
+
+
+
+document.getElementById("femaleOPD").innerHTML =
+female;
+
 
 
 document.getElementById("totalOPD").innerHTML =
-opdMale + opdFemale;
+male + female;
+
 
 
 
 document.getElementById("emergencyData").innerHTML =
-Number(latest[3]) || 0;
+latest[3] || 0;
 
 
 
 document.getElementById("labData").innerHTML =
-Number(latest[4]) || 0;
+latest[4] || 0;
 
 
 
 document.getElementById("ecgData").innerHTML =
-Number(latest[6]) || 0;
+latest[6] || 0;
 
 
 
 document.getElementById("usgData").innerHTML =
-Number(latest[7]) || 0;
+latest[7] || 0;
 
 
 
 document.getElementById("xrayData").innerHTML =
-Number(latest[8]) || 0;
+latest[8] || 0;
 
 
 
@@ -683,28 +921,450 @@ Number(latest[8]) || 0;
 
 catch(error){
 
-console.log("Dashboard Error:",error);
-
-}
-
-
-}
-
-
-
-// Load first time
-
-loadHospitalDashboard();
-
-
-// Auto update every 1 minute
-
-setInterval(
-loadHospitalDashboard,
-60000
+console.log(
+"Dashboard Error:",
+error
 );
+
+}
+
+
+}
+
+
+
+
+
+
+// ===============================
+// GENERIC SHEET READER
+// ===============================
+
+
+async function getSheetData(){
+
+
+let response =
+await fetch(SHEET_URL);
+
+
+let csv =
+await response.text();
+
+
+
+let rows =
+csv.trim().split("\n");
+
+
+return rows
+.slice(1)
+.filter(r=>r.trim()!="")
+.map(r=>r.split(","));
+
+
+}
+
+
+
+
+
+
+
+// ===============================
+// STAFF
+// ===============================
+
+
+async function loadStaff(){
+
+
+try{
+
+
+let data =
+await getSheetData();
+
+
+
+let html="";
+
+
+
+data.forEach(cols=>{
+
+
+html += `
+
+<div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+
+
+<img
+
+src="${cols[2] || 'https://via.placeholder.com/400'}"
+
+class="w-full h-72 object-cover">
+
+
+<div class="p-6">
+
+
+<h3 class="text-2xl font-bold text-blue-900">
+
+${cols[0] || ''}
+
+</h3>
+
+
+<p class="text-gray-600 mt-2">
+
+${cols[1] || ''}
+
+</p>
+
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+});
+
+
+
+document.getElementById(
+"staffContainer"
+).innerHTML=html;
+
+
+
+}
+
+catch(e){
+
+console.log(e);
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// ROSTER
+// ===============================
+
+
+async function loadRoster(){
+
+
+try{
+
+
+let data =
+await getSheetData();
+
+
+
+let html="";
+
+
+
+data.forEach(cols=>{
+
+
+html += `
+
+
+<div class="bg-blue-900 text-white rounded-3xl p-8">
+
+
+<h3 class="text-3xl font-bold">
+
+${cols[0] || ''}
+
+</h3>
+
+
+<p class="mt-4">
+
+${cols[1] || ''}
+
+</p>
+
+
+<p class="mt-4">
+
+${cols[2] || ''}
+
+</p>
+
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+document.getElementById(
+"rosterContainer"
+).innerHTML=html;
+
+
+
+}
+
+catch(e){
+
+console.log(e);
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// GALLERY
+// ===============================
+
+
+async function loadGallery(){
+
+
+try{
+
+
+let data =
+await getSheetData();
+
+
+
+let html="";
+
+
+
+data.forEach(cols=>{
+
+
+html += `
+
+
+<img
+
+src="${cols[0] || 'https://via.placeholder.com/500'}"
+
+class="rounded-3xl shadow-xl h-72 w-full object-cover">
+
+
+`;
+
+
+
+});
+
+
+
+document.getElementById(
+"galleryContainer"
+).innerHTML=html;
+
+
+
+}
+
+catch(e){
+
+console.log(e);
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// NOTICE
+// ===============================
+
+
+async function loadNotice(){
+
+
+try{
+
+
+let data =
+await getSheetData();
+
+
+
+let html="";
+
+
+
+data.forEach(cols=>{
+
+
+html += `
+
+
+<div class="bg-yellow-100 p-6 rounded-2xl shadow">
+
+
+<h3 class="text-2xl font-bold text-blue-900">
+
+${cols[0] || ''}
+
+</h3>
+
+
+<p class="mt-2">
+
+${cols[1] || ''}
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+document.getElementById(
+"noticeContainer"
+).innerHTML=html;
+
+
+
+}
+
+catch(e){
+
+console.log(e);
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// CONTACT
+// ===============================
+
+
+async function loadContact(){
+
+
+document.getElementById(
+"contactContainer"
+).innerHTML = `
+
+
+<p>
+📍 Krishnanagar Municipality - 9, Bahadurgunj, Kapilvastu
+</p>
+
+
+<p>
+📞 +977 9876543210
+</p>
+
+
+<p>
+✉️ shivrajhospital43@gmail.com
+</p>
+
+
+`;
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// START
+// ===============================
+
+
+loadDashboard();
+
+loadStaff();
+
+loadRoster();
+
+loadGallery();
+
+loadNotice();
+
+loadContact();
+
+
+
+
+
+// AUTO UPDATE
+
+setInterval(()=>{
+
+
+loadDashboard();
+
+
+},60000);
+
 
 
 </script>
+
+
 </body>
+
 </html>
