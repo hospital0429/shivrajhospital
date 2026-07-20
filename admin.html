@@ -613,50 +613,54 @@ alert("Wrong Username or Password");
 SAVE DATA
 ====================== */
 
-async function saveData(){
+async function saveData() {
 
-const values=[
+  const values = [
+    document.getElementById("date").value,
+    document.getElementById("opdMale").value,
+    document.getElementById("opdFemale").value,
+    document.getElementById("er").value,
+    document.getElementById("lab").value,
+    document.getElementById("pharmacy").value,
+    document.getElementById("ecg").value,
+    document.getElementById("usg").value,
+    document.getElementById("xray").value,
+    document.getElementById("admitted").value,
+    document.getElementById("discharged").value,
+    document.getElementById("beds").value
+  ];
 
-document.getElementById("date").value,
+  try {
 
-document.getElementById("opdMale").value,
+    const response = await fetch(API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        sheet: "Dashboard",
+        values: values
+      })
+    });
 
-document.getElementById("opdFemale").value,
+    const text = await response.text();
 
-document.getElementById("er").value,
+    console.log("Status:", response.status);
+    console.log("Response:", text);
 
-document.getElementById("lab").value,
+    if (!response.ok) {
+      throw new Error(text);
+    }
 
-document.getElementById("pharmacy").value,
+    alert("✅ Data Saved Successfully");
 
-document.getElementById("ecg").value,
+  } catch (error) {
 
-document.getElementById("usg").value,
+    console.error(error);
+    alert("Error: " + error.message);
 
-document.getElementById("xray").value,
+  }
 
-document.getElementById("admitted").value,
-
-document.getElementById("discharged").value,
-
-document.getElementById("beds").value
-
-];
-
-try{
-
-console.log(response.status);
-console.log(await response.text());
-
-// loadCards();
-
-catch(error){
-
-console.error(error);
-
-alert("Save Failed: " + error.message);
-
-}
 }
 
 
