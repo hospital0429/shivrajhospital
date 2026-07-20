@@ -632,16 +632,19 @@ async function saveData() {
 
   try {
 
-    const response = await fetch(API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        sheet: "Dashboard",
-        values: values
-      })
-    });
+    console.log("API URL:", API);
+console.log("DATA:", values);
+
+const response = await fetch(API, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    sheet: "Dashboard",
+    values: values
+  })
+});
 
     const text = await response.text();
 
