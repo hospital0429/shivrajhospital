@@ -591,19 +591,16 @@ LOGIN
 
 function login(){
 
-let u=document.getElementById("username").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-let p=document.getElementById("password").value;
-
-if(u==="admin" && p==="shivraj@123"){
-
-document.getElementById("loginModal").style.display="none";
-
-}else{
-
-alert("Wrong Username or Password");
-
-}
+    if(username === "admin" && password === "12345"){
+        alert("Login Successful");
+        window.location.href = "index.html";
+    }
+    else{
+        alert("Invalid Username or Password");
+    }
 
 }
 
